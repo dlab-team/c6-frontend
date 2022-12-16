@@ -78,3 +78,6 @@ TL: Sebastián Vidal
 ### Backend
 
 ### Frontend
+
+- Christian Vergara : https://github.com/Chrisvd9
+
