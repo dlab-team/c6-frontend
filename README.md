@@ -78,3 +78,5 @@ TL: Sebastián Vidal
 ### Backend
 
 ### Frontend
+
+- Ramiro Guillén : https://github.com/ramiroguillen
