@@ -78,3 +78,4 @@ TL: Sebastián Vidal
 ### Backend
 
 ### Frontend
+Gabriel Balbontin (https://github.com/bagxxi)
