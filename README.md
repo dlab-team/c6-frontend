@@ -77,6 +77,7 @@ TL: Sebastián Vidal
 
 ### Backend
 
-### Frontend
+### Frontend  
+- Gabriel Balbontin (https://github.com/bagxxi)  
 - Christian Vergara : https://github.com/Chrisvd9
 - Javier Perez: https://github.com/peladno
