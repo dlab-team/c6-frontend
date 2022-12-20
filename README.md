@@ -78,3 +78,4 @@ TL: Sebastián Vidal
 ### Backend
 
 ### Frontend
+- Javier Perez: https://github.com/peladno
