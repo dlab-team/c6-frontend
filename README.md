@@ -80,3 +80,5 @@ TL: Sebastián Vidal
 ### Frontend  
 - Ramiro Guillén : https://github.com/ramiroguillen  
 - Javier Perez: https://github.com/peladno  
+- Gabriel Balbontin (https://github.com/bagxxi)  
+- Christian Vergara : https://github.com/Chrisvd9
