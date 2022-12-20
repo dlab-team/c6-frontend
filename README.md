@@ -78,4 +78,5 @@ TL: Sebastián Vidal
 ### Backend
 
 ### Frontend
+- Christian Vergara : https://github.com/Chrisvd9
 - Javier Perez: https://github.com/peladno
