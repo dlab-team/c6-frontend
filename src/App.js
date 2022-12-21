@@ -3,20 +3,21 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 
-const DefaultLayout = React.lazy(() => import('../layout/DefaultLayout'));
-const IndexPage = React.lazy(() => import('../views/Index/IndexPage'));
+//ejemplo de como importamos distintos componentes
+//como ven sale desde un archivo unico
+import { IndexPage, Home } from './pages/index';
+
+const DefaultLayout = React.lazy(() => import('./routers/DefaultLayout'));
 
 function App() {
   return (
     <Suspense>
       <Routes>
-        <Route path="/" element={<DefaultLayout />} >
+        <Route path='/' element={<DefaultLayout />}>
           <Route index element={<IndexPage />} />
         </Route>
-
       </Routes>
     </Suspense>
-
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navigate, Outlet, Route } from "react-router-dom";
-import DefaultLayout from "../layout/DefaultLayout";
+import DefaultLayout from "./DefaultLayout";
 
 
 export const ProtectedRoute = () => {
