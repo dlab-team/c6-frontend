@@ -70,15 +70,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
 ## Equipo
 
 TL: Sebastián Vidal
 
 ### Backend
 
-### Frontend  
-- Ramiro Guillén : https://github.com/ramiroguillen  
-- Javier Perez: https://github.com/peladno  
-- Gabriel Balbontin (https://github.com/bagxxi)  
+### Frontend
+
+- Ramiro Guillén : https://github.com/ramiroguillen
+- Javier Perez: https://github.com/peladno
+- Gabriel Balbontin (https://github.com/bagxxi)
 - Christian Vergara : https://github.com/Chrisvd9
+- Paul Levy: https://github.com/strike2-ux
