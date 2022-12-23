@@ -1,75 +1,32 @@
-# Devsafio WEB
+# Descripción del proyecto Devsafio WEB
 
 Proyecto para programa DLAB - Desafio Latam
 El proyecto consiste en una plataforma online orientada al uso de búsqueda de empleo y reclutamiento del rubro TI. Partiendo del perfil de cada usuario, test técnicos, encuestas, exhibiciones de código y material de apoyo. La web pretende poner en contacto a miles de postulantes y empresas.
 
-## Available Scripts
+Principalmente se busca replicar, en primera instancia, la apariencia de la Landing Page de Devsafio desde el Figma compartido, en lo sucesivo se agregarán las distintas pantallas con la funcionalidad.
 
-In the project directory, you can run:
 
-### `npm start`
+# Paso a paso de la instalación del proyecto:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para clonar el proyecto desde GitHub para trabajar en él desde tu entorno local, necesitarás tener instalado Git en tu computadora. Si no tienes Git instalado, puedes descargarlo y seguir las instrucciones de instalación desde el siguiente enlace:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+https://git-scm.com/downloads
 
-### `npm test`
+Una vez que tengas Git instalado, puedes seguir estos pasos para clonar el repositorio y usarlo en tu entorno local:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Abre una consola o terminal en tu computadora, puede ser la Terminal del Visual Studio Code, desde la cual puedes seleccionar el tipo de consola, para lo que recomendamos usar Git Bash.
 
-### `npm run build`
+Navega hasta la carpeta donde quieras guardar el proyecto utilizando el comando cd. Por ejemplo, para ir a la carpeta "Proyectos" en tu carpeta de usuario, puedes usar el comando cd Proyectos.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Utiliza el comando git clone: git clone git@github.com:dlab-team/c6-backend.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+El comando anterior funcionará solo si tienes una llave SSH asociada a tu cuenta de GitHub. Si trabajas con Windows, en las versiones 10 y 11 puedes comprobar si tienes instalada la característica OpenSSH, en los sistemas Linux o Mac suele venir incluido. Si lo tienes, debes escribir en una terminal (en Windows es recomendable abrir el Powershell o Símbolo de sistema con la opción Ejecutar como administrador) el siguiente comando (todo lo que viene antes del punto): ssh-keygen. Luego, debes pulsar la tecla Enter cada vez hasta que se genere, y luego debes buscar en tu carpeta de usuario una carpeta, generalmente oculta, con el nombre .ssh. En esa carptea debes abrir el archivo id_rsa.pub con un editor de texto, copiar todo el contenido y pegarlo en la casilla Key del siguiente link: https://github.com/settings/ssh/new. Con esto habrás asociado tu ordenador a tu cuenta de GitHub.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Una vez que el proyecto haya sido clonado, entra a la carpeta del proyecto utilizando el comando cd ./c6-frontend.
 
-### `npm run eject`
+Si el proyecto usa React, deberás instalar las dependencias necesarias para ejecutarlo. Para hacer esto, utiliza el comando npm install o yarn install, dependiendo de si usas npm o yarn como gestor de paquetes. Esto instalará todas las dependencias del proyecto que estén especificadas en el archivo package.json.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
+Una vez que hayas completado estos pasos, deberías poder ejecutar el proyecto de React en tu entorno local. Para hacerlo, podrías utilizar el comando npm start o yarn start, dependiendo de tu gestor de paquetes. Esto iniciará un servidor local y debería abrir automáticamente el proyecto en tu navegador.
 
 ## Equipo
 
@@ -77,8 +34,10 @@ TL: Sebastián Vidal
 
 ### Backend
 
-### Frontend  
-- Ramiro Guillén : https://github.com/ramiroguillen  
-- Javier Perez: https://github.com/peladno  
-- Gabriel Balbontin (https://github.com/bagxxi)  
+### Frontend
+
+- Ramiro Guillén : https://github.com/ramiroguillen
+- Javier Perez: https://github.com/peladno
+- Gabriel Balbontin (https://github.com/bagxxi)
 - Christian Vergara : https://github.com/Chrisvd9
+- Paul Levy: https://github.com/strike2-ux
