@@ -3,19 +3,19 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 
-//ejemplo de como importamos distintos componentes
-//como ven sale desde un archivo unico
-import { IndexPage, Home } from '../pages/index';
-
-const DefaultLayout = React.lazy(() => import('./DefaultLayout'));
+//Puse nombres de las paginas que van a ser usadas en las rutas, pero aun no existen en el index
+// las puse momentaneamente hasta que tengamos los archivos correspodienres en el index
+import { Home, Dashboard, Login, Register, Recovery } from '../pages/index';
 
 function RoutesApp() {
   return (
     <Suspense>
       <Routes>
-        <Route path='/' element={<DefaultLayout />}>
-          <Route index element={<IndexPage />} />
-        </Route>
+        <Route path='/' element={<Home />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/recovery' element={<Recovery />} />
       </Routes>
     </Suspense>
   );
