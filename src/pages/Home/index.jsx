@@ -1,13 +1,15 @@
-import React from "react";
-import Header from "../../components/Header";
-import Section01 from "./components/Section-1";
+import React from 'react';
+import Header from '../../components/Header';
+import Section1 from './components/Section1';
+import Section2 from './components/Section2';
 
 function Home() {
   return (
     <>
       <div>
         <Header />
-        <Section01 />
+        <Section1 />
+        <Section2 />
       </div>
     </>
   );
