@@ -14,11 +14,12 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          primary: '#4060ab',
-          secondary: '#646FD4',
-          accent: '#FFD24C',
-          neutral: '#3D4451',
-          'base-100': '#FFFFFF',
+          primary: '#2738f5',
+          secondary: '#e2f2fe',
+          accent: '#008ff7',
+          darkBlue: '#140b34',
+          black: '#000000',
+          white: '#FFFFFF',
           info: '#3ABFF8',
           success: '#36D399',
           warning: '#FBBD23',
