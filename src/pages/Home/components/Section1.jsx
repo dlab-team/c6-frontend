@@ -1,5 +1,5 @@
-import React from "react";
-import DevelopmentImage from '../../../assets/images/Development.png'
+import React from 'react';
+import DevelopmentImage from '../../../assets/images/Development.png';
 import { Link } from 'react-router-dom';
 
 const Section01 = () => {
