@@ -23,7 +23,7 @@ const RecoveryPage = () => {
                             <div className='container flex flex-col justify-enter items-stretch'>
                                 {
                                     token ?
-                                        <NewPassword setResponse={setResponse} />
+                                        <NewPassword setResponse={setResponse} token={token} />
                                         :
                                         <EmailRequest setResponse={setResponse} />
                                 }

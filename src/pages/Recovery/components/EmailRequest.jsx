@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { ImWarning } from 'react-icons/im'
 import ButtonPrimary from '../../../components/buttons/ButtonPrimary'
 
@@ -28,28 +28,22 @@ const EmailRequest = ({ setResponse }) => {
             <Formik
                 initialValues={initialEmail}
                 validationSchema={emailSchema}
-                onSubmit={(values) => {
-                    let url = '/recovery';
-                    setTimeout(() => {
-                        axios
-                            .post(url, {
-                                email: values.email,
+                onSubmit={async (values) => {
+                    const url = process.env.REACT_APP_BACKEND_URL + '/auth/recovery';
+                    await axios
+                        .post(url, { email: values.email })
+                        .then((AxiosResponse) => {
+                            setResponse({
+                                type: AxiosResponse.data.status,
+                                message: AxiosResponse.data.message
                             })
-                            .then((res) => {
-                                if (res.data) {
-                                    setResponse({
-                                        type: 'success',
-                                        message: 'Hemos enviado un enlace a tu correo electrónico para que recuperes el acceso a tu cuenta'
-                                    })
-                                }
+                        })
+                        .catch((err) => {
+                            setResponse({
+                                type: 'error',
+                                message: 'Ha ocurrido un error, por favor intente nuevamente'
                             })
-                            .catch((err) => {
-                                setResponse({
-                                    type: 'error',
-                                    message: 'No hemos podido encontrar su correo, asegurese de haberlo ingresado correctamente'
-                                })
-                            });
-                    }, 1000);
+                        });
                 }}
             >
                 {({ touched, errors }) => (

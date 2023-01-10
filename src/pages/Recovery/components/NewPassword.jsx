@@ -1,11 +1,11 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import axios from 'axios'
+import axios, { Axios, AxiosResponse } from 'axios'
 import ButtonPrimary from '../../../components/buttons/ButtonPrimary'
 import { ImWarning } from 'react-icons/im'
 
-const NewPassword = ({ setResponse }) => {
+const NewPassword = ({ setResponse, token }) => {
 
     const initialPasswords = {
         password: '',
@@ -17,7 +17,7 @@ const NewPassword = ({ setResponse }) => {
             password: Yup
                 .string()
                 .min(8, 'La contraseña debe tener al menos 8 caracteres')
-                .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/, 'Debe incluir números, mayúsculas, minúsculas y caracteres especiales')
+                .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, 'Debe incluir números, mayúsculas, minúsculas y caracteres especiales')
                 .required('Campo obligatorio'),
 
             confirmPassword: Yup
@@ -27,7 +27,7 @@ const NewPassword = ({ setResponse }) => {
                     then: Yup.string().oneOf([Yup.ref('password')], 'Las contraseñas deben coincidir')
                 })
                 .min(8, 'La contraseña debe tener al menos 8 caracteres')
-                .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/, 'Debe incluir números, mayúsculas, minúsculas y caracteres especiales')
+                .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, 'Debe incluir números, mayúsculas, minúsculas y caracteres especiales')
                 .required('Campo obligatorio')
         }
     )
@@ -40,28 +40,26 @@ const NewPassword = ({ setResponse }) => {
             <Formik
                 initialValues={initialPasswords}
                 validationSchema={passwordSchema}
-                onSubmit={(values) => {
-                    let url = '/recovery';
-                    setTimeout(() => {
-                        axios
-                            .post(url, {
-                                password: values.password,
+                onSubmit={async (values) => {
+                    const url = process.env.REACT_APP_BACKEND_URL + '/auth/changePassword';
+                    await axios
+                        .post(url, {
+                            password: values.password,
+                            confirmPassword: values.confirmPassword,
+                            token: token
+                        })
+                        .then((AxiosResponse) => {
+                            setResponse({
+                                type: AxiosResponse.data.status,
+                                message: AxiosResponse.data.message
                             })
-                            .then((res) => {
-                                if (res.data) {
-                                    setResponse({
-                                        type: 'success',
-                                        message: 'Contraseña reestablecida exitosamente'
-                                    })
-                                }
+                        })
+                        .catch((err) => {
+                            setResponse({
+                                type: 'error',
+                                message: 'Ha ocurrido un error, por favor intente nuevamente'
                             })
-                            .catch((err) => {
-                                setResponse({
-                                    type: 'error',
-                                    message: 'Ha ocurrido un error, por favor, intente nuevamente'
-                                })
-                            });
-                    }, 1000);
+                        });
                 }}
             >
                 {({ touched, errors }) => (
