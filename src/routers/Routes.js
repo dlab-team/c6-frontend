@@ -12,9 +12,9 @@ function RoutesApp() {
     <Suspense>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
         {/* <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/recovery" element={<Recovery />} /> */}
       </Routes>
     </Suspense>

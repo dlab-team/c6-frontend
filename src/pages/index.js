@@ -3,3 +3,4 @@
 //ver ejemplo en App.js como se importarón los links
 
 export { default as Home } from "./Home/index";
+export * from "./Register";
