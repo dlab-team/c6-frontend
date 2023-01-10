@@ -3,3 +3,7 @@
   min-height: calc(100vh - 64px);
 }
 /* custom classes */
+
+body {
+  font-family: 'Poppins', sans-serif;
+}

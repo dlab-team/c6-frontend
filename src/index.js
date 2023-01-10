@@ -1,17 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import 'tw-elements';
-import './index.css';
-import './App.css'
-import App from './App.js';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "tw-elements";
+import "./index.css";
+import "./App.css";
+import App from "./App.js";
+import reportWebVitals from "./reportWebVitals";
+import { ModalCustomMessage } from "./components/modal";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
+      {/* <ModalCustomMessage message="Bienvenido a devsafio!!!" type="success" /> */}
     </BrowserRouter>
   </React.StrictMode>
 );
