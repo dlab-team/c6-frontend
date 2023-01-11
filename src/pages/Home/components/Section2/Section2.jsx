@@ -1,7 +1,7 @@
 import React from 'react';
-import img1 from '../../../assets/images/pablita-girls-holding-hourglass 1.png';
-import img2 from '../../../assets/images/pablita-636 1.png';
-import img3 from '../../../assets/images/pablita-people-holding-pieces-of-puzzle 1.png';
+import img1 from '../../../../assets/images/pablita-girls-holding-hourglass 1.png';
+import img2 from '../../../../assets/images/pablita-636 1.png';
+import img3 from '../../../../assets/images/pablita-people-holding-pieces-of-puzzle 1.png';
 
 const Section2 = () => {
   return (
