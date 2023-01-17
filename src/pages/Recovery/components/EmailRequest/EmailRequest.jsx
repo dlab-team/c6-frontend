@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import axios, { AxiosResponse } from 'axios'
 import { ImWarning } from 'react-icons/im'
-import ButtonPrimary from '../../../components/buttons/ButtonPrimary'
+import ButtonPrimary from '../../../../components/buttons/ButtonPrimary'
 
 const EmailRequest = ({ setResponse }) => {
 

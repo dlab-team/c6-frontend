@@ -1,5 +1,5 @@
 import React from 'react';
-import Zen from '../../../assets/images/Zen.png';
+import Zen from '../../../../assets/images/Zen.png';
 import { Link } from 'react-router-dom';
 
 const Section3 = () => {
