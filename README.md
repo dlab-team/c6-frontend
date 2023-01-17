@@ -18,7 +18,7 @@ Abre una consola o terminal en tu computadora, puede ser la Terminal del Visual 
 
 Navega hasta la carpeta donde quieras guardar el proyecto utilizando el comando cd. Por ejemplo, para ir a la carpeta "Proyectos" en tu carpeta de usuario, puedes usar el comando cd Proyectos.
 
-Utiliza el comando git clone: git clone git@github.com:dlab-team/c6-backend.git
+Utiliza el comando git clone: git clone git@github.com:dlab-team/c6-frontend.git
 
 El comando anterior funcionará solo si tienes una llave SSH asociada a tu cuenta de GitHub. Si trabajas con Windows, en las versiones 10 y 11 puedes comprobar si tienes instalada la característica OpenSSH, en los sistemas Linux o Mac suele venir incluido. Si lo tienes, debes escribir en una terminal (en Windows es recomendable abrir el Powershell o Símbolo de sistema con la opción Ejecutar como administrador) el siguiente comando (todo lo que viene antes del punto): ssh-keygen. Luego, debes pulsar la tecla Enter cada vez hasta que se genere, y luego debes buscar en tu carpeta de usuario una carpeta, generalmente oculta, con el nombre .ssh. En esa carptea debes abrir el archivo id_rsa.pub con un editor de texto, copiar todo el contenido y pegarlo en la casilla Key del siguiente link: https://github.com/settings/ssh/new. Con esto habrás asociado tu ordenador a tu cuenta de GitHub.
 
