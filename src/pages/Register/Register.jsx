@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
+import Header from '../../components/Header/Header';
 import { ModalCustomMessage, ModalLoginRegister } from '../../components/index';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-export const Register = () => {
+const Register = () => {
   const [showModalMessage, setShowModalMessage] = useState(false);
   const [statusCode, setStatusCode] = useState(0);
   const [messageStatus, setMessageStatus] = useState('');
@@ -152,3 +152,5 @@ export const Register = () => {
     </>
   );
 };
+
+export default Register;
