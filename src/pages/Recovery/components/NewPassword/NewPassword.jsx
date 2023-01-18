@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import axios, { Axios, AxiosResponse } from 'axios'
-import ButtonPrimary from '../../../components/buttons/ButtonPrimary'
+import {ButtonPrimary} from '../../../../components/index'
 import { ImWarning } from 'react-icons/im'
 
 const NewPassword = ({ setResponse, token }) => {

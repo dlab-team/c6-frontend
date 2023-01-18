@@ -4,3 +4,4 @@
 
 export { default as Home } from './Home/index';
 export { default as Recovery } from './Recovery/index';
+export { default as Register } from './Register/Register';
