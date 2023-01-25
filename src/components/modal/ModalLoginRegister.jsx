@@ -1,10 +1,9 @@
 import React from "react";
-import "../../styles/modalRegister.css";
 
 const ModalLoginRegister = ({ children }) => {
   return (
-    <div className="minH">
-      <div className="px-20 pt-10 pb-24 text-black bg-white border border-4 border-black rounded-md ">
+    <div className=" h-[calc(100vh-80px)] flex justify-center items-center minH bg-center bg-cover bg-no-repeat bg-hero">
+      <div className="px-20 pt-10 pb-24 text-black bg-white border-4 border-black rounded-md ">
         {children}
       </div>
     </div>
