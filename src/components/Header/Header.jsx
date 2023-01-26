@@ -2,7 +2,6 @@ import React from "react";
 import logo from "../../assets/images/Logo-horizontal.png";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import "../../styles/Header.css";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -86,8 +85,8 @@ const Header = () => {
             <Link to="/">Administra la Página</Link>
           </li>
           {openModal && (
-            <div className='modal-backdrop' onClick={(e) => {
-              if (e.target.className === 'modal-backdrop') {
+            <div id='modal-backdrop' className='absolute inset-0 bg-[#252424cc] w-screen h-full' onClick={(e) => {
+              if (e.target.id === 'modal-backdrop') {
                 setOpenModal(false)
               }
             }}>
