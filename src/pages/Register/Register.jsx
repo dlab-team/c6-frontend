@@ -40,13 +40,30 @@ const Register = () => {
       return data;
     },
     validationSchema: Yup.object({
-      name: Yup.string().required('Requerido'),
-      surnames: Yup.string().required('Requerido'),
-      email: Yup.string().email('Debe de ser un email').required('Requerido'),
-      password: Yup.string().required('Requerido'),
-      repeatPassword: Yup.string()
-        .required('Requerido')
-        .oneOf([Yup.ref('password'), null], 'Las contraseñas no son iguales'),
+      name: Yup
+        .string()
+        .required('Requerido'),
+      surnames: Yup
+        .string()
+        .required('Requerido'),
+      email: Yup
+        .string()
+        .email('Debe de ser un email')
+        .required('Requerido'),
+      password: Yup
+        .string()
+        .min(8, 'La contraseña debe tener al menos 8 caracteres')
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, 'Debe incluir números, mayúsculas, minúsculas y caracteres especiales')
+        .required('Campo obligatorio'),
+      repeatPassword: Yup
+        .string()
+        .when('password', {
+          is: (value) => (value && value.length > 0 ? true : false),
+          then: Yup.string().oneOf([Yup.ref('password')], 'Las contraseñas deben coincidir')
+        })
+        .min(8, 'La contraseña debe tener al menos 8 caracteres')
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, 'Debe incluir números, mayúsculas, minúsculas y caracteres especiales')
+        .required('Campo obligatorio')
     }),
   });
 

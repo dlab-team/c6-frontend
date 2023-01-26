@@ -18,7 +18,9 @@ const Header = () => {
     },
     validationSchema: Yup.object({
       email: Yup.string().email('Debe de ser un email').required('Requerido'),
-      password: Yup.string().required('Requerido'),
+      password: Yup.string().min(8, 'La contraseña debe tener al menos 8 caracteres')
+      .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, 'Debe incluir números, mayúsculas, minúsculas y caracteres especiales')
+      .required('Campo obligatorio'),
     }),
   });
 
