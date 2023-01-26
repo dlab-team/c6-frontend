@@ -15,9 +15,9 @@ import { Educacion, Habilidades } from './components';
 
 function Profile() {
   return (
-    <main className='bg-white my-14 mx-24'>
+    <main className='bg-white my-14 ml-24 m-20'>
       <section className='flex flex-row justify-between mb-24'>
-        <h1 className='text-black text-4xl font-semibold'>Bienvenidos</h1>
+        <h1 className='text-black text-4xl font-semibold'>Bienvenido!</h1>
         <button className='text-black text-lg border-solid border p-1 border-black rounded-md'>
           <div className='flex flex-row items-start'>
             <img src={Edit} alt='edit' className='pr-2' />

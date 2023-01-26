@@ -1,13 +1,18 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { UserNavBar } from '../components';
+import { Footer, Header, UserNavBar } from '../components';
+//TODO header y footer momentaneos hasta tener un layout por default
 
 const UserLayout = () => {
   return (
-    <div className='flex flex-row pt-10'>
-      <UserNavBar />
-      <Outlet />
-    </div>
+    <>
+      <Header />
+      <div className='flex flex-row pt-10'>
+        <UserNavBar />
+        <Outlet />
+      </div>
+      <Footer />
+    </>
   );
 };
 

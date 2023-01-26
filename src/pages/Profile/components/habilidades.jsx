@@ -10,25 +10,25 @@ function Habilidades() {
           <li className='text-black border-solid border rounded-lg p-2 mr-4 mb-4 border-[#2738F5]'>
             HTML
           </li>
-          <li className='text-black border-solid border rounded-lg p-2 mr-4 mb-4 border-[#2738F5]'>
+          <li className='text-black border-solid border rounded-lg p-2 mr-3 mb-3 border-[#2738F5]'>
             React js
           </li>
-          <li className='text-black border-solid border rounded-lg p-2 mr-4 mb-4 border-[#2738F5]'>
+          <li className='text-black border-solid border rounded-lg p-2 mr-3 mb-3 border-[#2738F5]'>
             Java
           </li>
-          <li className='text-black border-solid border rounded-lg p-2 mr-4 mb-4 border-[#2738F5]'>
+          <li className='text-black border-solid border rounded-lg p-2 mr-3 mb-3 border-[#2738F5]'>
             JavaScript
           </li>
-          <li className='text-black border-solid border rounded-lg p-2 mr-4 mb-4 border-[#2738F5]'>
+          <li className='text-black border-solid border rounded-lg p-2 mr-3 mb-3 border-[#2738F5]'>
             Swift
           </li>
-          <li className='text-black border-solid border rounded-lg p-2 mr-4 mb-4 border-[#2738F5]'>
+          <li className='text-black border-solid border rounded-lg p-2 mr-3 mb-3 border-[#2738F5]'>
             Kotlin
           </li>
-          <li className='text-black border-solid border rounded-lg p-2 mr-4 mb-4 border-[#2738F5]'>
+          <li className='text-black border-solid border rounded-lg p-2 mr-3 mb-3 border-[#2738F5]'>
             Flutter
           </li>
-          <li className='text-black border-solid border rounded-lg p-2 mr-4 mb-4 border-[#2738F5]'>
+          <li className='text-black border-solid border rounded-lg p-2 mr-3 mb-3 border-[#2738F5]'>
             Bootstrap
           </li>
         </ul>
