@@ -32,16 +32,17 @@ const EmailRequest = ({ setResponse }) => {
                     const url = process.env.REACT_APP_BACKEND_URL + '/auth/recovery';
                     await axios
                         .post(url, { email: values.email })
-                        .then((AxiosResponse) => {
+                        .then((res) => {
                             setResponse({
-                                type: AxiosResponse.data.status,
-                                message: AxiosResponse.data.message
+                                type: res.data.status,
+                                message: res.data.message
                             })
                         })
-                        .catch((err) => {
+                        .catch(err => {
+                            console.log(err)
                             setResponse({
-                                type: 'error',
-                                message: 'Ha ocurrido un error, por favor intente nuevamente'
+                                type: err.response.data.statusCode,
+                                message: err.response.data.message
                             })
                         });
                 }}

@@ -43,7 +43,7 @@ const NewPassword = ({ setResponse, token }) => {
                 onSubmit={async (values) => {
                     const url = process.env.REACT_APP_BACKEND_URL + '/auth/changePassword';
                     await axios
-                        .post(url, {
+                        .put(url, {
                             password: values.password,
                             confirmPassword: values.confirmPassword,
                             token: token
