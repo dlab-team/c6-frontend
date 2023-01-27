@@ -3,3 +3,4 @@ export { default as Footer } from './Footer/Footer';
 export { default as ButtonPrimary } from './buttons/ButtonPrimary';
 export { default as ModalCustomMessage } from './modal/ModalCustomMessage';
 export { default as ModalLoginRegister } from './modal/ModalLoginRegister';
+export { default as UserNavBar } from './UserNavbar/UserNavbar.jsx';
