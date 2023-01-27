@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import Header from '../../components/Header/Header';
 import { ModalCustomMessage, ModalLoginRegister } from '../../components/index';
 import { Formik, Form, Field } from 'formik';
 import { ImWarning } from 'react-icons/im'
 import * as Yup from 'yup';
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 
 
 const Register = () => {
@@ -45,7 +44,7 @@ const Register = () => {
       {showModalMessage && (
         <ModalCustomMessage
           message={messageStatus}
-          type={statusCode >= 200 ? 'success' : 'error'}
+          type={statusCode < 400 ? 'success' : 'error'}
         />
       )}
 
@@ -59,15 +58,23 @@ const Register = () => {
             const url = process.env.REACT_APP_BACKEND_URL + '/auth/register'
             await axios
               .post(url, { email: values.email, name: values.name, password: values.password })
-              .then((AxiosResponse) => {
+              .then(res => {
+                console.log(res)
                 setShowModalMessage(true);
-                setStatusCode(AxiosResponse.statusCode);
-                setMessageStatus(AxiosResponse.message);
+                setStatusCode(res.data.statusCode);
+                setMessageStatus(res.data.message);
                 setTimeout(() => {
                   setShowModalMessage(false);
                 }, 4000);
               })
-              .catch(err => console.log(err))
+              .catch(err => {
+                setShowModalMessage(true);
+                setStatusCode(err.response.data.statusCode);
+                setMessageStatus(err.response.data.message);
+                setTimeout(() => {
+                  setShowModalMessage(false);
+                }, 4000);
+              })
           }}
         >
 
@@ -156,7 +163,7 @@ const Register = () => {
                   )}
                 </div>
               </div>
-              
+
               <div className='flex'>
                 <button
                   type='submit'

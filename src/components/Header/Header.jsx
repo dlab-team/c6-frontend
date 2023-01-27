@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/images/Logo-horizontal.png";
 import { Link } from 'react-router-dom';
 import LoginForm from "../LoginForm/LoginForm";
 
 const Header = () => {
+
+  const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -48,7 +50,8 @@ const Header = () => {
                         X
                       </button>
                       <h1 className="static text-2xl font-semibold -mt-20">Iniciar Sesión</h1>
-                      <LoginForm />
+
+                      <LoginForm setOpenModal={setOpenModal}/>
 
                     </div>
                   </div>

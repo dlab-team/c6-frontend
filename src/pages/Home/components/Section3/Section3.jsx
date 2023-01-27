@@ -58,7 +58,7 @@ const Section3 = () => {
               <div className="flex flex-col md:flex-row md:justify-between mx-10 md:mx-14 mt-10 font-[400]">
                 <div>
                   <label
-                    for="first_name"
+                    htmlFor="first_name"
                     className="mb-4 text-[16px] text-[#FFFFFF]"
                   >
                     Nombre *
@@ -71,7 +71,7 @@ const Section3 = () => {
                 </div>
                 <div>
                   <label
-                    for="last_name"
+                    htmlFor="last_name"
                     className="md:ml-4 mb-4 text-[16px] text-[#FFFFFF]"
                   >
                     Apellido *
@@ -86,7 +86,7 @@ const Section3 = () => {
               <div className="flex flex-col md:flex-row md:justify-between mt-2 mx-10 md:mx-14">
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="mb-4 text-[16px] font-medium text-[#FFFFFF]"
                   >
                     Email corporativo *
@@ -99,7 +99,7 @@ const Section3 = () => {
                 </div>
                 <div>
                   <label
-                    for="phone"
+                    htmlFor="phone"
                     className="md:ml-4 mb-4 text-[16px] font-medium text-[#FFFFFF]"
                   >
                     Número de teléfono *

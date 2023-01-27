@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { ImWarning } from 'react-icons/im'
 
-const LoginForm = () => {
+const LoginForm = ({ setOpenModal }) => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [respAuth, setRespAuth] = useState(false);
@@ -19,11 +20,9 @@ const LoginForm = () => {
 
     const credentialsSchema = Yup.object().shape({
         email: Yup.string()
-            .email('Debe de ser un email')
+            .email('Formato de correo inválido')
             .required('Campo obligatorio'),
         password: Yup.string()
-            .min(8, 'La contraseña debe tener al menos 8 caracteres')
-            .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, 'Debe incluir números, mayúsculas, minúsculas y caracteres especiales')
             .required('Campo obligatorio')
     })
 
@@ -39,10 +38,10 @@ const LoginForm = () => {
                 const url = process.env.REACT_APP_BACKEND_URL + '/auth/login'
                 await axios
                     .post(url, values)
-                    .then((AxiosResponse) => {
+                    .then((res) => {
                         setRespAuth(true);
-                        setMessageAuth(AxiosResponse.message);
-                        localStorage.setItem("token", AxiosResponse.token);
+                        setMessageAuth(res.data.message);
+                        localStorage.setItem("token", res.data.token);
                         setTimeout(() => {
                             setOpenModal(false);
                             //redirecting using router (to Home just until Dashboard page is ready)
@@ -52,7 +51,7 @@ const LoginForm = () => {
                     })
                     .catch(err => {
                         setRespAuth(true);
-                        setMessageAuth('Usuario o contraseña incorrectos');
+                        setMessageAuth(err.response.data.message);
                     })
             }}
         >
