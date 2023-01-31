@@ -15,8 +15,6 @@ const Header = () => {
     setOpenModal(false);
   };
 
-  document.body.style.overflow = `${openModal ? "hidden" : "visible"}`;
-
   return (
     <>
       <nav className="flex items-center h-20 text-white justify-between px-2 py-3 bg-[#2738F5]">
