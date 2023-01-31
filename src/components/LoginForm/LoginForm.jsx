@@ -58,7 +58,7 @@ const LoginForm = ({ setOpenModal }) => {
 
             {({ touched, errors }) => (
 
-                <Form className="flex flex-col gap-6 mt-4">
+                <Form className="flex flex-col gap-8 mt-4">
                     <Field
                         id="email"
                         name="email"
@@ -67,7 +67,7 @@ const LoginForm = ({ setOpenModal }) => {
                         className="w-80 h-10 px-4 rounded-md border border-gray-300"
                     />
                     {errors.email && touched.email && (
-                        <span className='flex items-center gap-1 text-error italic'>
+                        <span className='absolute flex top-[9.1rem] items-center gap-1 text-error italic text-sm'>
                             <ImWarning />{errors.email}
                         </span>
                     )}
@@ -79,7 +79,7 @@ const LoginForm = ({ setOpenModal }) => {
                         className="w-80 h-10 px-4 rounded-md border border-gray-300"
                     />
                     {errors.password && touched.password && (
-                        <span className='flex items-center gap-1 text-error italic'>
+                        <span className='absolute flex items-center top-[13.7rem] gap-1 text-error italic text-sm'>
                             <ImWarning />{errors.password}
                         </span>
                     )}

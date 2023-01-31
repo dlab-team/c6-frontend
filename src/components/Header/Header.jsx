@@ -15,6 +15,8 @@ const Header = () => {
     setOpenModal(false);
   };
 
+  document.body.style.overflow = `${openModal ? "hidden" : "visible"}`;
+
   return (
     <>
       <nav className="flex items-center h-20 text-white justify-between px-2 py-3 bg-[#2738F5]">
@@ -39,7 +41,7 @@ const Header = () => {
               }}>
 
                 <div onClick={handleCloseModal} className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50">
-                  <div onClick={(e) => e.stopPropagation()} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white border-stone-500 bg-sky-100 rounded-md">
+                  <div onClick={(e) => e.stopPropagation()} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[30%] h-[55%] border-stone-500 bg-sky-100 rounded-md">
                     <div className="flex flex-col items-center justify-center h-full text-black">
 
                       <button
@@ -49,7 +51,7 @@ const Header = () => {
                       >
                         X
                       </button>
-                      <h1 className="static text-2xl font-semibold -mt-20">Iniciar Sesión</h1>
+                      <h1 className="static text-2xl font-semibold">Iniciar Sesión</h1>
 
                       <LoginForm setOpenModal={setOpenModal}/>
 
