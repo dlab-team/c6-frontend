@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import axios, { Axios, AxiosResponse } from 'axios'
-import {ButtonPrimary} from '../../../../components/index'
+import { ButtonPrimary } from '../../../../components/index'
 import { ImWarning } from 'react-icons/im'
 
 const NewPassword = ({ setResponse, token }) => {
@@ -34,9 +34,12 @@ const NewPassword = ({ setResponse, token }) => {
 
     return (
         <>
-            <p className='text-center text-black text-xl px-36'>
-                Tu contraseña debe tener al menos 8 caracteres y debe incluir una combinación de números, mayúsculas, minúsculas y caracteres especiales (!$@%).
-            </p>
+            <div className='flex justify-center'>
+                <p className='max-w-sm text-center pb-6'>
+                    Tu contraseña debe tener al menos 8 caracteres y debe incluir una combinación de números, mayúsculas, minúsculas y caracteres especiales (!$@%).
+                </p>
+            </div>
+
             <Formik
                 initialValues={initialPasswords}
                 validationSchema={passwordSchema}
@@ -64,9 +67,9 @@ const NewPassword = ({ setResponse, token }) => {
             >
                 {({ touched, errors }) => (
 
-                    <Form className='mt-12 mb-12 min-w-full px-36 flex flex-col'>
-                        <div className='flex justify-center items-center mb-12'>
-                            <label htmlFor='password' className='text-2xl pr-8 text-black'>
+                    <Form className='flex flex-col gap-y-6'>
+                        <div className='flex items-center pb-6'>
+                            <label htmlFor='password' className='block grow'>
                                 Nueva Contraseña:
                             </label>
                             <div>
@@ -74,7 +77,7 @@ const NewPassword = ({ setResponse, token }) => {
                                     type='password'
                                     name='password'
                                     placeholder='************'
-                                    className='bg-[#E2F2FE] rounded border-[0.5px] border-[#140B34] p-2 text-2xl'
+                                    className='w-full px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
                                 />
                                 {
                                     errors.password && touched.password && (
@@ -86,8 +89,8 @@ const NewPassword = ({ setResponse, token }) => {
                             </div>
                         </div>
 
-                        <div className='flex justify-center items-center mb-16'>
-                            <label htmlFor='confirm-password' className='text-2xl pr-8 text-black'>
+                        <div className='flex items-center pb-6'>
+                            <label htmlFor='confirm-password' className='block grow'>
                                 Confirmar Contraseña:
                             </label>
                             <div>
@@ -95,7 +98,7 @@ const NewPassword = ({ setResponse, token }) => {
                                     type='password'
                                     name='confirmPassword'
                                     placeholder='************'
-                                    className='bg-[#E2F2FE] rounded border-[0.5px] border-[#140B34] p-2 text-2xl'
+                                    className='w-full px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
                                 />
                                 {
                                     errors.confirmPassword && touched.confirmPassword && (
@@ -107,9 +110,11 @@ const NewPassword = ({ setResponse, token }) => {
                             </div>
                         </div>
 
-                        <ButtonPrimary type='submit'>
-                            Reestablecer Contraseña
-                        </ButtonPrimary>
+                        <div className='flex justify-end'>
+                            <ButtonPrimary type='submit'>
+                                Reestablecer Contraseña
+                            </ButtonPrimary>
+                        </div>
                     </Form>
                 )}
             </Formik>

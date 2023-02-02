@@ -6,14 +6,12 @@ import "./index.css";
 import "./App.css";
 import App from "./App.js";
 import reportWebVitals from "./reportWebVitals";
-import { ModalCustomMessage } from "./components/index";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
-      {/* <ModalCustomMessage message="Bienvenido a devsafio!!!" type="success" /> */}
     </BrowserRouter>
   </React.StrictMode>
 );
