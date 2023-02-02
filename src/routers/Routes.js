@@ -13,6 +13,7 @@ import {
   Recovery,
   Profile,
   CodingTests,
+  FormLooking,
 } from '../pages/index';
 import UserLayout from './UserLayout';
 
@@ -21,11 +22,10 @@ function RoutesApp() {
     <Suspense>
       <Routes>
         <Route path='/' element={<Home />} />
-        {/* <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/login" element={<Login />}  */}
         <Route path='/register' element={<Register />} />
         <Route path='/recovery/:token?' element={<Recovery />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/form-looking' element={<FormLooking />} />
         <Route path='/user' element={<UserLayout />}>
           <Route index element={<Navigate to='dashboard' />} />
           <Route path='dashboard' element={<Dashboard />} />
