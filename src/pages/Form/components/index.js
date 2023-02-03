@@ -1,0 +1,6 @@
+export {default as FormExplain} from './FormExplain/FormExplain'
+export {default as UserProfileForm} from './UserProfileForm/UserProfileForm'
+export {default as EducationalBackgroundForm } from './EducationalBackgroundForm/EducationalBackgroundForm'
+export {default as WorkProfileForm } from './WorkProfileForm/WorkProfileForm'
+export {default as WorkExperienceForm } from './WorkExperienceForm/WorkExperienceForm'
+export {default as JobLookingForm } from './JobLookingForm/JobLookingForm'

@@ -12,7 +12,11 @@ module.exports = {
       serif: ["Merriweather", "serif"],
       poppins: ["Poppins", "sans-serif;"],
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        hero: "url('./assets/images/backgroundRegisterLogin.png')"
+      }
+    },
   },
   daisyui: {
     themes: [

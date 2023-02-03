@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Section3 = () => {
   return (
     <>
-      <div className="flex justify-center w-screen">
+      <div className="flex justify-center w-screen scrollbar-hide">
         <div className="container">
           <div className="flex flex-col lg:flex-row w-full mb-20 pt-40">
             <div className="">
@@ -58,7 +58,7 @@ const Section3 = () => {
               <div className="flex flex-col md:flex-row md:justify-between mx-10 md:mx-14 mt-10 font-[400]">
                 <div>
                   <label
-                    for="first_name"
+                    htmlFor="first_name"
                     className="mb-4 text-[16px] text-[#FFFFFF]"
                   >
                     Nombre *
@@ -71,7 +71,7 @@ const Section3 = () => {
                 </div>
                 <div>
                   <label
-                    for="last_name"
+                    htmlFor="last_name"
                     className="md:ml-4 mb-4 text-[16px] text-[#FFFFFF]"
                   >
                     Apellido *
@@ -86,7 +86,7 @@ const Section3 = () => {
               <div className="flex flex-col md:flex-row md:justify-between mt-2 mx-10 md:mx-14">
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="mb-4 text-[16px] font-medium text-[#FFFFFF]"
                   >
                     Email corporativo *
@@ -99,7 +99,7 @@ const Section3 = () => {
                 </div>
                 <div>
                   <label
-                    for="phone"
+                    htmlFor="phone"
                     className="md:ml-4 mb-4 text-[16px] font-medium text-[#FFFFFF]"
                   >
                     Número de teléfono *
@@ -130,8 +130,8 @@ const Section3 = () => {
               {/* sección checkbox */}
               <div className="mx-14">
                 <div className="flex items-center mb-2">
-                  {/* <input type="checkbox" className="w-4 h-4 text-[#2738F5] bg-[#E2F2FE] border-gray-300 focus:ring-blue-500 focus:ring-1" />
-                  <label className="ml-6 text-[16px] font-regular text-[#FFFFFF]">Desarrollador FrontEnd</label> */}
+                  <input type="checkbox" className="w-4 h-4 text-[#2738F5] bg-[#E2F2FE] border-gray-300 focus:ring-blue-500 focus:ring-1" />
+                  <label className="ml-6 text-[16px] font-regular text-[#FFFFFF]">Desarrollador FrontEnd</label>
                 </div>
                 <div className="flex items-center mb-2">
                   <input
