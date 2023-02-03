@@ -62,7 +62,7 @@ const EmailRequest = ({ setResponse }) => {
                                     className='w-full px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
                                 />
                                 {errors.email && touched.email && (
-                                    <p className='flex items-center gap-1 text-error italic'>
+                                    <p className='flex items-center pt-9 absolute text-error italic'>
                                         <ImWarning />{errors.email}
                                     </p>
                                 )}

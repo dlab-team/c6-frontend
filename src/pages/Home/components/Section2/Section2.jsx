@@ -58,7 +58,7 @@ const Section2 = () => {
 
         <div className="flex flex-col md:flex-row container mx-auto mt-16 pb-16 md:justify-around items-center">
           <div className="flex flex-col gap-10 text-center items-center max-w-xs px-6">
-            <img src={img1} alt="aceleramos" className="pt-4" />
+            <img src={img1} alt="aceleramos" className="" />
             <h4 className="text-black font-bold text-2xl">Aceleramos</h4>
             <p className="text-black text-xl">
               <span className="font-bold">
@@ -71,7 +71,7 @@ const Section2 = () => {
           </div>
 
           <div className="flex flex-col gap-10 text-center items-center max-w-xs px-6">
-            <img src={img2} alt="acompañamos" />
+            <img src={img2} alt="acompañamos" className='pt-12'/>
             <h4 className="text-black font-bold text-2xl">Acompañamos</h4>
             <p className="text-black text-xl">
               Nosotros nos hacemos cargo, tú creces. Todos los desarrolladores
@@ -85,7 +85,7 @@ const Section2 = () => {
           </div>
 
           <div className="flex flex-col gap-10 text-center items-center max-w-xs px-6">
-            <img src={img3} alt="potenciamos" className="pt-4" />
+            <img src={img3} alt="potenciamos" className="pt-12" />
             <h4 className="text-black font-bold text-2xl">Potenciamos</h4>
             <p className="text-black text-xl">
               Potenciamos y retenemos el talento. Realizamos un{' '}
