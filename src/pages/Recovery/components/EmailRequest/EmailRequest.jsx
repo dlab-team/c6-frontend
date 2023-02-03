@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 import { ImWarning } from 'react-icons/im'
 import ButtonPrimary from '../../../../components/buttons/ButtonPrimary'
 
@@ -22,9 +22,12 @@ const EmailRequest = ({ setResponse }) => {
 
     return (
         <>
-            <p className='text-center text-black text-xl px-36'>
-                Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta.
-            </p>
+            <div className='flex justify-center'>
+                <p className='max-w-sm text-center pb-6'>
+                    Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta.
+                </p>
+            </div>
+
             <Formik
                 initialValues={initialEmail}
                 validationSchema={emailSchema}
@@ -49,32 +52,27 @@ const EmailRequest = ({ setResponse }) => {
             >
                 {({ touched, errors }) => (
 
-                    <Form className='mt-12 mb-12 min-w-full px-36 flex flex-col'>
-                        <div className='flex justify-center items-center mb-16'>
-                            <label htmlFor='email' className='text-2xl pr-8 text-black'>
-                                Ingresa tu correo:
-                            </label>
-
-                            <div>
+                    <Form className='flex flex-col gap-y-6'>
+                        <div className='flex items-center pb-6'>
+                            <label className='block grow'>Ingresa tu correo:</label>
+                            <div className='flex flex-col w-full'>
                                 <Field id='email'
                                     name='email'
                                     type='email'
-                                    placeholder='usuario@ejemplo.com'
-                                    className='bg-[#E2F2FE] rounded border-[0.5px] border-[#140B34] p-2 text-2xl'
+                                    className='w-full px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
                                 />
-                                {
-                                    errors.email && touched.email && (
-                                        <p className='flex items-center gap-1 absolute text-error italic'>
-                                            <ImWarning />{errors.email}
-                                        </p>
-                                    )
-                                }
+                                {errors.email && touched.email && (
+                                    <p className='flex items-center pt-9 absolute text-error italic'>
+                                        <ImWarning />{errors.email}
+                                    </p>
+                                )}
                             </div>
                         </div>
-
-                        <ButtonPrimary type='submit'>
-                            Enviar código de verificación
-                        </ButtonPrimary>
+                        <div className='flex justify-end'>
+                            <ButtonPrimary type='submit'>
+                                Enviar código de verificación
+                            </ButtonPrimary>
+                        </div>
                     </Form>
                 )}
             </Formik>
