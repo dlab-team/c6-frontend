@@ -82,7 +82,7 @@ const Register = () => {
 
             <Form className='flex flex-col gap-y-6'>
 
-              <div className='flex gap-5 '>
+              <div className='flex gap-5'>
                 <div className='flex items-center gap-3'>
                   <label>Nombre: </label>
                   <div className='flex flex-col'>
@@ -92,9 +92,9 @@ const Register = () => {
                       className='px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
                     />
                     {errors.name && touched.name && (
-                      <span className='flex items-center gap-1 text-error italic'>
+                      <p className='flex items-center gap-1 text-error italic'>
                         <ImWarning />{errors.name}
-                      </span>
+                      </p>
                     )}
                   </div>
                 </div>
@@ -108,16 +108,16 @@ const Register = () => {
                       className='px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
                     />
                     {errors.surnames && touched.surnames && (
-                      <span className='flex items-center gap-1 text-error italic'>
+                      <p className='flex items-center gap-1 text-error italic'>
                         <ImWarning />{errors.surnames}
-                      </span>
+                      </p>
                     )}
                   </div>
                 </div>
               </div>
 
               <div className='flex items-center '>
-                <span className='block grow'>Ingresa tu correo:</span>
+                <label className='block grow'>Ingresa tu correo:</label>
                 <div className='flex flex-col w-full'>
                   <Field id='email'
                     name='email'
@@ -125,15 +125,15 @@ const Register = () => {
                     className='w-full px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
                   />
                   {errors.email && touched.email && (
-                    <span className='flex items-center gap-1 text-error italic'>
+                    <p className='flex items-center gap-1 text-error italic'>
                       <ImWarning />{errors.email}
-                    </span>
+                    </p>
                   )}
                 </div>
               </div>
 
               <div className='flex items-center '>
-                <span className='block grow'>Crea tu contraseña:</span>
+                <label className='block grow'>Crea tu contraseña:</label>
                 <div className='flex flex-col w-full'>
                   <Field id='password'
                     name='password'
@@ -141,15 +141,15 @@ const Register = () => {
                     className='w-full px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
                   />
                   {errors.password && touched.password && (
-                    <span className='flex items-center gap-1 text-error italic'>
+                    <p className='flex items-center gap-1 text-error italic'>
                       <ImWarning />{errors.password}
-                    </span>
+                    </p>
                   )}
                 </div>
               </div>{' '}
 
               <div className='flex items-center '>
-                <span className='block grow'>Crea tu contraseña:</span>
+                <label className='block grow'>Crea tu contraseña:</label>
                 <div className='flex flex-col w-full'>
                   <Field id='repeatPassword'
                     name='repeatPassword'
@@ -157,19 +157,19 @@ const Register = () => {
                     className='w-full px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
                   />
                   {errors.repeatPassword && touched.repeatPassword && (
-                    <span className='flex items-center gap-1 text-error italic'>
+                    <p className='flex items-center gap-1 text-error italic'>
                       <ImWarning />{errors.repeatPassword}
-                    </span>
+                    </p>
                   )}
                 </div>
               </div>
 
-              <div className='flex'>
+              <div className='flex justify-end'>
                 <button
                   type='submit'
                   className='py-2 px-3 rounded-md bg-blue-600 text-white'
                 >
-                  registrarse
+                  Registrarse
                 </button>
               </div>
             </Form>

@@ -8,29 +8,30 @@ import { Suspense } from 'react';
 import {
   Home,
   Dashboard,
-  Login,
   Register,
   Recovery,
   Profile,
   CodingTests,
   FormLooking,
 } from '../pages/index';
+import DefaultLayout from './DefaultLayout';
 import UserLayout from './UserLayout';
 
 function RoutesApp() {
   return (
     <Suspense>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/recovery/:token?' element={<Recovery />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/form-looking' element={<FormLooking />} />
-        <Route path='/user' element={<UserLayout />}>
-          <Route index element={<Navigate to='dashboard' />} />
-          <Route path='dashboard' element={<Dashboard />} />
-          <Route path='profile' element={<Profile />} />
-          <Route path='tests' element={<CodingTests />} />
+        <Route path='/' element={<DefaultLayout />}>
+          <Route path='' element={<Home />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/recovery/:token?' element={<Recovery />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/user' element={<UserLayout />}>
+            <Route index element={<Navigate to='dashboard' />} />
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='profile' element={<Profile />} />
+            <Route path='tests' element={<CodingTests />} />
+          </Route>
         </Route>
       </Routes>
     </Suspense>
