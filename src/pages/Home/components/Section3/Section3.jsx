@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Section3 = () => {
   return (
     <>
-      <div className="flex justify-center w-screen">
+      <div className="flex justify-center w-screen scrollbar-hide">
         <div className="container">
           <div className="flex flex-col lg:flex-row w-full mb-20 pt-40">
             <div className="">
@@ -130,8 +130,8 @@ const Section3 = () => {
               {/* sección checkbox */}
               <div className="mx-14">
                 <div className="flex items-center mb-2">
-                  {/* <input type="checkbox" className="w-4 h-4 text-[#2738F5] bg-[#E2F2FE] border-gray-300 focus:ring-blue-500 focus:ring-1" />
-                  <label className="ml-6 text-[16px] font-regular text-[#FFFFFF]">Desarrollador FrontEnd</label> */}
+                  <input type="checkbox" className="w-4 h-4 text-[#2738F5] bg-[#E2F2FE] border-gray-300 focus:ring-blue-500 focus:ring-1" />
+                  <label className="ml-6 text-[16px] font-regular text-[#FFFFFF]">Desarrollador FrontEnd</label>
                 </div>
                 <div className="flex items-center mb-2">
                   <input

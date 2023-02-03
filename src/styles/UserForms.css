@@ -1,0 +1,19 @@
+.bg-custom-color {
+    background-color: #E2F2FE;
+}
+.text-custom-color {
+    color: #140B34;
+}
+.border-custom-color {
+    color: #140B34;
+}
+.form-group.required .control-label:after{
+    content:"*";
+    color:red;
+}
+.select-custom-color {
+    color: #232323;
+}
+.radio-custom-color  {
+    color: #2332DC;
+}

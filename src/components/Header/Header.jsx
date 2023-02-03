@@ -39,7 +39,7 @@ const Header = () => {
               }}>
 
                 <div onClick={handleCloseModal} className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50">
-                  <div onClick={(e) => e.stopPropagation()} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[30%] h-[55%] border-stone-500 bg-sky-100 rounded-md">
+                  <div onClick={(e) => e.stopPropagation()} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[28rem] h-[27rem] border-stone-500 bg-sky-100 rounded-md">
                     <div className="flex flex-col items-center justify-center h-full text-black">
 
                       <button
