@@ -1,11 +1,11 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import axios, { Axios, AxiosResponse } from 'axios'
+import axios from 'axios'
 import { ButtonPrimary } from '../../../../components/index'
 import { ImWarning } from 'react-icons/im'
 
-const NewPassword = ({ setResponse, token }) => {
+const NewPassword = ({ setResponse, setOpenModal, token }) => {
 
     const initialPasswords = {
         password: '',
@@ -51,17 +51,17 @@ const NewPassword = ({ setResponse, token }) => {
                             confirmPassword: values.confirmPassword,
                             token: token
                         })
-                        .then((AxiosResponse) => {
+                        .then((res) => {
                             setResponse({
-                                type: AxiosResponse.data.status,
-                                message: AxiosResponse.data.message
+                                message: res.data.message
                             })
+                            setOpenModal(true);
                         })
                         .catch((err) => {
                             setResponse({
-                                type: 'error',
-                                message: 'Ha ocurrido un error, por favor intente nuevamente'
+                                message: err.response.data.message
                             })
+                            setOpenModal(true);
                         });
                 }}
             >
