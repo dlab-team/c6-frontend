@@ -5,7 +5,7 @@ import axios from 'axios'
 import { ImWarning } from 'react-icons/im'
 import ButtonPrimary from '../../../../components/buttons/ButtonPrimary'
 
-const EmailRequest = ({ setResponse }) => {
+const EmailRequest = ({ setResponse, setOpenModal }) => {
 
     const initialEmail = {
         email: ''
@@ -37,16 +37,16 @@ const EmailRequest = ({ setResponse }) => {
                         .post(url, { email: values.email })
                         .then((res) => {
                             setResponse({
-                                type: res.data.status,
                                 message: res.data.message
                             })
+                            setOpenModal(true);
                         })
                         .catch(err => {
                             console.log(err)
                             setResponse({
-                                type: err.response.data.statusCode,
                                 message: err.response.data.message
                             })
+                            setOpenModal(true);
                         });
                 }}
             >
