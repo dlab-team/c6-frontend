@@ -8,7 +8,6 @@ import { Suspense } from 'react';
 import {
   Home,
   Dashboard,
-  Register,
   Recovery,
   Profile,
   CodingTests,
@@ -23,7 +22,6 @@ function RoutesApp() {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route path="" element={<Home />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/recovery/:token?" element={<Recovery />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/form-looking" element={<FormLooking />} />

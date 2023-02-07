@@ -6,15 +6,23 @@ import * as Yup from 'yup';
 import axios, { Axios } from 'axios';
 
 
-const Register = () => {
+const RegisterForm = () => {
 
   const [showModalMessage, setShowModalMessage] = useState(false);
   const [statusCode, setStatusCode] = useState(0);
   const [messageStatus, setMessageStatus] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword1, setShowPassword1] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+  const handleShowPassword1 = () => {
+    setShowPassword1(!showPassword1);
+  };
 
   const initialCredentials = {
     name: '',
-    surnames: '',
     email: '',
     password: '',
     repeatPassword: ''
@@ -23,7 +31,6 @@ const Register = () => {
   const credentialsSchema = Yup.object().shape(
     {
       name: Yup.string().required('Campo obligatorio'),
-      surnames: Yup.string().required('Campo obligatorio'),
       email: Yup.string().email('Formato de correo inválido').required('Campo obligatorio'),
       password: Yup.string()
         .min(8, 'La contraseña debe tener al menos 8 caracteres')
@@ -49,8 +56,6 @@ const Register = () => {
       )}
 
       <ModalLoginRegister>
-        <h1 className='text-5xl text-center mb-11'>Regístrate</h1>
-
         <Formik
           initialValues={initialCredentials}
           validationSchema={credentialsSchema}
@@ -80,91 +85,107 @@ const Register = () => {
 
           {({ touched, errors }) => (
 
-            <Form className='flex flex-col gap-y-6'>
+            <Form className='flex flex-col gap-y-5'>
 
-              <div className='flex gap-5'>
-                <div className='flex items-center gap-3'>
-                  <label>Nombre: </label>
-                  <div className='flex flex-col'>
-                    <Field id='name'
+              <div className='flex items-center w-full'>
+                  <div className='flex flex-col w-full'>
+                      <Field id='name'
                       name='name'
                       type='text'
-                      className='px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
-                    />
-                    {errors.name && touched.name && (
-                      <p className='flex items-center gap-1 text-error italic'>
-                        <ImWarning />{errors.name}
-                      </p>
-                    )}
+                      placeholder='Ingresa tu nombre'
+                      className='w-96 h-8 px-4 rounded-md border border-gray-300 mb-1'/>
+                      <div className='static h-2'>
+                      {errors.name && touched.name && (
+                        <span className='static flex items-center gap-1 text-error italic -mb-3'>
+                            <ImWarning />{errors.name}
+                        </span>
+                        )}
+                      </div>
                   </div>
-                </div>
-
-                <div className='flex items-center gap-3'>
-                  <label>Apellido: </label>
-                  <div className='flex flex-col'>
-                    <Field id='surnames'
-                      name='surnames'
-                      type='text'
-                      className='px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
-                    />
-                    {errors.surnames && touched.surnames && (
-                      <p className='flex items-center gap-1 text-error italic'>
-                        <ImWarning />{errors.surnames}
-                      </p>
-                    )}
-                  </div>
-                </div>
               </div>
 
-              <div className='flex items-center '>
-                <label className='block grow'>Ingresa tu correo:</label>
+              <div className='flex items-center w-full'>
                 <div className='flex flex-col w-full'>
                   <Field id='email'
                     name='email'
+                    placeholder='Ingresa tu correo'
                     type='email'
-                    className='w-full px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
-                  />
-                  {errors.email && touched.email && (
-                    <p className='flex items-center gap-1 text-error italic'>
-                      <ImWarning />{errors.email}
-                    </p>
-                  )}
+                    className='w-96 h-8 px-4 rounded-md border border-gray-300 mb-1'/>
+                  <div className='static h-2'>
+                    {errors.email && touched.email && (
+                      <span className='static flex items-center gap-1 text-error italic -mb-3'>
+                        <ImWarning />{errors.email}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
 
               <div className='flex items-center '>
-                <label className='block grow'>Crea tu contraseña:</label>
                 <div className='flex flex-col w-full'>
                   <Field id='password'
                     name='password'
-                    type='password'
-                    className='w-full px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
-                  />
+                    placeholder='Crea tu contraseña'
+                    type={showPassword ? 'text' : 'password'}
+                    className='w-96 h-8 px-4 rounded-md border border-gray-300 mb-1'/>
+                  <div className='static h-5'>
                   {errors.password && touched.password && (
-                    <p className='flex items-center gap-1 text-error italic'>
+                    <span className='flex items-center gap-1 text-error italic'>
                       <ImWarning />{errors.password}
-                    </p>
+                    </span>
                   )}
+                  </div>
                 </div>
               </div>{' '}
+              <div class='flex items-center -mt-4 -mb-2'>
+                <input
+                  onClick={handleShowPassword}
+                  id='default-checkbox'
+                  type='checkbox'
+                  value=''
+                  class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                />
+                <label
+                  for='default-checkbox'
+                  class='ml-2 text-sm font-medium text-gray-900 dark:text-gray-900'
+                >
+                  Mostrar contraseña
+                </label>
+              </div>
 
               <div className='flex items-center '>
-                <label className='block grow'>Crea tu contraseña:</label>
                 <div className='flex flex-col w-full'>
                   <Field id='repeatPassword'
                     name='repeatPassword'
-                    type='password'
-                    className='w-full px-3 py-1 border rounded-md border-stone-500 bg-sky-100'
-                  />
-                  {errors.repeatPassword && touched.repeatPassword && (
-                    <p className='flex items-center gap-1 text-error italic'>
-                      <ImWarning />{errors.repeatPassword}
-                    </p>
-                  )}
+                    type={showPassword1 ? 'text' : 'password'}
+                    placeholder='Repite tu contraseña'
+                    className='w-96 h-8 px-4 rounded-md border border-gray-300 mb-1'/>
+                  <div className='static h-5'>
+                    {errors.repeatPassword && touched.repeatPassword && (
+                      <span className='flex items-center gap-1 text-error italic'>
+                        <ImWarning />{errors.repeatPassword}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
+              <div class='flex items-center -mt-4 -mb-1'>
+                <input
+                  onClick={handleShowPassword1}
+                  id='default-checkbox'
+                  type='checkbox'
+                  value=''
+                  class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                />
+                <label
+                  for='default-checkbox'
+                  class='ml-2 text-sm font-medium text-gray-900 dark:text-gray-900'
+                >
+                  Mostrar contraseña
+                </label>
+              </div>
 
-              <div className='flex justify-end'>
+              <div className='flex'>
                 <button
                   type='submit'
                   className='py-2 px-3 rounded-md bg-blue-600 text-white'
@@ -180,4 +201,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterForm;
