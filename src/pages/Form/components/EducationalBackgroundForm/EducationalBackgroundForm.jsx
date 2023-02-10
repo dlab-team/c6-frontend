@@ -39,7 +39,7 @@ const EducationalBackgroundForm = () => {
                         required
                         className={`form-control position-absolute w-80 md:w-5/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 bg-custom-color ${errors.lvlschool ? 'is-invalid' : ''}`} 
                         {...register('lvlschool')}>
-                            <option selected value="basica">Educación Básica</option>
+                            <option defaultValue value="basica">Educación Básica</option>
                             <option value="media">Educación Media</option>
                             <option value="tecnico-incompleta">Educación Técnico Profesional incompleta</option>
                             <option value="tecnico">Educación Técnico Profesional completada</option>
@@ -85,7 +85,7 @@ const EducationalBackgroundForm = () => {
                             required
                             className={`form-control position-absolute w-80 md:w-5/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 bg-custom-color ${errors.typeschool1 ? 'is-invalid' : ''}`} 
                             {...register('typeschool1')}>
-                                <option selected value="escuela1">Escuela Básica</option>
+                                <option defaultValue value="escuela1">Escuela Básica</option>
                                 <option value="liceo1">Liceo</option>
                                 <option value="ip1">Instituto Profesional</option>
                                 <option value="universidad1">Universidad</option>
@@ -124,7 +124,7 @@ const EducationalBackgroundForm = () => {
                             required
                             className={`form-control position-absolute w-80 md:w-5/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 bg-custom-color ${errors.typeschool2 ? 'is-invalid' : ''}`} 
                             {...register('typeschool2')}>
-                                <option selected value="escuela2">Escuela Básica</option>
+                                <option defaultValue value="escuela2">Escuela Básica</option>
                                 <option value="liceo2">Liceo</option>
                                 <option value="ip2">Instituto Profesional</option>
                                 <option value="universidad2">Universidad</option>

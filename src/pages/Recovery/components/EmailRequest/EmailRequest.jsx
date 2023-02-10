@@ -42,7 +42,6 @@ const EmailRequest = ({ setResponse, setOpenModal }) => {
                             setOpenModal(true);
                         })
                         .catch(err => {
-                            console.log(err)
                             setResponse({
                                 message: err.response.data.message
                             })

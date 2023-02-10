@@ -85,7 +85,7 @@ const UserProfileForm = () => {
                     required
                     className={`form-control position-absolute w-5/6 md:w-4/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 bg-custom-color ${errors.country ? 'is-invalid' : ''}`} 
                     {...register('country')}>
-                        <option selected value="chile">Chile</option>
+                        <option defaultValue value="chile">Chile</option>
                         <option value="argentina">Argentina</option>
                         <option value="colombia">Colombia</option>
                         <option value="mexico">México</option>
@@ -101,7 +101,7 @@ const UserProfileForm = () => {
                     required
                     className={`form-control position-absolute w-5/6 md:w-4/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 bg-custom-color ${errors.city ? 'is-invalid' : ''}`} 
                     {...register('city')}>
-                        <option selected value="chile">Santiago</option>
+                        <option defaultValue value="chile">Santiago</option>
                         <option value="argentina">Valparaíso</option>
                     </select>
                 <div className="invalid-feedback position-absolute">{errors.city?.message}</div>
@@ -124,21 +124,21 @@ const UserProfileForm = () => {
                 <div className="form-group required position-relative mt-5">
                 <label className="control-label position-absolute mb-5 text-custom-color">¿Cuál es tu estado laboral actual?</label>
                 <div className={`${errors.occupation ? 'is-invalid' : ''}`}>
-                    <div class="flex items-center mb-4 mt-4">
-                        <input id="default-radio-1" type="radio" value="first-unemployed" name="default-radio" class="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
-                        <label for="default-radio-1" class="ml-2 text-sm font-medium select-custom-color font-[400] text-[14px]">Cesante, busco empleo en TI por primera vez.</label>
+                    <div className="flex items-center mb-4 mt-4">
+                        <input id="default-radio-1" type="radio" value="first-unemployed" name="default-radio" className="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
+                        <label htmlFor="default-radio-1" className="ml-2 text-sm select-custom-color font-[400] text-[14px]">Cesante, busco empleo en TI por primera vez.</label>
                     </div>
-                    <div class="flex items-center mb-4 mt-4">
-                        <input id="default-radio-1" type="radio" value="before-unemployed" name="default-radio" class="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
-                        <label for="default-radio-1" class="ml-2 text-sm font-medium select-custom-color font-[300] text-[14px]">Cesante, ya he trabajado antes en TI.</label>
+                    <div className="flex items-center mb-4 mt-4">
+                        <input id="default-radio-1" type="radio" value="before-unemployed" name="default-radio" className="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
+                        <label htmlFor="default-radio-1" className="ml-2 text-sm select-custom-color font-[300] text-[14px]">Cesante, ya he trabajado antes en TI.</label>
                     </div>
-                    <div class="flex items-center mb-4 mt-4">
-                        <input id="default-radio-1" type="radio" value="looking-employed" name="default-radio" class="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
-                        <label for="default-radio-1" class="ml-2 text-sm font-medium select-custom-color font-[300] text-[14px]">Tengo trabajo en TI, pero busco otro.</label>
+                    <div className="flex items-center mb-4 mt-4">
+                        <input id="default-radio-1" type="radio" value="looking-employed" name="default-radio" className="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
+                        <label htmlFor="default-radio-1" className="ml-2 text-sm select-custom-color font-[300] text-[14px]">Tengo trabajo en TI, pero busco otro.</label>
                     </div>
-                    <div class="flex items-center mb-4 mt-4">
-                        <input id="default-radio-1" type="radio" value="looking-it-employed" name="default-radio" class="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
-                        <label for="default-radio-1" class="ml-2 text-sm font-medium select-custom-color font-[300] text-[14px]">Tengo trabajo (en otras áreas), pero busco en TI.</label>
+                    <div className="flex items-center mb-4 mt-4">
+                        <input id="default-radio-1" type="radio" value="looking-it-employed" name="default-radio" className="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
+                        <label htmlFor="default-radio-1" className="ml-2 text-sm select-custom-color font-[300] text-[14px]">Tengo trabajo (en otras áreas), pero busco en TI.</label>
                     </div>
                 </div>
                 <div className="invalid-feedback position-absolute">{errors.occupation?.message}</div>

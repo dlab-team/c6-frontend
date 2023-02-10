@@ -27,7 +27,6 @@ const Section2 = () => {
               src="https://youtube.com/embed/z5NPi7WrViU"
               className="w-[25rem] h-[14rem] md:w-[38rem] md:h-[24rem]"
               loading="lazy"
-              allow="autoplay; encrypted-media"
               allowFullScreen
             />
           </div>
