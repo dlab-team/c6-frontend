@@ -217,7 +217,7 @@ const WorkExperienceForm = () => {
                     name="others"
                     rows="5"
                     required
-                    className={`form-control w-80 md:w-5/6 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color h-40 ${errors.others ? 'is-invalid' : ''}`} 
+                    className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${errors.others ? 'is-invalid' : ''}`} 
                     {...register('others')} 
                 />
                 <div className="invalid-feedback position-absolute">{errors.others?.message}</div>

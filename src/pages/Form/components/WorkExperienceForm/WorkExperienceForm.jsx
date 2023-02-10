@@ -46,7 +46,7 @@ const WorkProfileForm = () => {
                     name="resume"
                     type="text"
                     required
-                    className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color ${errors.resume ? 'is-invalid' : ''}`} 
+                    className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${errors.resume ? 'is-invalid' : ''}`} 
                     {...register('resume')} 
                 />
                 <div className="invalid-feedback position-absolute">{errors.resume?.message}</div>
@@ -59,7 +59,7 @@ const WorkProfileForm = () => {
                     name="linkedin"
                     type="text"
                     required
-                    className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color ${errors.linkedin ? 'is-invalid' : ''}`} 
+                    className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${errors.linkedin ? 'is-invalid' : ''}`} 
                     {...register('linkedin')} 
                 />
                 <div className="invalid-feedback position-absolute">{errors.linkedin?.message}</div>
@@ -72,7 +72,7 @@ const WorkProfileForm = () => {
                     name="github"
                     type="text"
                     required
-                    className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color ${errors.github ? 'is-invalid' : ''}`} 
+                    className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${errors.github ? 'is-invalid' : ''}`} 
                     {...register('github')} 
                 />
                 <div className="invalid-feedback position-absolute">{errors.github?.message}</div>
@@ -85,7 +85,7 @@ const WorkProfileForm = () => {
                     name="portfolio"
                     type="text"
                     required
-                    className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color ${errors.portfolio ? 'is-invalid' : ''}`} 
+                    className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${errors.portfolio ? 'is-invalid' : ''}`} 
                     {...register('portfolio')} 
                 />
                 <div className="invalid-feedback position-absolute">{errors.portfolio?.message}</div>
@@ -101,7 +101,7 @@ const WorkProfileForm = () => {
                 <textarea
                     name="proyecto"
                     rows="5"
-                    className={`form-control w-80 md:w-5/6 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color h-40 ${errors.proyecto ? 'is-invalid' : ''}`} 
+                    className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${errors.proyecto ? 'is-invalid' : ''}`} 
                     {...register('proyecto')} 
                 />
                 <div className="invalid-feedback position-absolute">{errors.proyecto?.message}</div>
