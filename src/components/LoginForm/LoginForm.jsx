@@ -50,8 +50,6 @@ const LoginForm = ({ setOpenModal }) => {
             dispatch({ type: 'LOGIN', payload: token});
             setTimeout(() => {
               setOpenModal(false);
-              //redirecting using router (to Home just until Dashboard page is ready)
-              navigate('/');
             }, 3000);
           })
           .catch((err) => {
