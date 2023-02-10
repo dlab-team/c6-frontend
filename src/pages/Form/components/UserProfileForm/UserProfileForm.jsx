@@ -166,7 +166,7 @@ const UserProfileForm = () => {
                         <Select 
                             isMulti
                             name="jobs"
-                            options={options}
+                            options={job}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.jobs ? 'is-invalid' : ''}`} 
                             {...register('jobs')}
                             classNamePrefix="select"
