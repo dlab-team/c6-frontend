@@ -5,17 +5,30 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import "../../../../styles/UserForms.css"
+import { useFetch } from '../../../../CustomHooks/useAxiosFetch';
+import { genderOptions } from '../docs/data.ts';
 
-const UserProfileForm = () => {
-    const options = [
-        { value: 'fullstack', label: 'Desarrollador/a Full Stack' },
-        { value: 'backend', label: 'Desarrollador/a Back End' },
-        { value: 'frontend', label: 'Desarrollador/a Front End' },
-        { value: 'uxui', label: 'Diseñador/a UX / UX Research o UI' },
-        { value: 'mobile', label: 'Desarrollador/a Móvil' },
-        { value: 'machinelearning', label: 'Data Scientist o especialista machine learning' },
-        { value: 'datos', label: 'Ingeniería de Datos' },
-      ]
+
+const UserProfileForm = () => {    
+    const {data: countriesData, isLoading: countriesLoading} = useFetch( process.env.REACT_APP_BACKEND_URL + '/countries');
+    const countries = countriesData && countriesData.map((country) => ({
+        value: country.name,
+        label: country.name
+    }));
+
+    const {data: citiesData, isLoading: citiesLoading} = useFetch( process.env.REACT_APP_BACKEND_URL + '/cities');
+    const cities = citiesData && citiesData.map((city) => ({
+        value: city.name,
+        label: city.name
+    })); 
+
+    
+    const {data: jobsData, isLoading: jobsLoading} = useFetch( process.env.REACT_APP_BACKEND_URL + '/charges');
+    const job = jobsData && jobsData.map((jobs) => ({
+        value: jobs.name,
+        label: jobs.name
+    }));
+
     const yupValidation = Yup.object().shape({
         name: Yup.string()
           .required('Rellena este campo obligatorio.')

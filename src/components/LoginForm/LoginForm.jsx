@@ -40,7 +40,6 @@ const LoginForm = ({ setOpenModal }) => {
       validationSchema={credentialsSchema}
       onSubmit={async (values) => {
         const url = process.env.REACT_APP_BACKEND_URL + '/auth/login';
-        /* const url = 'http://localhost:3000/api/auth/login'; */
         await axios
           .post(url, values)
           .then((res) => {

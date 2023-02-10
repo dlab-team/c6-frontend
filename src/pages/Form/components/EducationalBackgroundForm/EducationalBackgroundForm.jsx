@@ -4,8 +4,21 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import "../../../../styles/UserForms.css"
+import { useFetch } from '../../../../CustomHooks/useAxiosFetch';
 
 const EducationalBackgroundForm = () => {
+
+    const {data: institutionData, isLoading: institutionLoading} = useFetch( process.env.REACT_APP_BACKEND_URL + '/institutions');
+    const institutions = institutionData && institutionData.map((institution) => ({
+        value: institution.name,
+        label: institution.name
+    }));
+    const {data: institutionTypeData, isLoading: institutionTypeLoading} = useFetch( process.env.REACT_APP_BACKEND_URL + '/institutionstype');
+    const institutionsType = institutionTypeData && institutionTypeData.map((institutionstype) => ({
+        value: institutionstype.name,
+        label: institutionstype.name
+    }));
+
     const yupValidation = Yup.object().shape({
         lvlschool: Yup.string().required("Selecciona una opción del menú desplegable."),
         career1: Yup.string().required('Rellena este campo obligatorio.'),
