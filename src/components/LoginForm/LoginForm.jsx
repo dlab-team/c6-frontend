@@ -46,7 +46,7 @@ const LoginForm = ({ setOpenModal }) => {
             setRespAuth(true);
             setMessageAuth(res.data.message);
             const { token } = res.data.body;
-            //localStorage.setItem('userToken', token);
+            localStorage.setItem('userToken', token);
             dispatch({ type: 'LOGIN', payload: token});
             setTimeout(() => {
               setOpenModal(false);

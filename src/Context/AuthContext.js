@@ -1,4 +1,4 @@
-import { useReducer, createContext } from 'react';
+import { useReducer, createContext, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
@@ -23,6 +23,16 @@ export const authReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
+
+  useEffect(() => {
+    const token = localStorage.getItem('userToken');
+
+    if (!token) {
+      return;
+    }
+    dispatch({type: 'LOGIN', payload: token})
+  }, []);
+  
   console.log('AuthContext state ', state);
   //TODO probar useEffect para probar si puedo traer un usuario teniendo el token
   return (
