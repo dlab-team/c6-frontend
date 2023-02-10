@@ -5,9 +5,31 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import "../../../../styles/UserForms.css"
+import { useFetch } from '../docs/data';
+import { genderOptions } from '../docs/data.ts';
 
-const UserProfileForm = () => {
-    const options = [
+
+const UserProfileForm = () => {    
+    const {data: countriesData, isLoading: countriesLoading} = useFetch('http://localhost:3000/api/countries');
+    const countries = countriesData && countriesData.map((country) => ({
+        value: country.name,
+        label: country.name
+    }));
+
+    const {data: citiesData, isLoading: citiesLoading} = useFetch('http://localhost:3000/api/cities');
+    const cities = citiesData && citiesData.map((city) => ({
+        value: city.name,
+        label: city.name
+    })); 
+
+    
+    const {data: jobsData, isLoading: jobsLoading} = useFetch('http://localhost:3000/api/charges');
+    const job = jobsData && jobsData.map((jobs) => ({
+        value: jobs.name,
+        label: jobs.name
+    }));
+
+    const jobs = [
         { value: 'fullstack', label: 'Desarrollador/a Full Stack' },
         { value: 'backend', label: 'Desarrollador/a Back End' },
         { value: 'frontend', label: 'Desarrollador/a Front End' },
@@ -63,6 +85,7 @@ const UserProfileForm = () => {
                     type="email"
                     className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color ${errors.email ? 'is-invalid' : ''}`}
                     {...register('email')}
+                    /* disabled={userAuthenticated} */
                 />
                 <div className="invalid-feedback">{errors.email?.message}</div>
                 </div>
@@ -80,45 +103,44 @@ const UserProfileForm = () => {
                 </div>
                 {/* div pais */}
                 <div className="form-group required position-relative">
-                <label className="control-label position-absolute mb-5 text-custom-color">País</label>
-                <select 
-                    required
-                    className={`form-control position-absolute w-5/6 md:w-4/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 bg-custom-color ${errors.country ? 'is-invalid' : ''}`} 
-                    {...register('country')}>
-                        <option selected value="chile">Chile</option>
-                        <option value="argentina">Argentina</option>
-                        <option value="colombia">Colombia</option>
-                        <option value="mexico">México</option>
-                        <option value="peru">Perú</option>
-                        <option value="venezuela">Venezuela</option>
-                    </select>
-                <div className="invalid-feedback position-absolute">{errors.country?.message}</div>
+                    <label className="control-label position-absolute mb-10 mt-5 text-custom-color">País</label>
+                    <div>
+                        <Select
+                            required 
+                            name="country"
+                            options={countries}
+                            className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.country ? 'is-invalid' : ''}`} 
+                            {...register('country')}
+                        />
+                    </div>
+                    <div className="invalid-feedback position-absolute">{errors.country?.message}</div>
                 </div>
                 {/* div ciudad */}
                 <div className="form-group required position-relative">
-                <label className="control-label position-absolute mb-5 text-custom-color">Ciudad</label>
-                <select 
-                    required
-                    className={`form-control position-absolute w-5/6 md:w-4/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 bg-custom-color ${errors.city ? 'is-invalid' : ''}`} 
-                    {...register('city')}>
-                        <option selected value="chile">Santiago</option>
-                        <option value="argentina">Valparaíso</option>
-                    </select>
-                <div className="invalid-feedback position-absolute">{errors.city?.message}</div>
+                    <label className="control-label position-absolute mb-10 mt-5 text-custom-color">Ciudad</label>
+                    <div>
+                        <Select 
+                            required
+                            name="city"
+                            options={cities}
+                            className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.city ? 'is-invalid' : ''}`} 
+                            {...register('city')}
+                        />
+                    </div>
+                    <div className="invalid-feedback position-absolute">{errors.city?.message}</div>
                 </div>
                 {/* div genero */}
-                <div className="form-group required position-relative mt-5">
-                <label className="control-label position-absolute mb-5 text-custom-color">¿Con qué género te identificas</label>
-                <select 
-                    required
-                    className={`form-control position-absolute w-5/6 md:w-4/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 bg-custom-color ${errors.gender ? 'is-invalid' : ''}`} 
-                    {...register('gender')}>
-                        <option value="masculino">Masculino</option>
-                        <option value="masculino">Femenino</option>
-                        <option value="masculino">Otro</option>
-                        <option value="masculino">Prefiero no decirlo</option>
-                    </select>
-                <div className="invalid-feedback position-absolute">{errors.gender?.message}</div>
+                <div className="form-group required position-relative">
+                    <label className="control-label position-absolute mb-10 mt-5 text-custom-color">¿Con qué género te identificas</label>
+                    <div>
+                        <Select 
+                            name="gender"
+                            options={genderOptions}
+                            className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.gender ? 'is-invalid' : ''}`} 
+                            {...register('gender')}
+                        />
+                    </div>
+                    <div className="invalid-feedback position-absolute">{errors.gender?.message}</div>
                 </div>
                 {/* div situacion laboral */}
                 <div className="form-group required position-relative mt-5">
@@ -149,11 +171,11 @@ const UserProfileForm = () => {
                     <p className="text-left md:mr-16 font-[300] text-[14px] text-custom-color mt-3">
                     <strong>Ten en cuenta:</strong> De acuerdo al cargo que postules, te pediremos que seas capaz de demostrarlo de manera práctica durante el proceso de selección.
                     </p>
-                    <div /*  className={`${errors.jobs ? 'is-invalid' : ''}`} */>
+                    <div>
                         <Select 
                             isMulti
                             name="jobs"
-                            options={options}
+                            options={job}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.jobs ? 'is-invalid' : ''}`} 
                             {...register('jobs')}
                             classNamePrefix="select"

@@ -75,4 +75,15 @@ export interface VisaOptions {
     { value: 'mycountry', label: 'Mi país de residencia actual' },
     { value: 'anothercountry', label: 'Otros países' },
   ];
+
+export interface GenderOptions {
+    readonly value: string;
+    readonly label: string;
+  }
+  
+  export const genderOptions: readonly GenderOptions[] = [
+    { value: 'male', label: 'Masculino' },
+    { value: 'female', label: 'Femenino' },
+    { value: 'noanswer', label: 'Prefiero no decir' },
+  ];
   
