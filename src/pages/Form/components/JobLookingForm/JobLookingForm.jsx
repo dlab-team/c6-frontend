@@ -37,12 +37,12 @@ const WorkExperienceForm = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-8 md:mx-20">
                 {/* div otra */}
                 <div className="form-group md:col-span-3 required position-relative mt-5">
-                <label className="control-label md:grid-cols-3 position-absolute mt-10 mb-10 text-left w-80 md:w-5/6 font-[400] text-[18px] leading-9 text-custom-color mt-5">Déjanos una breve descripción con respecto a tu trabajo ideal</label>
+                <label className="control-label md:grid-cols-3 position-absolute mb-10 text-left w-80 md:w-5/6 font-[400] text-[18px] leading-9 text-custom-color mt-5">Déjanos una breve descripción con respecto a tu trabajo ideal</label>
                 <textarea
                     name="idealjob"
                     rows="5"
                     required
-                    className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color h-40 ${errors.idealjob ? 'is-invalid' : ''}`} 
+                    className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${errors.idealjob ? 'is-invalid' : ''}`} 
                     {...register('idealjob')} 
                 />
                 <div className="invalid-feedback position-absolute">{errors.idealjob?.message}</div>

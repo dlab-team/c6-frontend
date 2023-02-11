@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
-import { AiFillCheckCircle } from 'react-icons/ai';
-import { RiErrorWarningFill } from 'react-icons/ri';
-import { VscError } from 'react-icons/vsc';
+import React from 'react';
 
-const ModalCustomMessage = ({ message = '', type = '' }) => {
-  const icons = {
-    success: <AiFillCheckCircle className='text-6xl text-blue-700' />,
-    warning: <RiErrorWarningFill className='text-6xl text-blue-700' />,
-    error: <VscError className='text-6xl text-blue-700' />,
-  };
+const ModalCustomMessage = ({ message, setOpenModal }) => {
 
   return (
-    <div className='flex items-center justify-center h-screen bg-blue-700'>
-      <div className='px-24 py-12 bg-white border border-black rounded-md '>
-        <h3 className='text-3xl'>{message}</h3>
-        <div className='flex justify-center'>{icons[type]}</div>
+    <div id='modal-backdrop' className='absolute inset-0 bg-[#252424cc] w-screen h-full' onClick={(e) => {
+      if (e.target.id === 'modal-backdrop') { setOpenModal(false) }
+    }}>
+      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50">
+        <div onClick={(e) => e.stopPropagation()} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[28rem] h-[17rem] border-stone-500 bg-sky-100 rounded-md">
+          <div className="flex flex-col items-center justify-center h-full text-black">
+
+            <button
+              className="absolute top-4 right-4 text-black font-bold"
+              type="button"
+              onClick={() => setOpenModal(false)}
+            >
+              X
+            </button>
+            <h3 className='text-3xl text-center'>{message}</h3>
+          </div>
+        </div>
       </div>
     </div>
   );

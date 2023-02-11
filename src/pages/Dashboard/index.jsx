@@ -12,7 +12,7 @@ function Dashboard() {
       <section>
         <ul className='flex flex-wrap'>
           {dataMapa.map((item) => (
-            <li>
+            <li key={item.id}>
               <Cards {...item} />
             </li>
           ))}

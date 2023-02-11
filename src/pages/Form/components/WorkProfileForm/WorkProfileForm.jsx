@@ -1,11 +1,10 @@
 import React from 'react'
 import Select from 'react-select'
-import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import "../../../../styles/UserForms.css"
-import { languageOptions, frameworkOptions, toolOptions } from '../docs/data.ts';
+import { useFetch } from '../../../../CustomHooks/useAxiosFetch';
 
 const WorkExperienceForm = () => {
     const yupValidation = Yup.object().shape({
@@ -27,13 +26,31 @@ const WorkExperienceForm = () => {
         return false
       }
 
+      const {data: languagesData, isLoading: languagesLoading} = useFetch( process.env.REACT_APP_BACKEND_URL + '/skills/1');
+      const languages =languagesData && languagesData.map((languages) => ({
+          value: languages.name,
+          label: languages.name
+      }));
+
+      const {data: frameworksData, isLoading: frameworksLoading} = useFetch( process.env.REACT_APP_BACKEND_URL + '/skills/2');
+      const frameworks = frameworksData && frameworksData.map((framework) => ({
+          value: framework.name,
+          label: framework.name
+      }));
+      
+      const {data: toolsData, isLoading: toolsLoading} = useFetch( process.env.REACT_APP_BACKEND_URL + '/skills/3');
+      const tools = toolsData && toolsData.map((tools) => ({
+          value: tools.name,
+          label: tools.name
+      }));
+
     return(
         <>
         <div className="bg-[#FFFFFF] rounded-2xl w-screen md:mx-20 mt-5 pt-10">
             <h1 className="mx-8 md:mx-20 mt-10 mb-10 text-center md:text-left font-[600] text-[32px] text-[#140B34]">
                 PERFIL LABORAL
             </h1>
-            <p className="mx-8 md:mx-20 mt-10 mb-10 text-left w-80 md:w-5/6 font-[400] text-[18px] leading-9 text-custom-color mt-5">
+            <p className="mx-8 md:mx-20 mb-10 text-left w-80 md:w-5/6 font-[400] text-[18px] leading-9 text-custom-color mt-5">
             Queremos conocer tus competencias y experiencia. A continuación podrás elegir las competencias que conoces con respecto a 3 niveles: <br />
             
             <br /><strong>Nivel 1:</strong> No tengo experiencia laboral, pero he desarrollado proyectos utilizado esta tecnología/herramienta. <br />
@@ -56,7 +73,7 @@ const WorkExperienceForm = () => {
                         <Select 
                             isMulti
                             name="languages1"
-                            options={languageOptions}
+                            options={languages}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.languages1 ? 'is-invalid' : ''}`} 
                             {...register('languages1')}
                             classNamePrefix="select"
@@ -71,7 +88,7 @@ const WorkExperienceForm = () => {
                         <Select 
                             isMulti
                             name="frameworks1"
-                            options={frameworkOptions}
+                            options={frameworks}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.frameworks1 ? 'is-invalid' : ''}`} 
                             {...register('frameworks1')}
                             classNamePrefix="select"
@@ -86,7 +103,7 @@ const WorkExperienceForm = () => {
                         <Select 
                             isMulti
                             name="tools1"
-                            options={toolOptions}
+                            options={tools}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.tools1 ? 'is-invalid' : ''}`} 
                             {...register('tools1')}
                             classNamePrefix="select"
@@ -105,7 +122,7 @@ const WorkExperienceForm = () => {
                         <Select 
                             isMulti
                             name="languages2"
-                            options={languageOptions}
+                            options={languages}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.languages2 ? 'is-invalid' : ''}`} 
                             {...register('languages1')}
                             classNamePrefix="select"
@@ -120,7 +137,7 @@ const WorkExperienceForm = () => {
                         <Select 
                             isMulti
                             name="frameworks2"
-                            options={frameworkOptions}
+                            options={frameworks}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.frameworks2 ? 'is-invalid' : ''}`} 
                             {...register('frameworks2')}
                             classNamePrefix="select"
@@ -135,7 +152,7 @@ const WorkExperienceForm = () => {
                         <Select 
                             isMulti
                             name="tools2"
-                            options={toolOptions}
+                            options={tools}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.tools2 ? 'is-invalid' : ''}`} 
                             {...register('tools2')}
                             classNamePrefix="select"
@@ -154,7 +171,7 @@ const WorkExperienceForm = () => {
                         <Select 
                             isMulti
                             name="languages3"
-                            options={languageOptions}
+                            options={languages}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.languages3 ? 'is-invalid' : ''}`} 
                             {...register('languages3')}
                             classNamePrefix="select"
@@ -169,7 +186,7 @@ const WorkExperienceForm = () => {
                         <Select 
                             isMulti
                             name="frameworks3"
-                            options={frameworkOptions}
+                            options={frameworks}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.frameworks3 ? 'is-invalid' : ''}`} 
                             {...register('frameworks3')}
                             classNamePrefix="select"
@@ -184,7 +201,7 @@ const WorkExperienceForm = () => {
                         <Select 
                             isMulti
                             name="tools3"
-                            options={toolOptions}
+                            options={tools}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.tools3 ? 'is-invalid' : ''}`} 
                             {...register('tools3')}
                             classNamePrefix="select"
@@ -195,12 +212,12 @@ const WorkExperienceForm = () => {
 
                 {/* div otra */}
                 <div className="form-group md:col-span-3 required position-relative mt-10">
-                <label className="control-label md:grid-cols-3 position-absolute mt-10 mb-10 text-left w-80 md:w-5/6 font-[400] text-[18px] leading-9 text-custom-color mt-5">Indícanos alguna otra competencia, herramienta o tecnología que conozcas que creas importante agregar:</label>
+                <label className="control-label md:grid-cols-3 position-absolute mb-10 text-left w-80 md:w-5/6 font-[400] text-[18px] leading-9 text-custom-color mt-5">Indícanos alguna otra competencia, herramienta o tecnología que conozcas que creas importante agregar:</label>
                 <textarea
                     name="others"
                     rows="5"
                     required
-                    className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color h-40 ${errors.others ? 'is-invalid' : ''}`} 
+                    className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${errors.others ? 'is-invalid' : ''}`} 
                     {...register('others')} 
                 />
                 <div className="invalid-feedback position-absolute">{errors.others?.message}</div>

@@ -1,21 +1,57 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import Select from 'react-select'
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import "../../../../styles/UserForms.css"
+import { useFetch } from '../../../../CustomHooks/useAxiosFetch';
+import { genderOptions } from '../docs/data.ts';
+import { AuthContext } from '../../../../Context/AuthContext';
+
 
 const UserProfileForm = () => {
-    const options = [
-        { value: 'fullstack', label: 'Desarrollador/a Full Stack' },
-        { value: 'backend', label: 'Desarrollador/a Back End' },
-        { value: 'frontend', label: 'Desarrollador/a Front End' },
-        { value: 'uxui', label: 'Diseñador/a UX / UX Research o UI' },
-        { value: 'mobile', label: 'Desarrollador/a Móvil' },
-        { value: 'machinelearning', label: 'Data Scientist o especialista machine learning' },
-        { value: 'datos', label: 'Ingeniería de Datos' },
-      ]
+    
+    const { token } = useContext(AuthContext);
+    const currentUser = {
+        email: 'user@mail.com',
+    }; 
+
+    const [cities, setCities] = useState([]);
+
+    const { data: countriesData, isLoading: countriesLoading } = useFetch(
+        process.env.REACT_APP_BACKEND_URL + '/countries'
+    );
+    const countries =
+        countriesData &&
+        countriesData.map((country) => ({
+        value: country.id,
+        label: country.name,
+        }));
+
+    const { data: citiesData, isLoading: citiesLoading } = useFetch(
+        process.env.REACT_APP_BACKEND_URL + '/cities'
+    );
+
+    const handleCities = (countryId) => {
+        const cities = citiesData.filter((city) => city.countryId === countryId);
+        const mappingCities = cities.map((city) => ({
+        value: city.id,
+        label: city.name,
+        }));
+        console.log('mappingCities', mappingCities);
+        setCities(mappingCities);
+    };
+
+    
+    const {data: jobsData, isLoading: jobsLoading} = useFetch( process.env.REACT_APP_BACKEND_URL + '/charges');
+    const job = jobsData && jobsData.map((jobs) => ({
+        value: jobs.name,
+        label: jobs.name
+    }));
+
+
+
     const yupValidation = Yup.object().shape({
         name: Yup.string()
           .required('Rellena este campo obligatorio.')
@@ -50,21 +86,31 @@ const UserProfileForm = () => {
                     name="name"
                     type="text"
                     required
-                    className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color ${errors.name ? 'is-invalid' : ''}`} 
+                    className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${errors.name ? 'is-invalid' : ''}`} 
                     {...register('name')} 
                 />
                 <div className="invalid-feedback position-absolute">{errors.name?.message}</div>
                 </div>
                 {/* div email */}
                 <div className="form-group required position-relative">
-                <label className="control-label position-absolute mb-5 text-custom-color">Email</label>
-                <input
-                    name="email"
-                    type="email"
-                    className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color ${errors.email ? 'is-invalid' : ''}`}
-                    {...register('email')}
-                />
-                <div className="invalid-feedback">{errors.email?.message}</div>
+                    <label className="control-label position-absolute mb-5 text-custom-color">Email</label>
+                    {token ? (
+                        <input
+                            type="email"
+                            className="form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2"
+                            disabled={true}
+                            value={currentUser.email}
+                        />
+                    ) : (
+                        <input
+                            name="email"
+                            type="email"
+                            className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
+                            errors.email ? 'is-invalid' : ''}`}
+                            {...register('email')}
+                        />
+                    )}
+                    <div className="invalid-feedback">{errors.email?.message}</div>
                 </div>
                 {/* div telefono */}
                 <div className="form-group required position-relative">
@@ -73,45 +119,53 @@ const UserProfileForm = () => {
                     name="cellphone"
                     type="phone"
                     required
-                    className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 bg-custom-color ${errors.cellphone ? 'is-invalid' : ''}`} 
+                    className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${errors.cellphone ? 'is-invalid' : ''}`} 
                     {...register('cellphone')} 
                 />
                 <div className="invalid-feedback position-absolute">{errors.cellphone?.message}</div>
                 </div>
                 {/* div pais */}
                 <div className="form-group required position-relative">
-                <label className="control-label position-absolute mb-5 text-custom-color">País</label>
-                <select 
+                    <label className="control-label position-absolute mb-5 text-custom-color">
+                    País
+                    </label>
+                    <Select
+                    name="country"
                     required
-                    className={`form-control position-absolute w-5/6 md:w-4/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 bg-custom-color ${errors.country ? 'is-invalid' : ''}`} 
-                    {...register('country')}>
-                        <option selected value="chile">Chile</option>
-                        <option value="argentina">Argentina</option>
-                        <option value="colombia">Colombia</option>
-                        <option value="mexico">México</option>
-                        <option value="peru">Perú</option>
-                        <option value="venezuela">Venezuela</option>
-                    </select>
-                <div className="invalid-feedback position-absolute">{errors.country?.message}</div>
+                    className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${
+                        errors.country ? 'is-invalid' : ''
+                    }`}
+                    options={countries}
+                    onChange={(e) => handleCities(e.value)}
+                    classNamePrefix="select"
+                    />
+                    <div className="invalid-feedback position-absolute">
+                    {errors.country?.message}
+                    </div>
                 </div>
                 {/* div ciudad */}
                 <div className="form-group required position-relative">
-                <label className="control-label position-absolute mb-5 text-custom-color">Ciudad</label>
-                <select 
+                    <label className="control-label position-absolute mb-5 text-custom-color">
+                    Ciudad
+                    </label>
+                    <Select
                     required
-                    className={`form-control position-absolute w-5/6 md:w-4/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 bg-custom-color ${errors.city ? 'is-invalid' : ''}`} 
-                    {...register('city')}>
-                        <option selected value="chile">Santiago</option>
-                        <option value="argentina">Valparaíso</option>
-                    </select>
-                <div className="invalid-feedback position-absolute">{errors.city?.message}</div>
+                    name="city"
+                    className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${
+                        errors.city ? 'is-invalid' : ''
+                    }`}
+                    options={cities}
+                    />
+                    <div className="invalid-feedback position-absolute">
+                    {errors.city?.message}
+                    </div>
                 </div>
                 {/* div genero */}
                 <div className="form-group required position-relative mt-5">
                 <label className="control-label position-absolute mb-5 text-custom-color">¿Con qué género te identificas</label>
                 <select 
                     required
-                    className={`form-control position-absolute w-5/6 md:w-4/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 bg-custom-color ${errors.gender ? 'is-invalid' : ''}`} 
+                    className={`form-control position-absolute w-5/6 md:w-4/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 ${errors.gender ? 'is-invalid' : ''}`} 
                     {...register('gender')}>
                         <option value="masculino">Masculino</option>
                         <option value="masculino">Femenino</option>
@@ -124,21 +178,21 @@ const UserProfileForm = () => {
                 <div className="form-group required position-relative mt-5">
                 <label className="control-label position-absolute mb-5 text-custom-color">¿Cuál es tu estado laboral actual?</label>
                 <div className={`${errors.occupation ? 'is-invalid' : ''}`}>
-                    <div class="flex items-center mb-4 mt-4">
-                        <input id="default-radio-1" type="radio" value="first-unemployed" name="default-radio" class="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
-                        <label for="default-radio-1" class="ml-2 text-sm font-medium select-custom-color font-[400] text-[14px]">Cesante, busco empleo en TI por primera vez.</label>
+                    <div className="flex items-center mb-4 mt-4">
+                        <input id="default-radio-1" type="radio" value="first-unemployed" name="default-radio" className="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
+                        <label htmlFor="default-radio-1" className="ml-2 text-sm select-custom-color font-[300] text-[14px]">Cesante, busco empleo en TI por primera vez.</label>
                     </div>
-                    <div class="flex items-center mb-4 mt-4">
-                        <input id="default-radio-1" type="radio" value="before-unemployed" name="default-radio" class="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
-                        <label for="default-radio-1" class="ml-2 text-sm font-medium select-custom-color font-[300] text-[14px]">Cesante, ya he trabajado antes en TI.</label>
+                    <div className="flex items-center mb-4 mt-4">
+                        <input id="default-radio-1" type="radio" value="before-unemployed" name="default-radio" className="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
+                        <label htmlFor="default-radio-1" className="ml-2 text-sm select-custom-color font-[300] text-[14px]">Cesante, ya he trabajado antes en TI.</label>
                     </div>
-                    <div class="flex items-center mb-4 mt-4">
-                        <input id="default-radio-1" type="radio" value="looking-employed" name="default-radio" class="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
-                        <label for="default-radio-1" class="ml-2 text-sm font-medium select-custom-color font-[300] text-[14px]">Tengo trabajo en TI, pero busco otro.</label>
+                    <div className="flex items-center mb-4 mt-4">
+                        <input id="default-radio-1" type="radio" value="looking-employed" name="default-radio" className="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
+                        <label htmlFor="default-radio-1" className="ml-2 text-sm select-custom-color font-[300] text-[14px]">Tengo trabajo en TI, pero busco otro.</label>
                     </div>
-                    <div class="flex items-center mb-4 mt-4">
-                        <input id="default-radio-1" type="radio" value="looking-it-employed" name="default-radio" class="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
-                        <label for="default-radio-1" class="ml-2 text-sm font-medium select-custom-color font-[300] text-[14px]">Tengo trabajo (en otras áreas), pero busco en TI.</label>
+                    <div className="flex items-center mb-4 mt-4">
+                        <input id="default-radio-1" type="radio" value="looking-it-employed" name="default-radio" className="w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800" ref={register('occupation')}/>
+                        <label htmlFor="default-radio-1" className="ml-2 text-sm select-custom-color font-[300] text-[14px]">Tengo trabajo (en otras áreas), pero busco en TI.</label>
                     </div>
                 </div>
                 <div className="invalid-feedback position-absolute">{errors.occupation?.message}</div>
@@ -149,11 +203,11 @@ const UserProfileForm = () => {
                     <p className="text-left md:mr-16 font-[300] text-[14px] text-custom-color mt-3">
                     <strong>Ten en cuenta:</strong> De acuerdo al cargo que postules, te pediremos que seas capaz de demostrarlo de manera práctica durante el proceso de selección.
                     </p>
-                    <div /*  className={`${errors.jobs ? 'is-invalid' : ''}`} */>
+                    <div>
                         <Select 
                             isMulti
                             name="jobs"
-                            options={options}
+                            options={job}
                             className={`form-control basic-multi-select w-5/6 md:w-4/6 h-10 rounded-md mt-5 text-custom-color ${errors.jobs ? 'is-invalid' : ''}`} 
                             {...register('jobs')}
                             classNamePrefix="select"
