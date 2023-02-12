@@ -1,11 +1,7 @@
 import React from 'react';
-import logo from '../../assets/images/Logo-horizontal.png';
-import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../../styles/Header.css';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-import { Header } from '../../components';
+import { Form, Formik } from 'formik';
 import {
   FormExplain,
   UserProfileForm,
@@ -22,18 +18,25 @@ const FormLooking = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationAplicationForm}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
     >
-      {({ touched, errors, values}) => (
-        <form>
+      {({ touched, errors, values }) => (
+        <Form>
           {console.log(values)}
           <FormExplain />
-          <UserProfileForm errors={errors} />
-          {/*<EducationalBackgroundForm />
-          <WorkProfileForm />
-          <WorkExperienceForm />
-      <JobLookingForm />*/}
-        </form>
+          <UserProfileForm errors={errors} touched={touched} />
+          <EducationalBackgroundForm errors={errors} touched={touched} />
+          <WorkProfileForm errors={errors} touched={touched} />
+          <WorkExperienceForm errors={errors} touched={touched} />
+          <JobLookingForm errors={errors} touched={touched} />
+          <div className='mt-3'>
+            <button type='submit' className='btn btn-primary'>
+              Enviar
+            </button>
+          </div>
+        </Form>
       )}
     </Formik>
   );

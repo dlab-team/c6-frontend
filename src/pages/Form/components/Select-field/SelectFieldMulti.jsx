@@ -18,8 +18,8 @@ function SelectFieldMulti({ field, options, form, errors }) {
       name={field.name}
       value={
         options
-          ? options.filter((option) => field.value.includes(option.value))
-          : []
+        ? options.filter((option) => field.value.includes(option.value))
+        : []
       }
       onChange={handleSelect}
       classNamePrefix='select'
