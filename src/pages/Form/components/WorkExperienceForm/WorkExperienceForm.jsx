@@ -22,7 +22,7 @@ const WorkProfileForm = ({ errors, touched }) => {
         id='default-radio-1'
         type='radio'
         value={exp.years}
-        name='yearsOfExperiencie'
+        name='workProfile.yearsOfExperiencie'
         className='w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800'
       />
       <label
@@ -51,7 +51,7 @@ const WorkProfileForm = ({ errors, touched }) => {
               Subir como documento público en Google Drive o similar
             </p>
             <Field
-              name='cvUrl'
+              name='workProfile.cvUrl'
               type='text'
               required
               className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
@@ -71,7 +71,7 @@ const WorkProfileForm = ({ errors, touched }) => {
               <br />{' '}
             </p>
             <Field
-              name='linkedinUrl'
+              name='workProfile.linkedinUrl'
               type='text'
               required
               className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
@@ -91,7 +91,7 @@ const WorkProfileForm = ({ errors, touched }) => {
               <br />{' '}
             </p>
             <Field
-              name='githubUrl'
+              name='workProfile.githubUrl'
               type='text'
               required
               className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
@@ -111,7 +111,7 @@ const WorkProfileForm = ({ errors, touched }) => {
               <br />{' '}
             </p>
             <Field
-              name='websiteUrl'
+              name='workProfile.websiteUrl'
               type='text'
               required
               className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
@@ -137,7 +137,7 @@ const WorkProfileForm = ({ errors, touched }) => {
             </p>
             <Field
               as='textarea'
-              name='projectDescription'
+              name='workProfile.projectDescription'
               rows='5'
               className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${
                 errors.projectoDescription ? 'is-invalid' : ''
@@ -157,7 +157,7 @@ const WorkProfileForm = ({ errors, touched }) => {
               <Field
                 required
                 component={SelectFieldMulti}
-                name='softSkills'
+                name='workProfile.softSkills'
                 options={skills}
                 errors={errors.softSkills}
               />

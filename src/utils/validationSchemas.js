@@ -2,17 +2,22 @@ import * as Yup from 'yup';
 
 export const validationAplicationForm = Yup.object().shape({
   //Profile
-  fullName: Yup.string()
-    .required('Rellena este campo obligatorio.'),
-  email: Yup.string()
-    .required('Rellena este campo obligatorio.')
-    .email('Formato de correo electrónico incorrecto.'),
-  phone: Yup.string()
-    .required('Rellena este campo obligatorio')
-    .min(9, 'Largo de número telefónico incorrecto.'),
-  country: Yup.number().required('Selecciona una opción del menú desplegable.'),
-  cityId: Yup.number().required('Seleccion una opción del menú desplegable.'),
-  gender: Yup.string().required('Selecciona una opción del menú desplegable.'),
+  profile: Yup.object({
+    fullName: Yup.string().required('Rellena este campo obligatorio.'),
+    email: Yup.string()
+      .required('Rellena este campo obligatorio.')
+      .email('Formato de correo electrónico incorrecto.'),
+    phone: Yup.string()
+      .required('Rellena este campo obligatorio')
+      .min(9, 'Largo de número telefónico incorrecto.'),
+    country: Yup.number().required(
+      'Selecciona una opción del menú desplegable.'
+    ),
+    cityId: Yup.number().required('Seleccion una opción del menú desplegable.'),
+    gender: Yup.string().required(
+      'Selecciona una opción del menú desplegable.'
+    ),
+  }),
   employmentSituation: Yup.string().required('Selecciona una opción.'),
   charges: Yup.array().required('Selecciona al menos una opción.'),
   // //Educational backrgroud
@@ -40,7 +45,7 @@ export const validationAplicationForm = Yup.object().shape({
   tools2: Yup.array().required('Selecciona una opción del menú desplegable.'),
   skillId3: Yup.array().required('Selecciona una opción del menú desplegable.'),
   frameworks3: Yup.array().required(
-   'Selecciona una opción del menú desplegable.'
+    'Selecciona una opción del menú desplegable.'
   ),
   tools3: Yup.array().required('Selecciona una opción del menú desplegable.'),
   anotherSkills: Yup.string().required('Rellena este campo obligatorio.'),

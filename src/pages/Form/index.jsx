@@ -12,14 +12,38 @@ import {
 } from './components';
 import { initialValues } from './components/data/initialValues';
 import { validationAplicationForm } from '../../utils/validationSchemas';
+import { transformInitialSkills } from '../../utils';
 
 const FormLooking = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationAplicationForm}
+      //validationSchema={validationAplicationForm}
       onSubmit={(values) => {
-        console.log(values);
+        const initialSkills = values.workProfile.skills;
+        const skills = transformInitialSkills(initialSkills);
+
+        const newData = {
+          profile: values.profile,
+          educationProfile: values.educationalProfile,
+          workProfile: {
+            softSkills: values.workProfile.softSkills,
+            employmentSituation: values.workProfile.employmentSituation,
+            cvUrl: values.workProfile.cvUrl,
+            linkedinUrl: values.workProfile.linkedinUrl,
+            githubUrl: values.workProfile.githubUrl,
+            websiteUrl: values.workProfile.websiteUrl,
+            projectDescription: values.workProfile.projectDescription,
+            yearsOfExperiencie: values.workProfile.yearsOfExperiencie,
+            dreamJobDescription: values.workProfile.dreamJobDescription,
+            availability: values.workProfile.availability,
+            locationAvailable: values.workProfile.locationAvailable,
+            workVisa: values.workProfile.workVisa,
+            charges: values.workProfile.charges,
+            skills: (values.workProfile.skills = skills),
+          },
+        };
+        console.log(newData);
       }}
     >
       {({ touched, errors, values }) => (
@@ -27,8 +51,12 @@ const FormLooking = () => {
           {console.log(values)}
           <FormExplain />
           <UserProfileForm errors={errors} touched={touched} />
-          <EducationalBackgroundForm errors={errors} touched={touched} />
-          <WorkProfileForm errors={errors} touched={touched} />
+          <EducationalBackgroundForm
+            errors={errors}
+            touched={touched}
+            values={values}
+          />
+          <WorkProfileForm errors={errors} touched={touched} values={values} />
           <WorkExperienceForm errors={errors} touched={touched} />
           <JobLookingForm errors={errors} touched={touched} />
           <div className='mt-3'>

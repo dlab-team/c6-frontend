@@ -25,7 +25,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             </label>
             <Field
               as='textarea'
-              name='dreamJobDescription'
+              name='workProfile.dreamJobDescription'
               rows='5'
               required
               className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${
@@ -45,7 +45,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='availability'
+                name='workProfile.availability'
                 options={availabilityOptions}
                 errors={errors.availability}
               />
@@ -62,7 +62,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectField}
-                name='wanted'
+                name='workProfile.locationAvailable'
                 options={wantedOptions}
                 errors={errors.wanted}
               />
@@ -79,7 +79,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='workVisa'
+                name='workProfile.workVisa'
                 options={visaOptions}
                 errors={errors.workVisa}
               />

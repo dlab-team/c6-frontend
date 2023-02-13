@@ -76,7 +76,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='skillId1'
+                name='workProfile.skills.[0].skill1'
                 options={languages}
                 errors={errors.languages1}
               />
@@ -93,7 +93,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='frameworks1'
+                name='workProfile.skills.[0].frameworks1'
                 options={frameworks}
                 errors={errors.frameworks1}
               />
@@ -110,7 +110,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='tools1'
+                name='workProfile.skills.[0].tools1'
                 options={tools}
                 errors={errors.tools1}
               />
@@ -134,7 +134,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='skillId2'
+                name='workProfile.skills.[0].skill2'
                 options={languages}
                 errors={errors.languages2}
               />
@@ -151,7 +151,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='frameworks2'
+                name='workProfile.skills.[0].frameworks2'
                 options={frameworks}
                 errors={errors.frameworks2}
               />
@@ -168,7 +168,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='tools2'
+                name='workProfile.skills.[0].tools2'
                 options={tools}
                 errors={errors.tools2}
               />
@@ -192,7 +192,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='skillId3'
+                name='workProfile.skills.[0].skill3'
                 options={languages}
                 errors={errors.languages3}
               />
@@ -209,7 +209,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='frameworks3'
+                name='workProfile.skills.[0].frameworks3'
                 options={frameworks}
               />
             </div>
@@ -225,7 +225,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='tools3'
+                name='workProfile.skills.[0].tools3'
                 options={tools}
                 errors={errors.tools3}
               />
@@ -243,7 +243,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             </label>
             <Field
               as='textarea'
-              name='anotherSkills'
+              name='educationalProfile.anotherSkills'
               rows='5'
               required
               className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${

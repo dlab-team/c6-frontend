@@ -67,7 +67,7 @@ const UserProfileForm = ({ errors, touched }) => {
               Nombre
             </label>
             <Field
-              name='fullName'
+              name='profile.fullName'
               type='text'
               required
               className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
@@ -85,14 +85,14 @@ const UserProfileForm = ({ errors, touched }) => {
             </label>
             {token ? (
               <Field
-                type='email'
+                type='profile.email'
                 className='form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2'
                 disabled={true}
                 value={currentUser.email}
               />
             ) : (
               <Field
-                name='email'
+                name='profile.email'
                 type='email'
                 className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
                   errors.email ? 'is-invalid' : ''
@@ -107,7 +107,7 @@ const UserProfileForm = ({ errors, touched }) => {
               Número de teléfono móvil
             </label>
             <Field
-              name='phone'
+              name='profile.phone'
               type='phone'
               required
               className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
@@ -124,12 +124,11 @@ const UserProfileForm = ({ errors, touched }) => {
               País
             </label>
             <Field
-              name={'country'}
+              name={'profile.country'}
               component={SelectField}
               required
               options={countries}
               handleCities={handleCities}
-              classNamePrefix='select'
               errors={errors.country}
             />
             <div className='invalid-feedback position-absolute'></div>
@@ -142,7 +141,7 @@ const UserProfileForm = ({ errors, touched }) => {
             <Field
               component={SelectField}
               required
-              name='cityId'
+              name='profile.cityId'
               options={cities}
               errors={errors.city}
             />
@@ -157,7 +156,7 @@ const UserProfileForm = ({ errors, touched }) => {
             </label>
             <Field
               component={SelectField}
-              name='gender'
+              name='profile.gender'
               options={gender}
               errors={errors.gender}
               required
@@ -177,7 +176,7 @@ const UserProfileForm = ({ errors, touched }) => {
                   id='default-radio-1'
                   type='radio'
                   value='first-unemployed'
-                  name='employmentSituation'
+                  name='workProfile.employmentSituation'
                   className='w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800'
                 />
                 <label
@@ -192,7 +191,7 @@ const UserProfileForm = ({ errors, touched }) => {
                   id='default-radio-1'
                   type='radio'
                   value='before-unemployed'
-                  name='employmentSituation'
+                  name='workProfile.employmentSituation'
                   className='w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800'
                 />
                 <label
@@ -207,7 +206,7 @@ const UserProfileForm = ({ errors, touched }) => {
                   id='default-radio-1'
                   type='radio'
                   value='looking-employed'
-                  name='employmentSituation'
+                  name='workProfile.employmentSituation'
                   className='w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800'
                 />
                 <label
@@ -222,7 +221,7 @@ const UserProfileForm = ({ errors, touched }) => {
                   id='default-radio-1'
                   type='radio'
                   value='looking-it-employed'
-                  name='employmentSituation'
+                  name='workProfile.employmentSituation'
                   className='w-4 h-4 radio-custom-color border-blue-200 bg-blue-200 checked:bg-blue-800 checked:border-blue-800'
                 />
                 <label
@@ -250,7 +249,7 @@ const UserProfileForm = ({ errors, touched }) => {
             <div>
               <Field
                 component={SelectFieldMulti}
-                name='charges'
+                name='workProfile.charges'
                 options={job}
                 errors={errors.charges}
               />
