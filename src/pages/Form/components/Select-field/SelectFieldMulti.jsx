@@ -8,7 +8,7 @@ function SelectFieldMulti({ field, options, form, errors }) {
       selectedOptions.map((option) => option.value)
     );
   };
-  //console.log(options)
+  
   return (
     <Select
       isMulti
@@ -19,7 +19,7 @@ function SelectFieldMulti({ field, options, form, errors }) {
       name={field.name}
       value={
         options
-        ? options.filter((option) => field.value.includes(option.value))
+        ? options.filter((option) => field.value?.includes(option.value))
         : []
       }
       onChange={handleSelect}

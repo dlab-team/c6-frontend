@@ -7,7 +7,7 @@ export const initialValues = {
     country: '', //no aparece en data structure
     cityId: '',
     gender: '',
-    avatar: '',
+    avatar: 'avatar',
   },
   educationalProfile: {
     educationalLevel: '',
@@ -32,7 +32,7 @@ export const initialValues = {
     ],
   },
   workProfile: {
-    softSkills:'',
+    //softSkills:'',
     employmentSituation: '',
     cvUrl: '',
     linkedinUrl: '',

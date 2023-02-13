@@ -55,7 +55,7 @@ export const validationAplicationForm = Yup.object().shape({
   githubUrl: Yup.string().required('Rellena este campo obligatorio.'),
   websiteUrl: Yup.string().required('Rellena este campo obligatorio.'),
   softSkills: Yup.array().required('Rellena este campo obligatorio.'),
-  yearsOfExperiencie: Yup.number().required('Selecciona una opción'),
+  yearsOfExperiencie: Yup.string().required('Selecciona una opción'),
   projectDescription: Yup.string().required('Selecciona una opción'),
   //looking for job
   dreamJobDescription: Yup.string().required('Rellena este campo obligatorio.'),

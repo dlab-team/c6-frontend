@@ -76,7 +76,7 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
           {/* div antecedente 1 */}
 
           {values.educationalProfile.studies.map((data, index) => (
-            <>
+            <div key={index}>
               <div className='form-group md:col-span-2 required mt-10 position-relative'>
                 <label className='control-label position-absolute mb-5 font-[700] text-custom-color'>
                   Nombre de la carrera, curso, bootcamp o certificación{' '}
@@ -128,7 +128,7 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
                   {errors.institutionTypeId?.message}
                 </div>
               </div>
-            </>
+            </div>
           ))}
         </div>
 

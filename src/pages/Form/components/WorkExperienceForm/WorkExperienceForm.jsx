@@ -149,7 +149,7 @@ const WorkProfileForm = ({ errors, touched }) => {
           </div>
 
           {/* div habilidades */}
-          <div className='form-group required position-relative'>
+          {/* <div className='form-group required position-relative'>
             <label className='control-label position-absolute mb-10 mt-5 text-custom-color font-[500] text-[20px]'>
               Selecciona 3 habilidades blandas que te representen:
             </label>
@@ -165,7 +165,7 @@ const WorkProfileForm = ({ errors, touched }) => {
             <div className='invalid-feedback position-absolute'>
               {errors.skills?.message}
             </div>
-          </div>
+          </div> */}
           {/* div experiencia laboral */}
           <div className='form-group position-relative'>
             <label className='control-label position-absolute w-5/6 md:w-4/6 mb-5 text-custom-color'>

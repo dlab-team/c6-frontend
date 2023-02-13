@@ -19,7 +19,7 @@ const FormLooking = () => {
     <Formik
       initialValues={initialValues}
       //validationSchema={validationAplicationForm}
-      onSubmit={(values) => {
+      onSubmit={async (values) => {
         const initialSkills = values.workProfile.skills;
         const skills = transformInitialSkills(initialSkills);
 
@@ -27,14 +27,14 @@ const FormLooking = () => {
           profile: values.profile,
           educationProfile: values.educationalProfile,
           workProfile: {
-            softSkills: values.workProfile.softSkills,
+            //softSkills: values.workProfile.softSkills,
             employmentSituation: values.workProfile.employmentSituation,
             cvUrl: values.workProfile.cvUrl,
             linkedinUrl: values.workProfile.linkedinUrl,
             githubUrl: values.workProfile.githubUrl,
             websiteUrl: values.workProfile.websiteUrl,
             projectDescription: values.workProfile.projectDescription,
-            yearsOfExperiencie: values.workProfile.yearsOfExperiencie,
+            yearsOfExperiencie: parseInt(values.workProfile.yearsOfExperiencie),
             dreamJobDescription: values.workProfile.dreamJobDescription,
             availability: values.workProfile.availability,
             locationAvailable: values.workProfile.locationAvailable,
@@ -43,12 +43,22 @@ const FormLooking = () => {
             skills: (values.workProfile.skills = skills),
           },
         };
+
         console.log(newData);
+        console.log(values);//este tiene years of experience en string
+        const url = process.env.REACT_APP_BACKEND_URL + '/profiles';
+        await axios
+          .post(url, values)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }}
     >
       {({ touched, errors, values }) => (
         <Form>
-          {console.log(values)}
           <FormExplain />
           <UserProfileForm errors={errors} touched={touched} />
           <EducationalBackgroundForm

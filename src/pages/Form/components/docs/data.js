@@ -47,27 +47,27 @@ export const visaOptions = [
 export const gender = [
   { value: 'masculino', label: 'Masculino' },
   { value: 'femenino', label: 'Femenino' },
-  { value: 'otro', label: 'Femenino' },
+  { value: 'otro', label: 'Otro' },
 ];
 
 export const experienceOptions = [
   { title: ' No poseo experiencia laboral', years: '0' },
-  { title: 'Entre 0 a 1 año de experiencia laboral', years: '1' },
-  { title: 'Entre 1 a 2 años de experiencia laboral', years: '2' },
-  { title: 'Entre 2 a 3 años de experiencia laboral', years: '3' },
-  { title: 'Más de 4 años de experiencia laboral', years: '4' },
+  { title: 'Entre 0 a 1 año de experiencia laboral', years: '0-1' },
+  { title: 'Entre 1 a 2 años de experiencia laboral', years: '1-2' },
+  { title: 'Entre 2 a 3 años de experiencia laboral', years: '2-3' },
+  { title: 'Más de 4 años de experiencia laboral', years: '4+' },
 ];
 
 export const educationNow = [
-  { value: 'collegeDegree', label: 'Egresado liceo' },
-  { value: 'universityDegree', label: 'Egresado Universidad' },
-  { value: 'bootcampDegree', label: 'Egresado Bootcamp' },
-  { value: 'courses', label: 'Cursos' },
+  { value: 'Bootcamp', label: 'Egresado liceo' },
+  { value: 'Diplomados', label: 'Egresado Universidad' },
+  { value: 'Universidad', label: 'Egresado Bootcamp' },
+  { value: 'Cursos', label: 'Cursos' },
+  { value: 'Otros', label: 'Otros' },
 ];
 
 export const englishLevelOptions = [
-  { value: 'basic', label: 'Básico' },
-  { value: 'intermediate', label: 'Intermedio' },
-  { value: 'advanced', label: 'avanzado' },
-  { value: 'native', label: 'Nativo' },
+  { value: 'Básico', label: 'Básico' },
+  { value: 'Intermedio', label: 'Intermedio' },
+  { value: 'Avanzado', label: 'Avanzado' },
 ];

@@ -5,7 +5,6 @@ import {
   wantedOptions,
   visaOptions,
 } from '../docs/data.js';
-import SelectFieldMulti from '../Select-field/SelectFieldMulti';
 import { Field } from 'formik';
 import SelectField from '../Select-field/SelectField';
 
@@ -44,7 +43,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             </label>
             <div>
               <Field
-                component={SelectFieldMulti}
+                component={SelectField}
                 name='workProfile.availability'
                 options={availabilityOptions}
                 errors={errors.availability}
@@ -78,7 +77,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
             </label>
             <div>
               <Field
-                component={SelectFieldMulti}
+                component={SelectField}
                 name='workProfile.workVisa'
                 options={visaOptions}
                 errors={errors.workVisa}
