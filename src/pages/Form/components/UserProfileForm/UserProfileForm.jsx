@@ -71,11 +71,11 @@ const UserProfileForm = ({ errors, touched }) => {
               type='text'
               required
               className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                errors.fullName ? 'is-invalid' : ''
+                errors.profile?.fullName ? 'is-invalid' : ''
               }`}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.fullName?.message}
+              {errors.profile?.fullName}
             </div>
           </div>
           {/* div email */}
@@ -90,18 +90,17 @@ const UserProfileForm = ({ errors, touched }) => {
                 disabled={true}
                 value={currentUser.email}
                 name='profile.email'
-
               />
             ) : (
               <Field
                 name='profile.email'
                 type='email'
                 className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                  errors.email ? 'is-invalid' : ''
+                  errors.profile?.email ? 'is-invalid' : ''
                 }`}
               />
             )}
-            <div className='invalid-feedback'>{errors.email?.message}</div>
+            <div className='invalid-feedback'>{errors.profile?.email}</div>
           </div>
           {/* div telefono */}
           <div className='form-group required position-relative'>
@@ -113,11 +112,11 @@ const UserProfileForm = ({ errors, touched }) => {
               type='phone'
               required
               className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                errors.phone ? 'is-invalid' : ''
+                errors.profile?.phone ? 'is-invalid' : ''
               }`}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.phone?.message}
+              {errors.profile?.phone}
             </div>
           </div>
           {/* div pais */}
@@ -131,7 +130,7 @@ const UserProfileForm = ({ errors, touched }) => {
               required
               options={countries}
               handleCities={handleCities}
-              errors={errors.country}
+              errors={errors.profile?.country}
             />
             <div className='invalid-feedback position-absolute'></div>
           </div>
@@ -145,10 +144,10 @@ const UserProfileForm = ({ errors, touched }) => {
               required
               name='profile.cityId'
               options={cities}
-              errors={errors.city}
+              errors={errors.profile?.city}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.city?.message}
+              {errors.profile?.city}
             </div>
           </div>
           {/* div genero */}
@@ -163,16 +162,13 @@ const UserProfileForm = ({ errors, touched }) => {
               errors={errors.gender}
               required
             ></Field>
-            <div className='invalid-feedback position-absolute'>
-              {errors.gender?.message}
-            </div>
           </div>
           {/* div situacion laboral */}
           <div className='form-group required position-relative mt-5'>
             <label className='control-label position-absolute mb-5 text-custom-color'>
               ¿Cuál es tu estado laboral actual?
             </label>
-            <div className={`${errors.occupation ? 'is-invalid' : ''}`}>
+            <div className={`${errors.profile?.employmentSituation ? 'is-invalid' : ''}`}>
               <div className='flex items-center mb-4 mt-4'>
                 <Field
                   id='default-radio-1'
@@ -235,7 +231,7 @@ const UserProfileForm = ({ errors, touched }) => {
               </div>
             </div>
             <div className='invalid-feedback position-absolute'>
-              {errors.employmentSituation?.message}
+              {errors.profile?.employmentSituation}
             </div>
           </div>
           {/* div cargos */}
@@ -253,11 +249,8 @@ const UserProfileForm = ({ errors, touched }) => {
                 component={SelectFieldMulti}
                 name='workProfile.charges'
                 options={job}
-                errors={errors.charges}
+                errors={errors.profile?.charges}
               />
-            </div>
-            <div className='invalid-feedback position-absolute'>
-              {errors.charges?.message}
             </div>
           </div>
         </div>

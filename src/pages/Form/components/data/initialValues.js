@@ -2,7 +2,7 @@ export const initialValues = {
   //profile
   profile: {
     fullName: '',
-    email: '',
+    email: 'user@mail.com',
     phone: '',
     country: '', //no aparece en data structure
     cityId: '',

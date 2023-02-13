@@ -18,7 +18,7 @@ const FormLooking = () => {
   return (
     <Formik
       initialValues={initialValues}
-      //validationSchema={validationAplicationForm}
+      validationSchema={validationAplicationForm}
       onSubmit={async (values) => {
         const initialSkills = values.workProfile.skills;
         const skills = transformInitialSkills(initialSkills);
