@@ -33,16 +33,16 @@ const RegisterForm = () => {
       name: Yup.string().required('Campo obligatorio'),
       email: Yup.string().email('Formato de correo inválido').required('Campo obligatorio'),
       password: Yup.string()
-        .min(8, 'La contraseña debe tener al menos 8 caracteres')
-        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, 'Debe incluir números, mayúsculas, minúsculas y caracteres especiales')
+        .min(8, 'Debe tener al menos 8 caracteres')
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, 'Req: 1 mayúsc., 1 minúsc y un caracter especial')
         .required('Campo obligatorio'),
       repeatPassword: Yup.string()
         .when('password', {
           is: (value) => (value && value.length > 0 ? true : false),
           then: Yup.string().oneOf([Yup.ref('password')], 'Las contraseñas deben coincidir')
         })
-        .min(8, 'La contraseña debe tener al menos 8 caracteres')
-        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, 'Debe incluir números, mayúsculas, minúsculas y caracteres especiales')
+        .min(8, 'Debe tener al menos 8 caracteres')
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, 'Req: 1 mayúsc., 1 minúsc y un caracter especial')
         .required('Campo obligatorio'),
     })
 
