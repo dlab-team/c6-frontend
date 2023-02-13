@@ -55,7 +55,6 @@ const RegisterForm = () => {
         />
       )}
 
-      <ModalLoginRegister>
         <Formik
           initialValues={initialCredentials}
           validationSchema={credentialsSchema}
@@ -196,7 +195,6 @@ const RegisterForm = () => {
             </Form>
           )}
         </Formik>
-      </ModalLoginRegister>
     </>
   );
 };
