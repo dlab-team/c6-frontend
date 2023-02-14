@@ -20,7 +20,7 @@ const FormLooking = () => {
   const [openModal, setOpenModal] = useState(false);
   const [message, setMessage] = useState(null);
   const navigate = useNavigate();
-  document.body.style.overflow = `${openModal ? 'hidden' : 'visible'}`;
+  //document.body.style.overflow = `${openModal ? 'hidden' : 'visible'}`;
   return (
     <>
       {openModal && (
