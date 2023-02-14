@@ -32,7 +32,7 @@ const RegisterForm = () => {
       .email('Formato de correo inválido')
       .required('Campo obligatorio'),
     password: Yup.string()
-      .min(8, 'La contraseña debe tener al menos 8 caracteres')
+      .min(8, 'Debe tener al menos 8 caracteres')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/,
         'Req: 1 mayúsc., 1 minúsc y un caracter especial'
@@ -46,7 +46,7 @@ const RegisterForm = () => {
           'Las contraseñas deben coincidir'
         ),
       })
-      .min(8, 'La contraseña debe tener al menos 8 caracteres')
+      .min(8, 'Debe tener al menos 8 caracteres')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/,
         'Req: 1 mayúsc., 1 minúsc y un caracter especial'
