@@ -2,8 +2,10 @@ import React from "react";
 
 const ModalLoginRegister = ({ children }) => {
   return (
-    <div>
+    <div className="h-screen bg-hero flex justify-center items-center">
+      <div className="bg-white px-52 py-24 -mt-20 rounded border-8 border-black text-black">
         {children}
+      </div>
     </div>
   );
 };

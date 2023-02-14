@@ -35,7 +35,7 @@ const RegisterForm = () => {
       .min(8, 'La contraseña debe tener al menos 8 caracteres')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/,
-        'Debe incluir números, mayúsculas, minúsculas y caracteres especiales'
+        'Req: 1 mayúsc., 1 minúsc y un caracter especial'
       )
       .required('Campo obligatorio'),
     repeatPassword: Yup.string()
@@ -49,7 +49,7 @@ const RegisterForm = () => {
       .min(8, 'La contraseña debe tener al menos 8 caracteres')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/,
-        'Debe incluir números, mayúsculas, minúsculas y caracteres especiales'
+        'Req: 1 mayúsc., 1 minúsc y un caracter especial'
       )
       .required('Campo obligatorio'),
   });
@@ -63,7 +63,6 @@ const RegisterForm = () => {
         />
       )}
 
-      <ModalLoginRegister>
         <Formik
           initialValues={initialCredentials}
           validationSchema={credentialsSchema}
@@ -212,7 +211,6 @@ const RegisterForm = () => {
             </Form>
           )}
         </Formik>
-      </ModalLoginRegister>
     </>
   );
 };
