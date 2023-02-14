@@ -3,7 +3,7 @@ import '../../../../styles/UserForms.css';
 import { useFetch } from '../../../../CustomHooks/useAxiosFetch';
 import { Field } from 'formik';
 import SelectFieldMulti from '../Select-field/SelectFieldMulti';
-
+//TODO arreglar errors
 const WorkExperienceForm = ({ errors, touched }) => {
   const { data: languagesData, isLoading: languagesLoading } = useFetch(
     process.env.REACT_APP_BACKEND_URL + '/skills/1'
@@ -34,10 +34,11 @@ const WorkExperienceForm = ({ errors, touched }) => {
       value: tools.id,
       label: tools.name,
     }));
+  //TODO faltan hacer touched
 
   return (
     <>
-      <div className='bg-[#FFFFFF] rounded-2xl w-screen md:mx-20 mt-5 pt-10'>
+      <div className='bg-[#FFFFFF] rounded-2xl md:mx-20 mt-5 pt-10'>
         <h1 className='mx-8 md:mx-20 mt-10 mb-10 text-center md:text-left font-[600] text-[32px] text-[#140B34]'>
           PERFIL LABORAL
         </h1>
@@ -78,11 +79,8 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectFieldMulti}
                 name='workProfile.skills.[0].skill1'
                 options={languages}
-                errors={errors.languages1}
+                errors={errors.workProfile?.skills?.[0]?.skill1}
               />
-            </div>
-            <div className='invalid-feedback position-absolute'>
-              {errors.languages1?.message}
             </div>
           </div>
           {/* div frameworks 1 */}
@@ -95,11 +93,8 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectFieldMulti}
                 name='workProfile.skills.[0].frameworks1'
                 options={frameworks}
-                errors={errors.frameworks1}
+                errors={errors.workProfile?.skills?.[0]?.frameworks1}
               />
-            </div>
-            <div className='invalid-feedback position-absolute'>
-              {errors.frameworks1?.message}
             </div>
           </div>
           {/* div tools 1 */}
@@ -112,11 +107,8 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectFieldMulti}
                 name='workProfile.skills.[0].tools1'
                 options={tools}
-                errors={errors.tools1}
+                errors={errors.workProfile?.skills?.[0]?.tools1}
               />
-            </div>
-            <div className='invalid-feedback position-absolute'>
-              {errors.tools1?.message}
             </div>
           </div>
           {/* div nivel 2 */}
@@ -136,11 +128,8 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectFieldMulti}
                 name='workProfile.skills.[0].skill2'
                 options={languages}
-                errors={errors.languages2}
+                errors={errors.workProfile?.skills?.[0]?.skill2}
               />
-            </div>
-            <div className='invalid-feedback position-absolute'>
-              {errors.languages2?.message}
             </div>
           </div>
           {/* div frameworks 2 */}
@@ -153,11 +142,8 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectFieldMulti}
                 name='workProfile.skills.[0].frameworks2'
                 options={frameworks}
-                errors={errors.frameworks2}
+                errors={errors.workProfile?.skills?.[0]?.frameworks2}
               />
-            </div>
-            <div className='invalid-feedback position-absolute'>
-              {errors.frameworks2?.message}
             </div>
           </div>
           {/* div tools 2 */}
@@ -170,11 +156,8 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectFieldMulti}
                 name='workProfile.skills.[0].tools2'
                 options={tools}
-                errors={errors.tools2}
+                errors={errors.workProfile?.skills?.[0]?.tools2}
               />
-            </div>
-            <div className='invalid-feedback position-absolute'>
-              {errors.tools2?.message}
             </div>
           </div>
           {/* div nivel 3 */}
@@ -194,11 +177,8 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectFieldMulti}
                 name='workProfile.skills.[0].skill3'
                 options={languages}
-                errors={errors.languages3}
+                errors={errors.workProfile?.skills?.[0]?.skill3}
               />
-            </div>
-            <div className='invalid-feedback position-absolute'>
-              {errors.languages3?.message}
             </div>
           </div>
           {/* div frameworks 3 */}
@@ -211,10 +191,8 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectFieldMulti}
                 name='workProfile.skills.[0].frameworks3'
                 options={frameworks}
+                errors={errors.workProfile?.skills?.[0]?.frameworks3}
               />
-            </div>
-            <div className='invalid-feedback position-absolute'>
-              {errors.frameworks3?.message}
             </div>
           </div>
           {/* div tools 3 */}
@@ -227,11 +205,8 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectFieldMulti}
                 name='workProfile.skills.[0].tools3'
                 options={tools}
-                errors={errors.tools3}
+                errors={errors.workProfile?.skills?.[0]?.tools3}
               />
-            </div>
-            <div className='invalid-feedback position-absolute'>
-              {errors.tools3?.message}
             </div>
           </div>
 
@@ -247,11 +222,15 @@ const WorkExperienceForm = ({ errors, touched }) => {
               rows='5'
               required
               className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${
-                errors.others ? 'is-invalid' : ''
+                touched.educationalProfile?.anotherSkills &&
+                errors.educationalProfile?.anotherSkills &&
+                errors.educationalProfile?.anotherSkills
+                  ? 'is-invalid'
+                  : ''
               }`}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.others?.message}
+              {errors.educationalProfile?.anotherSkills}
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 export const validationAplicationForm = Yup.object().shape({
   //Profile
-  profile: Yup.object({
+  profile: Yup.object().shape({
     fullName: Yup.string().required('Rellena este campo obligatorio.'),
     email: Yup.string()
       .required('Rellena este campo obligatorio.')
@@ -13,11 +13,88 @@ export const validationAplicationForm = Yup.object().shape({
     country: Yup.number().required(
       'Selecciona una opción del menú desplegable.'
     ),
-    cityId: Yup.number().required('Seleccion una opción del menú desplegable.'),
+    cityId: Yup.number().required('Selecciona una opción del menú desplegable.'),
     gender: Yup.string().required(
       'Selecciona una opción del menú desplegable.'
     ),
   }),
+  educationalProfile: Yup.object().shape({
+    educationalLevel: Yup.string().required(
+      'Selecciona una opción del menú desplegable.'
+    ),
+    currentlyEducationalSituation: Yup.string().required(
+      'Selecciona una opción del menú desplegable.'
+    ),
+    englishLevel: Yup.string().required(
+      'Selecciona una opción del menú desplegable.'
+    ),
+    anotherSkills: Yup.string().required('Rellena este campo obligatorio.'),
+    studies: Yup.array().of(
+      Yup.object().shape({
+        name: Yup.string().required('Rellena este campo obligatorio.'),
+        institution: Yup.object().shape({
+          name: Yup.string().required(
+            'Selecciona una opción del menú desplegable.'
+          ),
+          institutionTypeId: Yup.number().required(
+            'Selecciona una opción del menú desplegable.'
+          ),
+        }),
+      }),
+      Yup.object().shape({
+        name: Yup.string().required('Rellena este campo obligatorio.'),
+        institution: Yup.object().shape({
+          name: Yup.string().required(
+            'Selecciona una opción del menú desplegable.'
+          ),
+          institutionTypeId: Yup.number().required(
+            'Selecciona una opción del menú desplegable.'
+          ),
+        }),
+      })
+    ),
+  }),
+  workProfile: Yup.object().shape({
+    //softSkills:'',
+    employmentSituation: Yup.string().required(
+      'Selecciona una opción del menú.'
+    ),
+    cvUrl: Yup.string().required('Rellena este campo obligatorio.'),
+    linkedinUrl: Yup.string().required('Rellena este campo obligatorio.'),
+    githubUrl: Yup.string().required('Rellena este campo obligatorio.'),
+    websiteUrl: Yup.string().required('Rellena este campo obligatorio.'),
+    projectDescription: Yup.string().required(
+      'Rellena este campo obligatorio.'
+    ),
+    yearsOfExperiencie: Yup.string().required(
+      'Selecciona una opción del menú.'
+    ),
+    dreamJobDescription: Yup.string().required(
+      'Rellena este campo obligatorio.'
+    ),
+    availability: Yup.string().required(
+      'Selecciona una opción del menú desplegable.'
+    ),
+    locationAvailable: Yup.string().required('Selecciona una opción del menú.'),
+    workVisa: Yup.string().required(
+      'Selecciona una opción del menú desplegable.'
+    ),
+    charges: Yup.array().required('Selecciona al menos una opción.'),
+    skills: Yup.array().of(
+      Yup.object().shape({
+        skill1: Yup.array().required('Selecciona al menos una opción.'),
+        frameworks1: Yup.array().required('Selecciona al menos una opción.'),
+        tools1: Yup.array().required('Selecciona al menos una opción.'),
+        skill2: Yup.array().required('Selecciona al menos una opción.'),
+        frameworks2: Yup.array().required('Selecciona al menos una opción.'),
+        tools2: Yup.array().required('Selecciona al menos una opción.'),
+        skill3: Yup.array().required('Selecciona al menos una opción.'),
+        frameworks3: Yup.array().required('Selecciona al menos una opción.'),
+        tools3: Yup.array().required('Selecciona al menos una opción.'),
+      })
+    ),
+  }),
+
   // employmentSituation: Yup.string().required('Selecciona una opción.'),
   // charges: Yup.array().required('Selecciona al menos una opción.'),
   // // //Educational backrgroud

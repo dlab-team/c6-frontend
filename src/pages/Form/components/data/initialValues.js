@@ -44,7 +44,7 @@ export const initialValues = {
     availability: '',
     locationAvailable: '',
     workVisa: '',
-    charges: [],
+    charges: '',
     skills: [
       {
         skill1: '',

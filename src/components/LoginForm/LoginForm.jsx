@@ -50,7 +50,7 @@ const LoginForm = ({ setOpenModal }) => {
             dispatch({ type: 'LOGIN', payload: token});
             setTimeout(() => {
               setOpenModal(false);
-            }, 3000);
+            }, 2000);
           })
           .catch((err) => {
             setRespAuth(true);

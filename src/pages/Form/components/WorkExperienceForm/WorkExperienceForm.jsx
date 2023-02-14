@@ -9,16 +9,11 @@ const WorkProfileForm = ({ errors, touched }) => {
   const { data: skillsData, isLoading: skillsLoading } = useFetch(
     process.env.REACT_APP_BACKEND_URL + '/skills/4'
   );
-  const skills =
-    skillsData &&
-    skillsData.map((skill) => ({
-      value: skill.name,
-      label: skill.name,
-    }));
 
   const experience = experienceOptions.map((exp) => (
     <div key={exp.years} className='flex items-center mb-4 mt-4'>
       <Field
+        required
         id='default-radio-1'
         type='radio'
         value={exp.years}
@@ -36,7 +31,7 @@ const WorkProfileForm = ({ errors, touched }) => {
 
   return (
     <>
-      <div className='bg-[#FFFFFF] rounded-2xl w-screen md:mx-20 mt-5 pt-10'>
+      <div className='bg-[#FFFFFF] rounded-2xl  md:mx-20 mt-5 pt-10'>
         <h1 className='mx-8 md:mx-20 mt-10 mb-10 text-center md:text-left font-[600] text-[32px] text-[#140B34]'>
           EXPERIENCIA Y TRABAJO
         </h1>
@@ -55,11 +50,17 @@ const WorkProfileForm = ({ errors, touched }) => {
               type='text'
               required
               className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                errors.cvUrl ? 'is-invalid' : ''
+                touched.workProfile?.cvUrl &&
+                errors.workProfile?.cvUrl &&
+                errors.workProfile?.cvUrl
+                  ? 'is-invalid'
+                  : ''
               }`}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.cvUrl?.message}
+              {touched.workProfile?.cvUrl &&
+                errors.workProfile?.cvUrl &&
+                errors.workProfile?.cvUrl}
             </div>
           </div>
           {/* div url linkedin */}
@@ -75,11 +76,17 @@ const WorkProfileForm = ({ errors, touched }) => {
               type='text'
               required
               className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                errors.linkedinUrl ? 'is-invalid' : ''
+                touched.workProfile?.linkedinUrl &&
+                errors.workProfile?.linkedinUrl &&
+                errors.workProfile?.linkedinUrl
+                  ? 'is-invalid'
+                  : ''
               }`}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.linkedinUrl?.message}
+              {touched.workProfile?.linkedinUrl &&
+                errors.workProfile?.linkedinUrl &&
+                errors.workProfile?.linkedinUrl}
             </div>
           </div>
           {/* div url github */}
@@ -95,11 +102,17 @@ const WorkProfileForm = ({ errors, touched }) => {
               type='text'
               required
               className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                errors.githubUrl ? 'is-invalid' : ''
+                touched.workProfile?.githubUrl &&
+                errors.workProfile?.githubUrl &&
+                errors.workProfile?.githubUrl
+                  ? 'is-invalid'
+                  : ''
               }`}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.githubUrl?.message}
+              {touched.workProfile?.githubUrl &&
+                errors.workProfile?.githubUrl &&
+                errors.workProfile?.githubUrl}
             </div>
           </div>
           {/* div url portfolio */}
@@ -115,11 +128,17 @@ const WorkProfileForm = ({ errors, touched }) => {
               type='text'
               required
               className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                errors.websiteUrl ? 'is-invalid' : ''
+                touched.workProfile?.websiteUrl &&
+                errors.workProfile?.websiteUrl &&
+                errors.workProfile?.websiteUrl
+                  ? 'is-invalid'
+                  : ''
               }`}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.websiteUrl?.message}
+              {touched.workProfile?.githubUrl &&
+                errors.workProfile?.githubUrl &&
+                errors.workProfile?.githubUrl}
             </div>
           </div>
 
@@ -140,11 +159,17 @@ const WorkProfileForm = ({ errors, touched }) => {
               name='workProfile.projectDescription'
               rows='5'
               className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${
-                errors.projectoDescription ? 'is-invalid' : ''
+                touched.workProfile?.projectDescription &&
+                errors.workProfile?.projectDescription &&
+                errors.workProfile?.projectDescription
+                  ? 'is-invalid'
+                  : ''
               }`}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.projectoDescription?.message}
+              {touched.workProfile?.projectDescription &&
+                errors.workProfile?.projectDescription &&
+                errors.workProfile?.projectDescription}
             </div>
           </div>
 
@@ -172,11 +197,15 @@ const WorkProfileForm = ({ errors, touched }) => {
               ¿Cuántos años de experiencia laboral posees en desarrollo de
               software y/o diseño?
             </label>
-            <div className={`${errors.years ? 'is-invalid' : ''}`}>
+            <div
+              className={`${
+                errors.workProfile?.yearsOfExperiencie ? 'is-invalid' : ''
+              }`}
+            >
               {experience}
             </div>
             <div className='invalid-feedback position-absolute'>
-              {errors.yearsOfExperience?.message}
+              {errors.workProfile?.yearsOfExperiencie}
             </div>
           </div>
         </div>

@@ -23,9 +23,9 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
       value: institutionstype.id,
       label: institutionstype.name,
     }));
-
+  //TODO faltan hacer touched
   return (
-    <div className='bg-[#FFFFFF] rounded-2xl w-screen md:mx-20 mt-5 pt-10'>
+    <div className='bg-[#FFFFFF] rounded-2xl  md:mx-20 mt-5 pt-10'>
       <h1 className='mx-8 md:mx-20 mt-10 mb-10 text-center md:text-left font-[600] text-[32px] text-[#140B34]'>
         INFORMACIÓN EDUCACIONAL
       </h1>
@@ -40,7 +40,11 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
             name='educationalProfile.educationalLevel'
             required
             className={`form-control position-absolute w-80 md:w-5/6 h-10 px-4 pt-2 rounded-md border-2 border-custom-color mt-5 ${
-              errors.educationalLevel ? 'is-invalid' : ''
+              touched.educationalProfile?.educationalLevel &&
+              errors.educationalProfile?.educationalLevel &&
+              errors.educationalProfile?.educationalLevel
+                ? 'is-invalid'
+                : ''
             }`}
           >
             <option defaultValue value='basica'>
@@ -62,7 +66,9 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
             <option value='bootcamp'>Bootcamp o diplomado</option>
           </Field>
           <div className='invalid-feedback position-absolute'>
-            {errors.educationalLevel?.message}
+            {touched.educationalProfile?.educationalLevel &&
+              errors.educationalProfile?.educationalLevel &&
+              errors.educationalProfile?.educationalLevel}
           </div>
         </div>
         {/* div antecedentes educacionales */}
@@ -88,11 +94,23 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
                     type='text'
                     required
                     className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                      errors.name ? 'is-invalid' : ''
+                      touched.educationalProfile?.studies?.[index]
+                        ?.institution &&
+                      errors.educationalProfile?.studies?.[index]
+                        ?.institution &&
+                      errors.educationalProfile?.studies?.[index]?.institution
+                        ?.name
+                        ? 'is-invalid'
+                        : ''
                     }`}
                   />
                   <div className='invalid-feedback position-absolute'>
-                    {errors.name?.message}
+                    {touched.educationalProfile?.studies?.[index]
+                      ?.institution &&
+                      errors.educationalProfile?.studies?.[index]
+                        ?.institution &&
+                      errors.educationalProfile?.studies?.[index]?.institution
+                        ?.name}
                   </div>
                 </div>
               </div>
@@ -102,14 +120,15 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
                 </label>
                 <div>
                   <Field
+                    required
                     component={SelectField}
                     name={`educationalProfile.studies.${index}.institution.name`}
                     options={institutions}
-                    errors={errors.institution}
+                    errors={
+                      errors.educationalProfile?.studies?.[index]?.institution
+                        ?.name
+                    }
                   />
-                </div>
-                <div className='invalid-feedback position-absolute'>
-                  {errors.institution?.message}
                 </div>
               </div>
               <div className='form-group required position-relative'>
@@ -118,14 +137,15 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
                 </label>
                 <div>
                   <Field
+                    required
                     component={SelectField}
                     name={`educationalProfile.studies.${index}.institution.institutionTypeId`}
                     options={institutionsType}
-                    errors={errors.institutionTypeId}
+                    errors={
+                      errors.educationalProfile?.studies?.[index]?.institution
+                        ?.name
+                    }
                   />
-                </div>
-                <div className='invalid-feedback position-absolute'>
-                  {errors.institutionTypeId?.message}
                 </div>
               </div>
             </div>
@@ -142,13 +162,9 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
             component={SelectField}
             name='educationalProfile.currentlyEducationalSituation'
             required
-            errors={errors.studies}
+            errors={errors.educationalProfile?.currentlyEducationalSituation}
             options={educationNow}
           />
-
-          <div className='invalid-feedback position-absolute'>
-            {errors.studies?.message}
-          </div>
         </div>
         {/* div nivel de ingles */}
         <div className='form-group required mt-5 position-relative'>
@@ -160,12 +176,8 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
             required
             component={SelectField}
             options={englishLevelOptions}
-            errors={errors.englishLevel}
+            errors={errors.educationalProfile?.englishLevel}
           />
-
-          <div className='invalid-feedback position-absolute'>
-            {errors.englishLevel?.message}
-          </div>
         </div>
       </div>
     </div>

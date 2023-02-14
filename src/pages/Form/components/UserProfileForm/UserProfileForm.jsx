@@ -6,7 +6,7 @@ import { Field } from 'formik';
 import SelectField from '../Select-field/SelectField';
 import SelectFieldMulti from '../Select-field/SelectFieldMulti';
 import { gender } from '../docs/data';
-
+//TODO faltan tpuched por hacer
 const UserProfileForm = ({ errors, touched }) => {
   const { token } = useContext(AuthContext);
   const currentUser = {
@@ -48,15 +48,9 @@ const UserProfileForm = ({ errors, touched }) => {
       label: jobs.name,
     }));
 
-  const gendermap = gender.map((item, index) => (
-    <option key={index} value={item}>
-      {item}
-    </option>
-  ));
-
   return (
     <>
-      <div className='bg-[#FFFFFF] rounded-2xl w-screen md:mx-20 mt-10 pt-10'>
+      <div className='bg-[#FFFFFF] rounded-2xl md:mx-20 mt-10 pt-10'>
         <h1 className='mx-8 md:mx-20 mt-10 mb-10 text-center md:text-left font-[600] text-[32px] text-[#140B34]'>
           INFORMACIÓN PERSONAL
         </h1>
@@ -71,11 +65,17 @@ const UserProfileForm = ({ errors, touched }) => {
               type='text'
               required
               className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                errors.profile?.fullName ? 'is-invalid' : ''
+                touched.profile?.fullName &&
+                errors.profile?.fullName &&
+                errors.profile?.fullName
+                  ? 'is-invalid'
+                  : ''
               }`}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.profile?.fullName}
+              {touched.profile?.fullName &&
+                errors.profile?.fullName &&
+                errors.profile?.fullName}
             </div>
           </div>
           {/* div email */}
@@ -85,7 +85,7 @@ const UserProfileForm = ({ errors, touched }) => {
             </label>
             {token ? (
               <Field
-                type='profile.email'
+                type='email'
                 className='form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2'
                 disabled={true}
                 value={currentUser.email}
@@ -96,11 +96,19 @@ const UserProfileForm = ({ errors, touched }) => {
                 name='profile.email'
                 type='email'
                 className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                  errors.profile?.email ? 'is-invalid' : ''
+                  touched.profile?.email &&
+                  errors.profile?.email &&
+                  errors.profile?.email
+                    ? 'is-invalid'
+                    : ''
                 }`}
               />
             )}
-            <div className='invalid-feedback'>{errors.profile?.email}</div>
+            <div className='invalid-feedback'>
+              {touched.profile?.email &&
+                errors.profile?.email &&
+                errors.profile?.email}
+            </div>
           </div>
           {/* div telefono */}
           <div className='form-group required position-relative'>
@@ -112,11 +120,17 @@ const UserProfileForm = ({ errors, touched }) => {
               type='phone'
               required
               className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                errors.profile?.phone ? 'is-invalid' : ''
+                touched.profile?.phone &&
+                errors.profile?.phone &&
+                errors.profile?.phone
+                  ? 'is-invalid'
+                  : ''
               }`}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.profile?.phone}
+              {touched.profile?.phone &&
+                errors.profile?.phone &&
+                errors.profile?.phone}
             </div>
           </div>
           {/* div pais */}
@@ -144,11 +158,8 @@ const UserProfileForm = ({ errors, touched }) => {
               required
               name='profile.cityId'
               options={cities}
-              errors={errors.profile?.city}
+              errors={errors.profile?.cityId}
             />
-            <div className='invalid-feedback position-absolute'>
-              {errors.profile?.city}
-            </div>
           </div>
           {/* div genero */}
           <div className='form-group required position-relative mt-5'>
@@ -159,7 +170,11 @@ const UserProfileForm = ({ errors, touched }) => {
               component={SelectField}
               name='profile.gender'
               options={gender}
-              errors={errors.gender}
+              errors={
+                touched.profile?.gender &&
+                errors.profile?.gender &&
+                errors.profile?.gender
+              }
               required
             ></Field>
           </div>
@@ -168,7 +183,11 @@ const UserProfileForm = ({ errors, touched }) => {
             <label className='control-label position-absolute mb-5 text-custom-color'>
               ¿Cuál es tu estado laboral actual?
             </label>
-            <div className={`${errors.profile?.employmentSituation ? 'is-invalid' : ''}`}>
+            <div
+              className={`${
+                errors.workProfile?.employmentSituation ? 'is-invalid' : ''
+              }`}
+            >
               <div className='flex items-center mb-4 mt-4'>
                 <Field
                   id='default-radio-1'
@@ -231,7 +250,7 @@ const UserProfileForm = ({ errors, touched }) => {
               </div>
             </div>
             <div className='invalid-feedback position-absolute'>
-              {errors.profile?.employmentSituation}
+              {errors.workProfile?.employmentSituation}
             </div>
           </div>
           {/* div cargos */}
@@ -249,7 +268,7 @@ const UserProfileForm = ({ errors, touched }) => {
                 component={SelectFieldMulti}
                 name='workProfile.charges'
                 options={job}
-                errors={errors.profile?.charges}
+                errors={errors.workProfile?.charges}
               />
             </div>
           </div>

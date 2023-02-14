@@ -8,10 +8,10 @@ import {
 import { Field } from 'formik';
 import SelectField from '../Select-field/SelectField';
 
-const WorkExperienceForm = ({ errors, touched }) => {
+const WorkExperienceForm = ({ errors, touched, isValid, isSubmitting }) => {
   return (
     <>
-      <div className='bg-[#FFFFFF] rounded-2xl w-screen md:mx-20 mt-5 pt-10'>
+      <div className='bg-[#FFFFFF] rounded-2xl md:mx-20 mt-5 pt-10 mb-5'>
         <h1 className='mx-8 md:mx-20 mt-10 mb-10 text-center md:text-left font-[600] text-[32px] text-[#140B34]'>
           ¿QUÉ TIPO DE TRABAJO ESTÁS BUSCANDO?
         </h1>
@@ -27,12 +27,18 @@ const WorkExperienceForm = ({ errors, touched }) => {
               name='workProfile.dreamJobDescription'
               rows='5'
               required
-              className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${
-                errors.dreamJobDescription ? 'is-invalid' : ''
+              className={`form-control w-80 md:w-5/6 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${
+                touched.workProfile?.dreamJobDescription &&
+                errors.workProfile?.dreamJobDescription &&
+                errors.workProfile?.dreamJobDescription
+                  ? 'is-invalid'
+                  : ''
               }`}
             />
             <div className='invalid-feedback position-absolute'>
-              {errors.dreamJobDescription?.message}
+              {touched.workProfile?.dreamJobDescription &&
+                errors.workProfile?.dreamJobDescription &&
+                errors.workProfile?.dreamJobDescription}
             </div>
           </div>
 
@@ -46,11 +52,11 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectField}
                 name='workProfile.availability'
                 options={availabilityOptions}
-                errors={errors.availability}
+                errors={errors.workProfile?.availability}
               />
             </div>
             <div className='invalid-feedback position-absolute'>
-              {errors.disponibilidad?.message}
+              {errors.workProfile?.availability}
             </div>
           </div>
           {/* div trabajo buscado */}
@@ -63,11 +69,11 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectField}
                 name='workProfile.locationAvailable'
                 options={wantedOptions}
-                errors={errors.wanted}
+                errors={errors.workProfile?.locationAvailable}
               />
             </div>
             <div className='invalid-feedback position-absolute'>
-              {errors.wanted?.message}
+              {errors.workProfile?.locationAvailable}
             </div>
           </div>
           {/* divisa */}
@@ -80,12 +86,26 @@ const WorkExperienceForm = ({ errors, touched }) => {
                 component={SelectField}
                 name='workProfile.workVisa'
                 options={visaOptions}
-                errors={errors.workVisa}
+                errors={errors.workProfile?.workVisa}
               />
             </div>
             <div className='invalid-feedback position-absolute'>
-              {errors.workVisa?.message}
+              {errors.workProfile?.workVisa}
             </div>
+          </div>
+          <div className='mt-3 flex flex-col items-start'>
+            <button
+              type='submit'
+              disabled={isSubmitting || !isValid}
+              className={`btn btn-primary`}
+            >
+              Enviar
+            </button>
+            {!isValid ? (
+              <p className='text-red-500'>Porfavor complete el formulario</p>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>
