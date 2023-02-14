@@ -15,6 +15,9 @@ const Header = () => {
   const nombre = 'Javier Perez';
   const { token } = useContext(AuthContext);
 
+  document.body.style.overflow = `${openModal ? 'hidden' : 'visible'}`;
+  document.body.style.overflow = `${openModal1 ? "hidden" : "visible"}`;
+
   const handleOpenModal = () => {
     setOpenModal(true);
   };

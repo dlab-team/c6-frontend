@@ -3,7 +3,7 @@ import React from 'react';
 const ModalCustomMessage = ({ message, setOpenModal }) => {
 
   return (
-    <div id='modal-backdrop' className='absolute inset-0 bg-[#252424cc] w-screen h-full' onClick={(e) => {
+    <div id='modal-backdrop' onClick={(e) => {
       if (e.target.id === 'modal-backdrop') { setOpenModal(false) }
     }}>
       <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50">
