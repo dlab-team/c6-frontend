@@ -39,7 +39,7 @@ const LoginForm = ({ setOpenModal }) => {
       initialValues={initialCredentials}
       validationSchema={credentialsSchema}
       onSubmit={async (values) => {
-        const url = process.env.REACT_APP_BACKEND_URL + '/auth/login';
+        const url = process.env.REACT_APP_BACKEND_URL + 'auth/login';
         await axios
           .post(url, values)
           .then((res) => {
@@ -50,7 +50,7 @@ const LoginForm = ({ setOpenModal }) => {
             dispatch({ type: 'LOGIN', payload: token});
             setTimeout(() => {
               setOpenModal(false);
-            }, 3000);
+            }, 2000);
           })
           .catch((err) => {
             setRespAuth(true);
