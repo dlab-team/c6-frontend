@@ -27,7 +27,7 @@ function UserSection({ nombre }) {
     <div className='flex flex-row justify-center items-center px-4'>
       <p className=''>{user.name ? user.name : 'Usuario'}</p>
       <button onClick={handleDropdown} type="button" className='ml-5'>
-        <img className="w-10 h-10 rounded-full" src={user.profilePicture ? user.profilePicture : { profilePicture }} alt="Foto de perfil" />
+        <img className="w-10 h-10 rounded-full" src={user.profilePicture ? user.profilePicture : profilePicture} alt="Foto de perfil" />
       </button>
       <div id="dropdown" className={(showDropdown ? " " : "hidden ") + (user.isAdmin ? "mt-64 " : "mt-56 ") + "absolute mr-10 z-10  bg-white divide-y rounded-lg shadow w-44"}>
         <ul className="py-2 text-sm text-primary">
