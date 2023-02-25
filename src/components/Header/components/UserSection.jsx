@@ -7,7 +7,7 @@ function UserSection({ nombre }) {
 
   const handlelogout = () => {
     dispatch({ type: 'LOGOUT' });
-    localStorage.removeItem('userToken');
+    sessionStorage.removeItem('userToken');
   };
 
   return (

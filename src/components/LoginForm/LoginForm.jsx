@@ -9,6 +9,7 @@ import githubIcon from '../../assets/images/github-icon-4-140x140.png';
 import linkedinIcon from '../../assets/images/linkedin-icon-4-140x140.png';
 import twitterIcon from '../../assets/images/twitter-icon-4-140x140.png';
 import { AuthContext } from '../../Context/AuthContext';
+import { decodeToken } from 'react-jwt';
 
 const LoginForm = ({ setOpenModal }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -34,6 +35,15 @@ const LoginForm = ({ setOpenModal }) => {
     setShowPassword(!showPassword);
   };
 
+  const handleDecodeToken = (token) => {
+    const decodedToken = decodeToken(token);
+    dispatch({ type: 'DATAUSER', payload: decodedToken });
+  };
+
+  const handleLogin = (token) => {
+    dispatch({ type: 'LOGIN', payload: token });
+  };
+
   return (
     <Formik
       initialValues={initialCredentials}
@@ -45,9 +55,12 @@ const LoginForm = ({ setOpenModal }) => {
           .then((res) => {
             setRespAuth(true);
             setMessageAuth(res.data.message);
+
             const { token } = res.data.body;
-            localStorage.setItem('userToken', token);
-            dispatch({ type: 'LOGIN', payload: token});
+            sessionStorage.setItem('userToken', token);
+            handleLogin(token);
+            handleDecodeToken(token);
+
             setTimeout(() => {
               setOpenModal(false);
             }, 2000);
