@@ -9,6 +9,7 @@ import githubIcon from '../../assets/images/github-icon-4-140x140.png';
 import linkedinIcon from '../../assets/images/linkedin-icon-4-140x140.png';
 import twitterIcon from '../../assets/images/twitter-icon-4-140x140.png';
 import { AuthContext } from '../../Context/AuthContext';
+import { decodeToken } from 'react-jwt';
 
 const LoginForm = ({ setOpenModal }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -34,6 +35,15 @@ const LoginForm = ({ setOpenModal }) => {
     setShowPassword(!showPassword);
   };
 
+  const handleDecodeToken = (token) => {
+    const decodedToken = decodeToken(token);
+    dispatch({ type: 'DATAUSER', payload: decodedToken });
+  };
+
+  const handleLogin = (token) => {
+    dispatch({ type: 'LOGIN', payload: token });
+  };
+
   return (
     <Formik
       initialValues={initialCredentials}
@@ -45,9 +55,12 @@ const LoginForm = ({ setOpenModal }) => {
           .then((res) => {
             setRespAuth(true);
             setMessageAuth(res.data.message);
+
             const { token } = res.data.body;
-            localStorage.setItem('userToken', token);
-            dispatch({ type: 'LOGIN', payload: token});
+            sessionStorage.setItem('userToken', token);
+            handleLogin(token);
+            handleDecodeToken(token);
+
             setTimeout(() => {
               setOpenModal(false);
             }, 2000);
@@ -91,17 +104,17 @@ const LoginForm = ({ setOpenModal }) => {
             )}
           </div>
 
-          <div class='flex items-center mb-4'>
+          <div className='flex items-center mb-4'>
             <input
               onClick={handleShowPassword}
               id='default-checkbox'
               type='checkbox'
               value=''
-              class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+              className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
             />
             <label
-              for='default-checkbox'
-              class='ml-2 text-sm font-medium text-gray-900 dark:text-gray-900'
+              htmlFor='default-checkbox'
+              className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-900'
             >
               Mostrar contraseña
             </label>
