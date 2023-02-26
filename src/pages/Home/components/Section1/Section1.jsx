@@ -25,7 +25,7 @@ const Section01 = () => {
                 meses con tutores senior para potenciar y acelerar sus
                 habilidades técnicas
               </p>
-              <div class="grid gap-5 grid-cols-2 grid-rows-1">
+              <div className="grid gap-5 grid-cols-2 grid-rows-1">
               <Link
                 to="/register"
                 className="mt-20 md:mt-32 bg-white text-[#2738f5] py-[1.3rem] px-8  rounded-3xl text-2xl font-bold  hover:opacity-80"
