@@ -12,8 +12,7 @@ import { AuthContext } from '../../Context/AuthContext';
 const Header = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openModal1, setOpenModal1] = useState(false);
-  const nombre = 'Javier Perez';
-  const { token } = useContext(AuthContext);
+  const { token, decodedToken } = useContext(AuthContext);
 
   document.body.style.overflow = `${openModal ? 'hidden' : 'visible'}`;
   document.body.style.overflow = `${openModal1 ? "hidden" : "visible"}`;
@@ -41,7 +40,7 @@ const Header = () => {
         </Link>
         <ul className='hidden md:flex gap-4'>
           {token ? (
-            <UserSection nombre={nombre} />
+            <UserSection />
           ) : (
             <AuthSection
               handleOpenModal={handleOpenModal}

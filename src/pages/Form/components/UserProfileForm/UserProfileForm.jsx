@@ -5,13 +5,13 @@ import { AuthContext } from '../../../../Context/AuthContext';
 import { Field } from 'formik';
 import SelectField from '../Select-field/SelectField';
 import SelectFieldMulti from '../Select-field/SelectFieldMulti';
+import { decodeToken } from "react-jwt";
 import { gender } from '../docs/data';
 //TODO faltan tpuched por hacer
+
 const UserProfileForm = ({ errors, touched }) => {
   const { token } = useContext(AuthContext);
-  const currentUser = {
-    email: 'user@mail.com',
-  };
+  const decodedToken = decodeToken(token);
 
   const [cities, setCities] = useState([]);
 
@@ -63,14 +63,14 @@ const UserProfileForm = ({ errors, touched }) => {
             <Field
               name='profile.fullName'
               type='text'
+              value={decodedToken.name}
               required
-              className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                touched.profile?.fullName &&
+              className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${touched.profile?.fullName &&
                 errors.profile?.fullName &&
                 errors.profile?.fullName
-                  ? 'is-invalid'
-                  : ''
-              }`}
+                ? 'is-invalid'
+                : ''
+                }`}
             />
             <div className='invalid-feedback position-absolute'>
               {touched.profile?.fullName &&
@@ -88,20 +88,19 @@ const UserProfileForm = ({ errors, touched }) => {
                 type='email'
                 className='form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2'
                 disabled={true}
-                value={currentUser.email}
+                value={decodedToken.email}
                 name='profile.email'
               />
             ) : (
               <Field
                 name='profile.email'
                 type='email'
-                className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                  touched.profile?.email &&
+                className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${touched.profile?.email &&
                   errors.profile?.email &&
                   errors.profile?.email
-                    ? 'is-invalid'
-                    : ''
-                }`}
+                  ? 'is-invalid'
+                  : ''
+                  }`}
               />
             )}
             <div className='invalid-feedback'>
@@ -119,13 +118,12 @@ const UserProfileForm = ({ errors, touched }) => {
               name='profile.phone'
               type='phone'
               required
-              className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${
-                touched.profile?.phone &&
+              className={`form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${touched.profile?.phone &&
                 errors.profile?.phone &&
                 errors.profile?.phone
-                  ? 'is-invalid'
-                  : ''
-              }`}
+                ? 'is-invalid'
+                : ''
+                }`}
             />
             <div className='invalid-feedback position-absolute'>
               {touched.profile?.phone &&
@@ -184,9 +182,8 @@ const UserProfileForm = ({ errors, touched }) => {
               ¿Cuál es tu estado laboral actual?
             </label>
             <div
-              className={`${
-                errors.workProfile?.employmentSituation ? 'is-invalid' : ''
-              }`}
+              className={`${errors.workProfile?.employmentSituation ? 'is-invalid' : ''
+                }`}
             >
               <div className='flex items-center mb-4 mt-4'>
                 <Field
