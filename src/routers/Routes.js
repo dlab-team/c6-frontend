@@ -20,7 +20,7 @@ import ProtectedRoutes from './ProtectedRoute';
 
 function RoutesApp() {
   const { token } = useContext(AuthContext);
-
+ 
   return (
     <Suspense>
       <Routes>

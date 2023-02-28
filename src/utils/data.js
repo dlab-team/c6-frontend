@@ -14,8 +14,8 @@ export const dataUserNavbar = [
 ];
 
 export const dataMapa = [
-  { id: 1, title: 'Completa', subTitle: 'tu perfil de usuario' },
-  { id: 2, title: 'Realiza', subTitle: 'test técnicos' },
-  { id: 3, title: 'Participa', subTitle: 'en Show The Codes' },
-  { id: 4, title: 'Recibe', subTitle: 'ofertas de trabajo' },
+  { id: 1, title: 'Completa', subTitle: 'tu perfil de usuario', path: 'profile' },
+  { id: 2, title: 'Realiza', subTitle: 'test técnicos', path: 'tests' },
+  { id: 3, title: 'Participa', subTitle: 'en Show The Codes', path: 'dashboard' },
+  { id: 4, title: 'Recibe', subTitle: 'ofertas de trabajo', path: 'dashboard' },
 ];
