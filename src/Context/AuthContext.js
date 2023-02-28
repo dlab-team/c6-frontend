@@ -2,10 +2,11 @@ import { useReducer, createContext, useEffect } from 'react';
 import { decodeToken } from 'react-jwt';
 
 export const AuthContext = createContext();
+const token = sessionStorage.getItem('userToken');
 
 const initialState = {
   user: null,
-  token: null,
+  token: null || token,
   error: null,
 };
 
@@ -26,8 +27,6 @@ export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
-    const token = sessionStorage.getItem('userToken');
-
     if (!token) {
       return;
     }
@@ -35,9 +34,6 @@ export const AuthContextProvider = ({ children }) => {
     dispatch({ type: 'LOGIN', payload: token });
     dispatch({ type: 'DATAUSER', payload: decodedToken });
   }, []);
-  
-  // console.log('AuthContext state ', state);
-  //TODO probar useEffect para probar si puedo traer un usuario teniendo el token
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>
       {children}
