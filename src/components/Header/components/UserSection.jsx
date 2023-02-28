@@ -1,27 +1,27 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthContext';
+import { decodeToken } from 'react-jwt';
 import profilePicture from '../../../assets/images/blank-profile-picture.png';
 
-function UserSection({ nombre }) {
-  const { dispatch } = useContext(AuthContext);
+function UserSection() {
+  const { dispatch, token } = useContext(AuthContext);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const decodedToken = decodeToken(token);
+
+  const user = {
+    name: decodedToken.name,
+    isAdmin: decodedToken.isAdmin,
+  };
 
   const handlelogout = () => {
     dispatch({ type: 'LOGOUT' });
     sessionStorage.removeItem('userToken');
   };
 
-  const [showDropdown, setShowDropdown] = useState(false);
-
   const handleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
-
-  const user = {
-    name: 'Usuario',
-    isAdmin: false,
-    profilePicture: 'http://placekitten.com/200/300'
-  }
 
   return (
     <div className='flex flex-row justify-center items-center px-4'>

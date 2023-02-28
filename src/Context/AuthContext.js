@@ -36,7 +36,7 @@ export const AuthContextProvider = ({ children }) => {
     dispatch({ type: 'DATAUSER', payload: decodedToken });
   }, []);
   
-  console.log('AuthContext state ', state);
+  // console.log('AuthContext state ', state);
   //TODO probar useEffect para probar si puedo traer un usuario teniendo el token
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

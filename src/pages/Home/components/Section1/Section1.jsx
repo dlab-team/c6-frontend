@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Section01 = () => {
   return (
     <>
-      <div className="bg-hero-gradient2 flex font-thin justify-center bg-hero text-white">
+      <div className="bg-hero-gradient2 flex font-thin justify-center bg-hero bg-no-repeat text-white">
         <div className="flex-col text-center md:text-left mx-14 md:mx-0">
           <h1 className="text-6xl md:text-7xl font-bold mt-24 md:mt-20 md:ml-20">
             ¿Buscas talento TI?
