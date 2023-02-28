@@ -13,6 +13,7 @@ import {
   Profile,
   CodingTests,
   FormLooking,
+  NotFound,
 } from '../pages/index';
 import DefaultLayout from './DefaultLayout';
 import UserLayout from './UserLayout';
@@ -29,6 +30,7 @@ function RoutesApp() {
           <Route path='/recovery/:token?' element={<Recovery />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/form-looking' element={<FormLooking />} />
+          <Route path='*' element={<NotFound />} />
         </Route>
         <Route
           path='/user'

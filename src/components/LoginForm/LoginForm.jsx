@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -104,17 +104,17 @@ const LoginForm = ({ setOpenModal }) => {
             )}
           </div>
 
-          <div class='flex items-center mb-4'>
+          <div className='flex items-center mb-4'>
             <input
               onClick={handleShowPassword}
               id='default-checkbox'
               type='checkbox'
               value=''
-              class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+              className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
             />
             <label
-              for='default-checkbox'
-              class='ml-2 text-sm font-medium text-gray-900 dark:text-gray-900'
+              htmlFor='default-checkbox'
+              className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-900'
             >
               Mostrar contraseña
             </label>
@@ -126,11 +126,12 @@ const LoginForm = ({ setOpenModal }) => {
             >
               Iniciar Sesión
             </button>
-            {respAuth && <div class='static mt-5 mb-5'>{messageAuth}</div>}
+            <Link to={'/recovery/'} target='_parent'>
+              <p class='ml-2 mt-1 text-sm font-medium text-gray-900 dark:text-gray-900 text-right'>¿Olvidaste tu clave?</p>
+            </Link>
+            {respAuth && <div class='static mt-2 mb-5'>{messageAuth}</div>}
           </div>
-          <div className='mt-1 -mb-20'>
-            <hr className='border-2 h-1' />
-            <p className='text-center'>o</p>
+          <div className='mt-8 -mb-20'>
             <div className='grid grid-cols-4'>
               <div className='mx-5 col-span-1 h-8 w-8'>
                 <img src={googleIcon} alt='' />

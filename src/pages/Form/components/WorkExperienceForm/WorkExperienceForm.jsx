@@ -158,7 +158,7 @@ const WorkProfileForm = ({ errors, touched }) => {
               as='textarea'
               name='workProfile.projectDescription'
               rows='5'
-              className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${
+              className={`form-control w-80 md:w-5/6 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${
                 touched.workProfile?.projectDescription &&
                 errors.workProfile?.projectDescription &&
                 errors.workProfile?.projectDescription
@@ -174,7 +174,7 @@ const WorkProfileForm = ({ errors, touched }) => {
           </div>
 
           {/* div habilidades */}
-          {/* <div className='form-group required position-relative'>
+          <div className='form-group required position-relative'>
             <label className='control-label position-absolute mb-10 mt-5 text-custom-color font-[500] text-[20px]'>
               Selecciona 3 habilidades blandas que te representen:
             </label>
@@ -183,14 +183,14 @@ const WorkProfileForm = ({ errors, touched }) => {
                 required
                 component={SelectFieldMulti}
                 name='workProfile.softSkills'
-                options={skills}
+                options={skillsData}
                 errors={errors.softSkills}
               />
             </div>
             <div className='invalid-feedback position-absolute'>
-              {errors.skills?.message}
+              {errors.skillsData?.message}
             </div>
-          </div> */}
+          </div>
           {/* div experiencia laboral */}
           <div className='form-group position-relative'>
             <label className='control-label position-absolute w-5/6 md:w-4/6 mb-5 text-custom-color'>
