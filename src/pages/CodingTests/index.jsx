@@ -13,7 +13,7 @@ function CodignTests() {
     skill.name.toLowerCase().includes(search.toLowerCase().trim())
   );
   return (
-    <main className='bg-white mx-24 min-h-[100vh] w-[60%]'>
+    <main className='bg-white mx-80 min-h-[100vh] w-[60%]'>
       <Introduction />
       <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
       <SkillsList
