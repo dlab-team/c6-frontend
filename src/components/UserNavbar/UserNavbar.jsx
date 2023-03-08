@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { dataUserNavbar } from '../../utils/index';
 import { JobIcon } from '../../assets/SVG/userNavBar';
+import { AuthContext } from '../../Context/AuthContext';
+import { decodeToken } from 'react-jwt';
 import '../../styles/UserNavBar.css';
 
 function UserNavbar() {
   const [isExpanded, setIsExpanded] = useState(localStorage.getItem('isExpanded') === 'true');
+  const { token } = useContext(AuthContext);
+
+  const decodedToken = decodeToken(token);
 
   const toggleMenu = () => {
     setIsExpanded((prevState) => {
@@ -27,7 +32,7 @@ function UserNavbar() {
     >
       <div className='justify-center mt-8 mb-12'>
         <button className='flex flex-row w-46 bg-white text-[#2738F5] text-base font-bold mt-5 mb-10 py-4 px-6 ml-7 border-solid border-2 border-[#2738f5] rounded-3xl' onClick={(e) => e.stopPropagation()}>
-          <img className='pr-2 w-[30px]' src={JobIcon} alt='job icon'/> JOB READY
+          <img className='pr-2 w-[30px]' src={JobIcon} alt='job icon'/> {decodedToken.userState}
         </button>
         <ul className='-ml-14'>
           {dataUserNavbar.map((item) => (
