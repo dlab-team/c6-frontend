@@ -7,20 +7,7 @@ import {
 function SearchInput({ value, onChange }) {
   return (
     <>
-      <div className='flex justify-between mb-3'>
-        <h2 className='text-black text-xl mb-3'>Habilidades</h2>
-        <div className='flex gap-2'>
-          <button className='bg-[#89CFD9] text-black rounded px-2'>+ Agregar tag</button>
-          <button className='bg-[#89CFD9] text-black rounded p-2 flex items-center'>
-            <img src={Edit} alt='edit' className='pr-2 h-4' />
-            Editar tag
-          </button>
-          <button className='bg-[#AC231B] text-white rounded p-2 flex items-center'>
-            <img src={Bin} alt='edit' className='pr-2 h-4' />
-            Eliminar tag
-          </button>
-        </div>
-      </div>
+      <h2 className='text-black text-xl mb-3'>Habilidades</h2>
       <input
         type='text'
         placeholder='Buscar habilidades'
