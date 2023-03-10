@@ -6,3 +6,5 @@ export { default as HomeIcon2 } from './home2.svg';
 export { default as ProfileIcon2 } from './profile2.svg';
 export { default as TestIcon2 } from './test2.svg';
 export { default as JobIcon2 } from './job2.svg';
+export { default as AdminIcon } from './lock.svg';
+export { default as AdminIcon2 } from './lock2.svg';

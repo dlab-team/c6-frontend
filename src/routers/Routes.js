@@ -13,6 +13,7 @@ import {
   Profile,
   CodingTests,
   FormLooking,
+  Admin,
   NotFound,
 } from '../pages/index';
 import DefaultLayout from './DefaultLayout';
@@ -21,29 +22,30 @@ import ProtectedRoutes from './ProtectedRoute';
 
 function RoutesApp() {
   const { token } = useContext(AuthContext);
- 
+
   return (
     <Suspense>
       <Routes>
-        <Route path='/' element={<DefaultLayout />}>
-          <Route path='' element={<Home />} />
-          <Route path='/recovery/:token?' element={<Recovery />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/form-looking' element={<FormLooking />} />
-          <Route path='*' element={<NotFound />} />
+        <Route path="/" element={<DefaultLayout />}>
+          <Route path="" element={<Home />} />
+          <Route path="/recovery/:token?" element={<Recovery />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/form-looking" element={<FormLooking />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         <Route
-          path='/user'
+          path="/user"
           element={
             <ProtectedRoutes isAutenticated={token}>
               <UserLayout />
             </ProtectedRoutes>
           }
         >
-          <Route index element={<Navigate to='dashboard' />} />
-          <Route path='dashboard' element={<Dashboard />} />
-          <Route path='profile' element={<Profile />} />
-          <Route path='tests' element={<CodingTests />} />
+          <Route index element={<Navigate to="dashboard" />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="tests" element={<CodingTests />} />
+          <Route path="admin" element={<Admin />} />
         </Route>
       </Routes>
     </Suspense>
