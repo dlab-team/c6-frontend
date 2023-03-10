@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Introduction, SearchBar, SkillsList } from './components';
+import { Introduction, SearchBar, SkillsList, Options } from './components';
 import { useFetch } from '../../CustomHooks/useAxiosFetch';
 
 function CodignTests() {
@@ -16,6 +16,7 @@ function CodignTests() {
     <main className='bg-white mx-80 min-h-[100vh] w-[60%]'>
       <Introduction />
       <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
+      <Options></Options>
       <SkillsList
         skills={filteredSkills}
         skillsLoading={skillsLoading}
