@@ -13,6 +13,12 @@ export const dataUserNavbar = [
   { name: 'Home', icon: HomeIcon, path: 'dashboard', icon2: HomeIcon2 },
   { name: 'Perfil', icon: ProfileIcon, path: 'profile', icon2: ProfileIcon2 },
   { name: 'Test técnicos', icon: TestIcon, path: 'tests', icon2: TestIcon2 },
+];
+
+export const dataUserNavbarAdmin = [
+  { name: 'Home', icon: HomeIcon, path: 'dashboard', icon2: HomeIcon2 },
+  { name: 'Perfil', icon: ProfileIcon, path: 'profile', icon2: ProfileIcon2 },
+  { name: 'Test técnicos', icon: TestIcon, path: 'tests', icon2: TestIcon2 },
   { name: 'Administrar', icon: AdminIcon, path: 'admin', icon2: AdminIcon2 },
 ];
 
