@@ -3,7 +3,10 @@ import React from 'react';
 function SearchInput({ value, onChange }) {
   return (
     <>
-      <h2 className='text-black text-xl mb-3'>Habilidades</h2>
+      <div className='flex justify-between'>
+        <h2 className='text-black text-xl mb-3'>Habilidades</h2>
+        <button className='bg-[#89CFD9] text-black rounded px-2'>+ Agregar tag</button>
+      </div>
       <input
         type='text'
         placeholder='Buscar habilidades'
