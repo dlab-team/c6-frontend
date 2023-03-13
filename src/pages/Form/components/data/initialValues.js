@@ -1,7 +1,7 @@
 export const initialValues = {
   //profile
   profile: {
-    fullName:'',
+    fullName: '',
     email: '',
     phone: '',
     country: '', //no aparece en data structure
@@ -56,6 +56,7 @@ export const initialValues = {
         skill3: '',
         frameworks3: '',
         tools3: '',
+        frameworks4: '',
       },
     ],
   },
