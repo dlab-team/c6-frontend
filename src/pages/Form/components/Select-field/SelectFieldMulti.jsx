@@ -8,7 +8,6 @@ function SelectFieldMulti({ field, options, form, errors }) {
       selectedOptions.map((option) => option.value)
     );
   };
-
   return (
     <>
       <Select

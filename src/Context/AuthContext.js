@@ -3,9 +3,10 @@ import { decodeToken } from 'react-jwt';
 
 export const AuthContext = createContext();
 const token = sessionStorage.getItem('userToken');
+const decodedToken = decodeToken(token);
 
 const initialState = {
-  user: null,
+  user: null || decodedToken,
   token: null || token,
   error: null,
 };
