@@ -15,7 +15,7 @@ export const useFetch = (url) => {
     const config = {
         headers: {
             Authorization: "Bearer " + token
-        }
+        } 
     }
 
     const getFetch = async () => {

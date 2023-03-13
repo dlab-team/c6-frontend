@@ -1,5 +1,4 @@
 import AddTest from "./AddTest";
-import EditTest from "./EditTest";
 import DeleteTest from "./DelTest";
 
 function LoginModal({ setOpenModal, handleOpenModal, modal }) {
@@ -31,8 +30,7 @@ function LoginModal({ setOpenModal, handleOpenModal, modal }) {
                         </button>
                         {
                             modal === 'addTest' ? <AddTest setOpenModal={setOpenModal} />
-                                : modal === 'editTest' ? <EditTest setOpenModal={setOpenModal} />
-                                    : modal === 'delTest' && <DeleteTest setOpenModal={setOpenModal} />
+                                : modal === 'delTest' && <DeleteTest setOpenModal={setOpenModal} />
                         }
                     </div>
                 </div>

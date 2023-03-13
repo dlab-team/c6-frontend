@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Introduction, SearchBar, SkillsList, TestsList } from './components';
 import { useFetch } from '../../CustomHooks/useAxiosFetch';
 
@@ -17,6 +17,11 @@ function CodignTests() {
     skill.name.toLowerCase().includes(search.toLowerCase().trim())
   );
 
+  const filteredTests = tests?.filter((test) =>
+    test.name.toLowerCase().includes(search.toLowerCase().trim())
+  );
+
+
   return (
     <main className='bg-white mx-80 min-h-[100vh] w-[60%]'>
       <Introduction />
@@ -27,7 +32,7 @@ function CodignTests() {
         search={search}
         setSearch={setSearch}
       />
-      <TestsList tests={tests} testsLoading={testsLoading} />
+      <TestsList tests={search ? filteredTests : tests} testsLoading={testsLoading} />
     </main>
   );
 }
