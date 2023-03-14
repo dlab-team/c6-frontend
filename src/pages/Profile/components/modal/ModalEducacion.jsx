@@ -1,19 +1,21 @@
-import React from 'react'
-import RegisterForm from '../../RegisterForm/RegisterForm';
+import React from 'react';
+import EducacionForm from './EducacionForm';
+import "../../../../styles/ModalProfile.css";
 
-function RegisterModal({setOpenModal1, handleCloseModal1}) {
+function ModalEducacion({ setOpenModal, handleCloseModal }) {
   return (
     <div
       id='modal-backdrop'
       className='fixed inset-0 bg-[#252424cc] w-screen h-full'
+      style={{ overflow: 'hidden' }}
       onClick={(e) => {
         if (e.target.id === 'modal-backdrop') {
-          setOpenModal1(false);
+          setOpenModal(false);
         }
       }}
     >
       <div
-        onClick={handleCloseModal1}
+        onClick={handleCloseModal}
         className='fixed top-0 left-0 w-full h-full bg-opacity-50 z-50'
       >
         <div
@@ -24,19 +26,20 @@ function RegisterModal({setOpenModal1, handleCloseModal1}) {
             <button
               className='absolute top-4 right-4 text-black font-bold'
               type='button'
-              onClick={() => setOpenModal1(false)}
+              onClick={() => handleCloseModal()}
             >
               X
             </button>
-            <h1 className='static text-2xl font-semibold -mt-5 mb-5'>
-              Regístrate
+            <h1 className='static text-2xl font-semibold -mt-20'>
+              Editar estudios
             </h1>
-            <RegisterForm setOpenModal1={setOpenModal1} />
+
+            <EducacionForm setOpenModal={setOpenModal} />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default RegisterModal
+export default ModalEducacion;

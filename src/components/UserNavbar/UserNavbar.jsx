@@ -32,9 +32,15 @@ function UserNavbar() {
   }, []);
 
   return (
+<<<<<<< HEAD
     <section
       className="sidebar text-white bg-[#E2F2FE] rounded-r-3xl flex-col justify-center z-40"
       style={{ left: isExpanded ? 0 : '-200px', transition: '0.5s' }}
+=======
+    <section 
+      className="sidebar text-white bg-[#E2F2FE] rounded-r-3xl flex-col justify-center" 
+      style={{ left: isExpanded ? 0 : '-200px', transition: '0.5s' }} 
+>>>>>>> d3dd021 (feat: editar secciones dinamicamente perfil)
       onClick={toggleMenu}
     >
       <div className="justify-center mt-8 mb-12">

@@ -9,6 +9,13 @@ const WorkProfileForm = ({ errors, touched }) => {
   const { data: skillsData, isLoading: skillsLoading } = useFetch(
     process.env.REACT_APP_BACKEND_URL + '/skills/4'
   );
+  
+  const softSkills =
+  skillsData &&
+  skillsData.map((languages) => ({
+    value: languages.id,
+    label: languages.name,
+  }));
 
   const softSkills =
     skillsData &&

@@ -9,3 +9,4 @@ export { default as Github } from './github.svg';
 export { default as Linkedin } from './linkedin.svg';
 export {default as Phone} from './phone.svg'
 export {default as Info} from './info.svg'
+export { default as School } from './cap.svg';
