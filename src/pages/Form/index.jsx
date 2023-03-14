@@ -19,12 +19,11 @@ import { AuthContext } from '../../Context/AuthContext';
 
 const FormLooking = () => {
   const { user } = useContext(AuthContext);
-
   const [openModal, setOpenModal] = useState(false);
   const [message, setMessage] = useState(null);
   const navigate = useNavigate();
   //document.body.style.overflow = `${openModal ? 'hidden' : 'visible'}`;
-
+  
   const initialFormValues = {
     ...initialValues,
     profile: {
@@ -50,6 +49,7 @@ const FormLooking = () => {
             profile: values.profile,
             educationProfile: values.educationalProfile,
             workProfile: {
+              //softSkills: values.workProfile.softSkills,
               employmentSituation: values.workProfile.employmentSituation,
               cvUrl: values.workProfile.cvUrl,
               linkedinUrl: values.workProfile.linkedinUrl,
@@ -65,7 +65,7 @@ const FormLooking = () => {
               skills: (values.workProfile.skills = skills),
             },
           };
-          const url = process.env.REACT_APP_BACKEND_URL + 'profiles';
+          const url = process.env.REACT_APP_BACKEND_URL + '/profiles';
           await axios
             .post(url, values)
             .then((res) => {
@@ -75,7 +75,7 @@ const FormLooking = () => {
               } else {
                 setOpenModal(true);
                 setMessage(res.data.message);
-                window.location.reload();
+                /* window.location.reload(); */
               }
             })
             .then(
@@ -93,7 +93,6 @@ const FormLooking = () => {
       >
         {({ touched, errors, values, isValid, isSubmitting }) => (
           <Form>
-            {console.log(values)}
             <FormExplain />
             <UserProfileForm
               errors={errors}
