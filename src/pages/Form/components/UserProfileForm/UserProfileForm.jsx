@@ -7,7 +7,6 @@ import SelectField from '../Select-field/SelectField';
 import SelectFieldMulti from '../Select-field/SelectFieldMulti';
 import { decodeToken } from "react-jwt";
 import { gender } from '../docs/data';
-//TODO faltan tpuched por hacer
 
 const UserProfileForm = ({ errors, touched }) => {
   const { token } = useContext(AuthContext);
@@ -63,7 +62,7 @@ const UserProfileForm = ({ errors, touched }) => {
             <Field
               name='profile.fullName'
               type='text'
-              value={decodedToken.name}
+              defaultValue={decodedToken ? decodedToken.name : '' }
               required
               className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 ${touched.profile?.fullName &&
                 errors.profile?.fullName &&
@@ -87,8 +86,8 @@ const UserProfileForm = ({ errors, touched }) => {
               <Field
                 type='email'
                 className='form-control w-5/6 md:w-4/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2'
-                disabled={true}
-                value={decodedToken.email}
+                disabled={decodedToken ? true : false}
+                defaultValue={decodedToken ? decodedToken.email : ''}
                 name='profile.email'
               />
             ) : (

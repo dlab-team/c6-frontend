@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  Edit,
+  Bin
+} from '../../../../assets/SVG/profile/index';
 
 function SearchInput({ value, onChange }) {
   return (

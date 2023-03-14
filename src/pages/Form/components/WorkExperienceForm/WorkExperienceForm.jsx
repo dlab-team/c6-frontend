@@ -10,6 +10,14 @@ const WorkProfileForm = ({ errors, touched }) => {
     process.env.REACT_APP_BACKEND_URL + '/skills/4'
   );
 
+  const softSkills =
+    skillsData &&
+    skillsData.map((languages) => ({
+      value: languages.id,
+      label: languages.name,
+    }));
+  
+
   const experience = experienceOptions.map((exp) => (
     <div key={exp.years} className='flex items-center mb-4 mt-4'>
       <Field
@@ -182,8 +190,8 @@ const WorkProfileForm = ({ errors, touched }) => {
               <Field
                 required
                 component={SelectFieldMulti}
-                name='workProfile.softSkills'
-                options={skillsData}
+                name='workProfile.skills.[0].frameworks4'
+                options={softSkills}
                 errors={errors.softSkills}
               />
             </div>

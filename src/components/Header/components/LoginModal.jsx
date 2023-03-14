@@ -5,7 +5,8 @@ function LoginModal({ setOpenModal, handleCloseModal }) {
   return (
     <div
       id='modal-backdrop'
-      className='absolute inset-0 bg-[#252424cc] w-screen h-full'
+      className='fixed inset-0 bg-[#252424cc] w-screen h-full'
+      style={{ overflow: 'hidden' }}
       onClick={(e) => {
         if (e.target.id === 'modal-backdrop') {
           setOpenModal(false);
@@ -24,7 +25,7 @@ function LoginModal({ setOpenModal, handleCloseModal }) {
             <button
               className='absolute top-4 right-4 text-black font-bold'
               type='button'
-              onClick={() => setOpenModal(false)}
+              onClick={() => handleCloseModal()}
             >
               X
             </button>

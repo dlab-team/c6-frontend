@@ -12,7 +12,7 @@ import { AuthContext } from '../../Context/AuthContext';
 const Header = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openModal1, setOpenModal1] = useState(false);
-  const { token, decodedToken } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
 
   document.body.style.overflow = `${openModal ? 'hidden' : 'visible'}`;
   document.body.style.overflow = `${openModal1 ? "hidden" : "visible"}`;

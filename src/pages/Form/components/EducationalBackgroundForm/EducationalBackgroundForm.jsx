@@ -114,7 +114,7 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
                   </div>
                 </div>
               </div>
-              <div className='form-group required position-relative'>
+              <div className='form-group md:w-screen required position-relative'>
                 <label className='control-label position-absolute mb-10 mt-5 text-custom-color'>
                   Nombre institución {index + 1}:
                 </label>
@@ -131,7 +131,7 @@ const EducationalBackgroundForm = ({ errors, touched, values }) => {
                   />
                 </div>
               </div>
-              <div className='form-group required position-relative'>
+              <div className='form-group md:w-screen required position-relative'>
                 <label className='control-label position-absolute mb-10 mt-5 text-custom-color'>
                   Tipo institución {index + 1}:
                 </label>

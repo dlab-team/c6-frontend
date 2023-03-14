@@ -127,23 +127,23 @@ const LoginForm = ({ setOpenModal }) => {
               Iniciar Sesión
             </button>
             <Link to={'/recovery/'} target='_parent'>
-              <p class='ml-2 mt-1 text-sm font-medium text-gray-900 dark:text-gray-900 text-right'>¿Olvidaste tu clave?</p>
+              <p className='ml-2 mt-1 text-sm font-medium text-gray-900 dark:text-gray-900 text-right'>¿Olvidaste tu clave?</p>
             </Link>
-            {respAuth && <div class='static mt-2 mb-5'>{messageAuth}</div>}
+            {respAuth && <div className='static mt-2 mb-5'>{messageAuth}</div>}
           </div>
           <div className='mt-8 -mb-20'>
             <div className='grid grid-cols-4'>
               <div className='mx-5 col-span-1 h-8 w-8'>
-                <img src={googleIcon} alt='' />
+                <a href="/*"><img src={googleIcon} alt='' /></a>
               </div>
               <div className='mx-5 col-span-1 h-8 w-8'>
-                <img src={twitterIcon} alt='' />
+              <a href="/*"><img src={twitterIcon} alt='' /></a>
               </div>
               <div className='mx-5 col-span-1 h-8 w-8'>
-                <img src={linkedinIcon} alt='' />
+              <a href="/*"><img src={linkedinIcon} alt='' /></a>
               </div>
               <div className='mx-5 col-span-1 h-8 w-8'>
-                <img src={githubIcon} alt='' />
+              <a href="/*"><img src={githubIcon} alt='' /></a>
               </div>
             </div>
           </div>
