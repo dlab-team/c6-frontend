@@ -4,6 +4,14 @@ import { AuthContext } from "../Context/AuthContext";
 
 export const useFetch = (url) => {
 
+    const { token } = useContext(AuthContext);
+    const config = {
+        headers: {
+            Authorization: "Bearer " + token
+        }
+    }
+ 
+
     const [state, setState] = useState({
         data: null,
         isLoading: true,

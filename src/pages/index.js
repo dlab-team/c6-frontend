@@ -8,4 +8,5 @@ export { default as Profile } from './Profile/index';
 export { default as Dashboard } from './Dashboard/index';
 export { default as CodingTests } from './CodingTests/index.jsx';
 export { default as FormLooking } from './Form/index';
+export { default as Admin } from './Admin/index';
 export { default as NotFound } from './NotFound/index';

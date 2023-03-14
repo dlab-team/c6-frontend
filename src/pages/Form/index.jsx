@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import '../../styles/Header.css';
 import { Form, Formik } from 'formik';
@@ -15,19 +15,32 @@ import { validationAplicationForm } from '../../utils/validationSchemas';
 import { transformInitialSkills } from '../../utils';
 import { ModalCustomMessage } from '../../components';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext';
 
 const FormLooking = () => {
+  const { user } = useContext(AuthContext);
+
   const [openModal, setOpenModal] = useState(false);
   const [message, setMessage] = useState(null);
   const navigate = useNavigate();
   //document.body.style.overflow = `${openModal ? 'hidden' : 'visible'}`;
+
+  const initialFormValues = {
+    ...initialValues,
+    profile: {
+      ...initialValues.profile,
+      email: user?.email || '',
+      fullName: user?.name || '',
+    },
+  };
+
   return (
     <>
       {openModal && (
         <ModalCustomMessage setOpenModal={setOpenModal} message={message} />
       )}
       <Formik
-        initialValues={initialValues}
+        initialValues={initialFormValues}
         validationSchema={validationAplicationForm}
         onSubmit={async (values) => {
           const initialSkills = values.workProfile.skills;
@@ -37,7 +50,6 @@ const FormLooking = () => {
             profile: values.profile,
             educationProfile: values.educationalProfile,
             workProfile: {
-              //softSkills: values.workProfile.softSkills,
               employmentSituation: values.workProfile.employmentSituation,
               cvUrl: values.workProfile.cvUrl,
               linkedinUrl: values.workProfile.linkedinUrl,
@@ -81,6 +93,7 @@ const FormLooking = () => {
       >
         {({ touched, errors, values, isValid, isSubmitting }) => (
           <Form>
+            {console.log(values)}
             <FormExplain />
             <UserProfileForm
               errors={errors}

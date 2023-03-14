@@ -7,7 +7,6 @@ import SelectField from '../Select-field/SelectField';
 import SelectFieldMulti from '../Select-field/SelectFieldMulti';
 import { decodeToken } from "react-jwt";
 import { gender } from '../docs/data';
-//TODO faltan tpuched por hacer
 
 const UserProfileForm = ({ errors, touched }) => {
   const { token } = useContext(AuthContext);
