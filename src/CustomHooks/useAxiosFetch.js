@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../Context/AuthContext";
 
-export const useFetch = ( url ) => {
+export const useFetch = (url) => {
 
     const { token } = useContext(AuthContext);
     const config = {
@@ -17,6 +17,14 @@ export const useFetch = ( url ) => {
         isLoading: true,
         hasError: null,
     })
+
+    const { token } = useContext(AuthContext);
+
+    const config = {
+        headers: {
+            Authorization: "Bearer " + token
+        } 
+    }
 
     const getFetch = async () => {
 
@@ -46,10 +54,10 @@ export const useFetch = ( url ) => {
     useEffect(() => {
         getFetch();
     }, [url])
-   
+
     return {
-        data:      state.data,
+        data: state.data,
         isLoading: state.isLoading,
-        hasError:  state.hasError,
+        hasError: state.hasError,
     };
 }

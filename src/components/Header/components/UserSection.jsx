@@ -9,11 +9,6 @@ function UserSection() {
   const [showDropdown, setShowDropdown] = useState(false);
   const decodedToken = decodeToken(token);
 
-  const user = {
-    name: decodedToken.name,
-    isAdmin: decodedToken.isAdmin,
-  };
-
   const handlelogout = () => {
     dispatch({ type: 'LOGOUT' });
     sessionStorage.removeItem('userToken');
@@ -22,7 +17,8 @@ function UserSection() {
   const handleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
-
+  const user = decodedToken
+  
   return (
     <div className="flex flex-row justify-center items-center px-4">
       <p className="">{user.name ? user.name : 'Usuario'}</p>
