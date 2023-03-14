@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Edit, Bin } from '../../../assets/SVG/profile';
-import { School } from '../../../assets/SVG/profile';
+import { Edit, Bin, School, Add } from '../../../assets/SVG/profile';
 import { AuthContext } from '../../../Context/AuthContext';
 import axios from 'axios';
 import { decodeToken } from 'react-jwt';
@@ -26,11 +25,10 @@ function Educacion({data}) {
       <button
         onClick={handleOpenModal}
         className='justify-items-end text-black text-lg p-1 border-black rounded-md'>
-        <img src={Edit} alt='edit' className='pr-2' />
+        <img src={Add} alt='edit' className='-mt-3' />
       </button>
     );
   };
-  console.log("data:", data);
 
   return (
     <section className='justify-between py-10 border-b border-[#817E7E]'>
@@ -41,14 +39,14 @@ function Educacion({data}) {
           Educación
         </h2>
       </div>
-      <>
-          <EditarEducacion className='flex flex-col ml-80 justify-items-end justify-self-end'/>
+      <div className='flex flex-col ml-80 justify-self-end'>
+          <EditarEducacion/>
           {openModal && (
             <ModalEducacion handleCloseModal={handleCloseModal} />
           )}
-        </>
-      {data.studies.map((studies) => (
-        <div className='flex flex-col ml-80 shrink justify-end items-end'>
+      </div>
+      {data.studies.length > 0 && data.studies.map((studies) => (
+        <div className='flex flex-col ml-80 mt-5 shrink justify-end items-end'>
           <ul className='text-black text-right' key={studies.id}>
             <li className='font-semibold flex flex-row'><img src={Bin} alt="Borrar" className='mr-5'/>{studies.name}</li>
             <li className='font-semibold'>{studies.institutionId}</li>
@@ -56,6 +54,11 @@ function Educacion({data}) {
           </ul>
         </div>
       ))}
+      <div className='flex flex-col ml-80 mt-5 justify-end items-end text-black justify-self-end'>
+      </div>
+      <div className='flex flex-col ml-80 mt-5 justify-end items-end text-black font-bold justify-self-end'>
+        Nivel de inglés: {data.englishLevel}
+      </div>
     </div>
   </section>
   

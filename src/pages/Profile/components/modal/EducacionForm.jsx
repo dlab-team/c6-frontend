@@ -66,8 +66,24 @@ const EditStudiesForm = ({ setOpenModal }) => {
         }}
       >
         {({ touched, errors }) => (
-          <Form className="flex flex-col mt-4">
-            <div className="h-[4.5rem]">
+          <Form className="flex flex-col -mb-5">
+            <div className="h-[4.5rem] mt-5">
+              <p className='mb-1'>Nombre de la carrera, curso o bootcamp:</p>
+              <Field
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Nombre de la carrera"
+                className="w-80 h-10 px-4 rounded-md border border-gray-300 mb-2"
+              />
+              {errors.nombre && touched.nombre && (
+                <span className="flex items-center gap-1 text-error italic text-sm mb-1">
+                  <ImWarning />
+                  {errors.nombre}
+                </span>
+              )}
+            </div>
+            <div className="h-[4.5rem] mt-1">
               <p className='-mb-3'>Tipo de institución:</p>
               <Field
                 id="name"

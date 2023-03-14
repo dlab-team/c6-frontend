@@ -31,7 +31,7 @@ function ModalEducacion({ setOpenModal, handleCloseModal }) {
               X
             </button>
             <h1 className='static text-2xl font-semibold -mt-20'>
-              Editar estudios
+              Agregar educación
             </h1>
 
             <EducacionForm setOpenModal={setOpenModal} />

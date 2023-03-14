@@ -41,9 +41,9 @@ const Section3 = () => {
 
               {/* botón agendar */}
               <div className="flex justify-center md:justify-start md:mx-32 mt-10 mb-20 text-center md:text-left">
-                <button className="h-[68px] w-[166px] bg-[#2738F5] hover:bg-blue-600 text-[#FFFFFF] text-[24px] font-bold py-2 px-4 rounded-3xl">
+              <a href="/*"><button className="h-[68px] w-[166px] bg-[#2738F5] hover:bg-blue-600 text-[#FFFFFF] text-[24px] font-bold py-2 px-4 rounded-3xl">
                   AGENDAR
-                </button>
+                </button></a>
               </div>
             </div>
 
@@ -201,9 +201,9 @@ const Section3 = () => {
 
               {/* boton enviar formulario */}
               <div className="flex items-start mx-20 ml-12 mt-10 mb-6">
-                <button className="h-[60px] w-[137px] bg-[#575253] hover:bg-gray-200 text-[#232323] text-[24px] font-bold py-2 px-4 rounded-3xl cursor-not-allowed opacity-50">
+                <a href="/*"><button className="h-[60px] w-[137px] bg-[#575253] hover:bg-gray-200 text-[#232323] text-[24px] font-bold py-2 px-4 rounded-3xl cursor-not-allowed opacity-50">
                   ENVIAR
-                </button>
+                </button></a>
               </div>
             </div>
           </div>

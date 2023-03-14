@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Edit } from '../../../assets/SVG/profile';
-import { Edu } from '../../../assets/SVG/profile';
+import { Edit, Edu, Add, Bin } from '../../../assets/SVG/profile';
 import { AuthContext } from '../../../Context/AuthContext';
 import axios from 'axios';
 import { decodeToken } from 'react-jwt';
 import ModalExperiencia from './modal/ModalExperiencia';
 import ExperienciaForm from './modal/ExperienciaForm';
 
-function Experiencia() {
+function Experiencia(data) {
 
   const [openModal, setOpenModal] = useState(false);
   const { token, decodedToken } = useContext(AuthContext);
@@ -27,10 +26,11 @@ function Experiencia() {
       <button
         onClick={handleOpenModal}
         className='justify-items-end text-black text-lg p-1 border-black rounded-md'>
-        <img src={Edit} alt='edit' className='pr-2' />
+        <img src={Add} alt='edit' className='-mt-2' />
       </button>
     );
   };
+
   return (
     <section className='justify-between py-10 border-b border-[#817E7E]'>
     <div className='grid grid-cols-2'>
@@ -47,9 +47,9 @@ function Experiencia() {
             <ModalExperiencia handleCloseModal={handleCloseModal} />
           )}
         </>
-        <ul className='text-black text-right'>
-          <li className='font-semibold'>1 a 3 años de experiencia</li>
-          <li className='font-semibold'>Inglés avanzado</li>
+        <ul className='text-black text-right mt-5'>
+        <li className='font-semibold flex flex-row'>{data.data.yearsOfExperiencie} años de experiencia</li>
+        <li className='font-semibold flex flex-row justify-self-end'>Disponibilidad: {data.data.availability}</li>
         </ul>
       </div>
     </div>

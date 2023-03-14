@@ -6,6 +6,8 @@ import {
   Linkedin,
   Github,
   Phone,
+  Portfolio,
+  Resume
 } from '../../assets/SVG/profile/index';
 import profileimg from '../../assets/images/square-xxl.png';
 import { Educacion, Habilidades, Experiencia, Disponibilidad, Salario } from './components';
@@ -25,6 +27,22 @@ function Profile() {
   const initialCurrentUser = {
     name: decodedToken.name,
     email: decodedToken.email,
+    profile: {
+      cityId: '',
+      phone: '',
+      workProfile: {
+        linkedinUrl: '',
+        githubUrl: '',
+        websiteUrl: '',
+        cvUrl: '',
+        yearsOfExperiencie: '',
+        employmentSituation: '',
+      },
+      educationalProfile: {
+        englishLevel: '',
+        studies: []
+      },
+    }
   };
    
   const [currentUser, setCurrentUser] = useState(initialCurrentUser);
@@ -46,6 +64,7 @@ function Profile() {
     getUser();
   }, []);
 
+  console.log("currentUser: ", currentUser);
   return (
     <main className='bg-white my-14 md:ml-80 m-20'>
       <section className='flex flex-row justify-between mb-24'>
@@ -86,16 +105,29 @@ function Profile() {
             <p className='text-base'>{currentUser?.profile.phone}</p>
           </li>
           <li className='flex flex-row items-center mr-6'>
-            <img src={Linkedin} alt='linkedin'/>
-            <p className='text-base'>{currentUser?.profile.workProfile.linkedinUrl}</p>
+            <a href={currentUser?.profile.workProfile.linkedinUrl}>
+              <img src={Linkedin} alt='linkedin'/>
+            </a>
           </li>
           <li className='flex flex-row items-center'>
-            <img src={Github} alt='github' />
+            <a href={currentUser?.profile.workProfile.githubUrl}>
+              <img src={Github} alt='github'/>
+            </a>
+          </li>
+          <li className='flex flex-row items-center'>
+            <a href={currentUser?.profile.workProfile.websiteUrl}>
+              <img src={Portfolio} alt='portfolio'/>
+            </a>
+          </li>
+          <li className='flex flex-row items-center'>
+            <a href={currentUser?.profile.workProfile.cvUrl}>
+              <img src={Resume} alt='cv'/>
+            </a>
           </li>
         </ul>
       </section>
       <Educacion data = { currentUser?.profile.educationalProfile } />
-      <Experiencia />
+      <Experiencia data = { currentUser?.profile.workProfile } />
       <Disponibilidad />
       <Salario />
       <Habilidades />
