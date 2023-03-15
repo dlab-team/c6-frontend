@@ -44,10 +44,11 @@ const CreateSkillForm = ({ setOpenModal }) => {
         //validationSchema={skillSchema}
         onSubmit={async (values) => {
           const url = process.env.REACT_APP_BACKEND_URL + '/skills';
+          console.log(values)
           await axios
             .post(url, values, config)
             .then((res) => {
-              window.location.reload();
+              window.location.reload(false);
             })
             .catch((err) => {
               console.log(err);
@@ -75,15 +76,21 @@ const CreateSkillForm = ({ setOpenModal }) => {
               <Field
                 id="skillTypeId"
                 name="skillTypeId"
-                component={SelectField}
-                options={skilltypes}
+                // component={SelectField}
+                as="select"
+                // options={skilltypes}
                 placeholder="Tipo de Skill"
                 className="w-80 h-10 px-4 rounded-md border border-gray-300 mb-1"
-              />
-              {errors.password && touched.password && (
+              >
+                {
+                  skilltypes &&
+                  skilltypes.map(skillType => <option value={skillType.value}>{skillType.label}</option>)
+                }
+              </Field>
+              {errors.skillTypeId && touched.skillTypeId && (
                 <span className="flex items-center gap-1 text-error italic text-sm">
                   <ImWarning />
-                  {errors.password}
+                  {errors.skillTypeId}
                 </span>
               )}
             </div>

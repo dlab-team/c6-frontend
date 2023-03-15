@@ -20,7 +20,7 @@ const TestsSkills = ({ tests, testsLoading }) => {
 
     return (
         <>
-            { user.isAdmin &&
+            {user.isAdmin &&
                 <div className="flex justify-end gap-2 mb-3">
                     <button
                         className='bg-[#89CFD9] text-black rounded p-2'
@@ -47,7 +47,7 @@ const TestsSkills = ({ tests, testsLoading }) => {
                     testsLoading ? (
                         <li className='text-black'>Loading...</li>
                     ) : (
-                        tests?.map(test => <SkillTestCard key={test.name} test={test} />)
+                        tests?.map(test => test.deleted === false && <SkillTestCard key={test.name} test={test} />)
                     )
                 }
             </ul>

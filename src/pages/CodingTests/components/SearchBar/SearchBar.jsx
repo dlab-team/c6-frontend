@@ -1,13 +1,13 @@
 import React from 'react';
-import {
-  Edit,
-  Bin
-} from '../../../../assets/SVG/profile/index';
+import { Options } from '..';
 
 function SearchInput({ value, onChange }) {
   return (
     <>
-      <h2 className='text-black text-xl mb-3'>Habilidades</h2>
+      <div className='flex justify-between items-center'>
+        <h2 className='text-black text-xl mb-3'>Habilidades</h2>
+        <Options />
+      </div>
       <input
         type='text'
         placeholder='Buscar habilidades'
