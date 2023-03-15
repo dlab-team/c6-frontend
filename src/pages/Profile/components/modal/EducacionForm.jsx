@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -6,9 +6,11 @@ import { ImWarning } from 'react-icons/im';
 import { useFetch } from '../../../../CustomHooks/useAxiosFetch';
 import SelectField from '../../../Form/components/Select-field/SelectField';
 import { AuthContext } from '../../../../Context/AuthContext';
-import { Profile } from '../../index'
+import { Profile } from '../../index';
 
-const EditStudiesForm = ({ setOpenModal }) => {
+const EditStudiesForm = ({ setOpenModal, studies }) => {
+  const [allStudies, setAllStudies] = useState(studies);
+
   const { token } = useContext(AuthContext);
   const config = {
     headers: {
@@ -18,12 +20,11 @@ const EditStudiesForm = ({ setOpenModal }) => {
 
   const initialSkill = {
     name: '',
-    id: '',
+    institutionTypeId: '',
   };
 
   const institutionsSchema = Yup.object().shape({
     name: Yup.string().required('Campo obligatorio'),
-    skillTypeId: Yup.string().required('Campo obligatorio'),
   });
 
   const { data: institutionsData, isLoading: institutionsLoading } = useFetch(
@@ -37,26 +38,32 @@ const EditStudiesForm = ({ setOpenModal }) => {
       label: institutions.name,
     }));
 
-  const { data: institutionTypeData, isLoading: institutionTypeLoading } = useFetch(
-    process.env.REACT_APP_BACKEND_URL + '/institutionstype'
-  );
-  
+  const { data: institutionTypeData, isLoading: institutionTypeLoading } =
+    useFetch(process.env.REACT_APP_BACKEND_URL + '/institutionstype');
+
   const institutionsType =
-  institutionTypeData &&
-  institutionTypeData.map((institutionstype) => ({
-    value: institutionstype.id,
-    label: institutionstype.name,
-  }));
+    institutionTypeData &&
+    institutionTypeData.map((institutionstype) => ({
+      value: institutionstype.id,
+      label: institutionstype.name,
+    }));
 
   return (
     <div>
       <Formik
         initialValues={initialSkill}
-        //validationSchema={skillSchema}
         onSubmit={async (values) => {
-          const url = process.env.REACT_APP_BACKEND_URL + '/institutions';
+          console.log('=>', studies);
+
+          const newStudy = {
+            name: values.name,
+            institutionTypeId: values.institutionTypeId,
+          };
+
+          const dataStudies = { studies: [...studies, newStudy] };
+          const url = process.env.REACT_APP_BACKEND_URL + '/profiles/studies';
           await axios
-            .post(url, values, config)
+            .put(url, dataStudies, config)
             .then((res) => {
               window.location.reload();
             })
@@ -68,7 +75,7 @@ const EditStudiesForm = ({ setOpenModal }) => {
         {({ touched, errors }) => (
           <Form className="flex flex-col -mb-5">
             <div className="h-[4.5rem] mt-5">
-              <p className='mb-1'>Nombre de la carrera, curso o bootcamp:</p>
+              <p className="mb-1">Nombre de la carrera, curso o bootcamp:</p>
               <Field
                 id="name"
                 name="name"
@@ -84,15 +91,28 @@ const EditStudiesForm = ({ setOpenModal }) => {
               )}
             </div>
             <div className="h-[4.5rem] mt-1">
-              <p className='-mb-3'>Tipo de institución:</p>
-              <Field
-                id="name"
-                name="type"
-                component={SelectField}
-                options={institutionsType}
-                placeholder="Institución"
-                className="w-80 h-10 px-4 rounded-md border border-gray-300 mb-1"
-              />
+              <p className="-mb-3">Tipo de institución:</p>
+              <div className="h-[4.5rem]">
+                <Field
+                  id="name"
+                  name="type"
+                  as="select"
+                  placeholder="Institución"
+                  className="w-80 h-10 mt-4 px-4 rounded-md border border-gray-300"
+                >
+                  <>
+                    {institutionsType &&
+                      institutionsType.map((institutionType) => (
+                        <option
+                          key={institutionType.label}
+                          value={institutionType.value}
+                        >
+                          {institutionType.label}
+                        </option>
+                      ))}
+                  </>
+                </Field>
+              </div>
               {errors.nombre && touched.nombre && (
                 <span className="flex items-center gap-1 text-error italic text-sm mb-1">
                   <ImWarning />
@@ -101,15 +121,30 @@ const EditStudiesForm = ({ setOpenModal }) => {
               )}
             </div>
             <div className="h-[4.5rem]">
-              <p className='-mb-3 mt-3'>Nombre institución:</p>
-              <Field
-                id="name"
-                name="name"
-                component={SelectField}
-                options={institutions}
-                placeholder="Tipo de Institución"
-                className="w-80 h-10 px-4 rounded-md border border-gray-300 mb-1"
-              />
+              <p className="-mb-3 mt-3">Nombre institución:</p>
+              <div className="h-[4.5rem]">
+                <Field
+                  id="institutionTypeId"
+                  name="institutionTypeId"
+                  // component={SelectField}
+                  // options={institutions}
+                  as="select"
+                  placeholder="Tipo de Institución"
+                  className="w-80 mt-4 h-10 px-4 rounded-md border border-gray-300 mb-1"
+                >
+                  <>
+                    {institutions &&
+                      institutions.map((institution) => (
+                        <option
+                          key={institution.label}
+                          value={institution.value}
+                        >
+                          {institution.label}
+                        </option>
+                      ))}
+                  </>
+                </Field>
+              </div>
               {errors.password && touched.password && (
                 <span className="flex items-center gap-1 text-error italic text-sm">
                   <ImWarning />
@@ -123,7 +158,7 @@ const EditStudiesForm = ({ setOpenModal }) => {
                 type="submit"
                 className="w-80 h-10 bg-[#2738F5] text-white rounded-md mt-20"
               >
-                Editar estudio
+                Guardar
               </button>
             </div>
           </Form>

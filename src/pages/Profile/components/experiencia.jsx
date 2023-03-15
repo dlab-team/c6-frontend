@@ -7,7 +7,6 @@ import ModalExperiencia from './modal/ModalExperiencia';
 import ExperienciaForm from './modal/ExperienciaForm';
 
 function Experiencia(data) {
-
   const [openModal, setOpenModal] = useState(false);
   const { token, decodedToken } = useContext(AuthContext);
 
@@ -25,36 +24,45 @@ function Experiencia(data) {
     return (
       <button
         onClick={handleOpenModal}
-        className='justify-items-end text-black text-lg p-1 border-black rounded-md'>
-        <img src={Add} alt='edit' className='-mt-2' />
+        className="justify-items-end text-black text-lg p-1 border-black rounded-md"
+      >
+        <img src={Add} alt="edit" className="-mt-2" />
       </button>
     );
   };
 
   return (
-    <section className='justify-between py-10 border-b border-[#817E7E]'>
-    <div className='grid grid-cols-2'>
-      <div className='flex flex-row'>
-        <h2 className='text-black text-xl items-start flex flex-row text-start'>
-          <img id='edit-image' src={Edu} alt='Experiencia' className='w-7 mr-4' />
-          Experiencia
-        </h2>
+    <section className="justify-between py-10 border-b border-[#817E7E]">
+      <div className="grid grid-cols-2">
+        <div className="flex flex-row">
+          <h2 className="text-black text-xl items-start flex flex-row text-start">
+            <img
+              id="edit-image"
+              src={Edu}
+              alt="Experiencia"
+              className="w-7 mr-4"
+            />
+            Experiencia
+          </h2>
+        </div>
+        <div className="flex flex-col ml-80 justify-end items-end">
+          <>
+            <EditarExperiencia />
+            {openModal && (
+              <ModalExperiencia handleCloseModal={handleCloseModal} />
+            )}
+          </>
+          <ul className="text-black text-right mt-5">
+            <li className="font-semibold flex flex-row">
+              {data.data.yearsOfExperiencie} años de experiencia
+            </li>
+            <li className="font-semibold flex flex-row justify-self-end">
+              Disponibilidad: {data.data.availability}
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className='flex flex-col ml-80 justify-end items-end'>
-        <>
-          <EditarExperiencia/>
-          {openModal && (
-            <ModalExperiencia handleCloseModal={handleCloseModal} />
-          )}
-        </>
-        <ul className='text-black text-right mt-5'>
-        <li className='font-semibold flex flex-row'>{data.data.yearsOfExperiencie} años de experiencia</li>
-        <li className='font-semibold flex flex-row justify-self-end'>Disponibilidad: {data.data.availability}</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  
+    </section>
   );
 }
 
