@@ -222,7 +222,7 @@ const WorkExperienceForm = ({ errors, touched }) => {
               name='educationalProfile.anotherSkills'
               rows='5'
               required
-              className={`form-control w-80 md:w-5/6 h-10 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${
+              className={`form-control w-80 md:w-5/6 px-4 rounded-md border-2 border-custom-color mt-5 mb-2 h-40 ${
                 touched.educationalProfile?.anotherSkills &&
                 errors.educationalProfile?.anotherSkills &&
                 errors.educationalProfile?.anotherSkills

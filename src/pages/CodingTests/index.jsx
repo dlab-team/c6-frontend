@@ -26,7 +26,7 @@ function CodignTests() {
     <main className='bg-white mx-80 min-h-[100vh] w-[60%]'>
       <Introduction />
       <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
-      <Options></Options>
+      {/* <Options></Options> */}
       <SkillsList
         skills={filteredSkills}
         skillsLoading={skillsLoading}

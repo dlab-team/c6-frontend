@@ -4,10 +4,9 @@ import * as Yup from 'yup'
 import { Formik, Form, Field } from 'formik'
 import { ImWarning } from 'react-icons/im';
 import { useFetch } from '../../../../../CustomHooks/useAxiosFetch'
-import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../../Context/AuthContext';
 
-const DelTest = ({setOpenModal}) => {
+const DelTest = ({ setOpenModal }) => {
 
   const { data: tests, isLoading: testsLoading } = useFetch(
     process.env.REACT_APP_BACKEND_URL + '/tests'
@@ -30,7 +29,7 @@ const DelTest = ({setOpenModal}) => {
       Authorization: "Bearer " + token
     }
   }
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   function refreshPage() {
     window.location.reload(false);
@@ -67,7 +66,7 @@ const DelTest = ({setOpenModal}) => {
               <>
                 {
                   tests && tests.map(test => (
-                    <option key={test.name} value={test.id}>{test.name}</option>
+                    <option key={test.name} value={test.id}>{test.name} {test.deleted && '(eliminado)'}</option>
                   ))
                 }
               </>
