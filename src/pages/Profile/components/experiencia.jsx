@@ -53,11 +53,14 @@ function Experiencia(data) {
             )}
           </>
           <ul className="text-black text-right mt-5">
-            <li className="font-semibold flex flex-row">
+            <li className="font-semibold flex flex-row justify-self-end justify-end items-end">
               {data.data.yearsOfExperiencie} años de experiencia
             </li>
-            <li className="font-semibold flex flex-row justify-self-end">
-              Disponibilidad: {data.data.availability}
+            <li className="font-semibold flex flex-row justify-self-end justify-end items-end">
+              Situación actual: {data.data.employmentSituation}
+            </li>
+            <li className="font-semibold flex flex-row justify-self-end justify-end items-end">
+              Empleo ideal: {data.data.dreamJobDescription}
             </li>
           </ul>
         </div>

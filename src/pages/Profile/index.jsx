@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState  } from 'react';
 import {
   Edit,
   Email,
@@ -32,7 +32,7 @@ function Profile() {
   const initialCurrentUser = {
     name: decodedToken.name,
     email: decodedToken.email,
-    profile: {
+      profile: {
       cityId: '',
       phone: 'No registrado',
       workProfile: {
@@ -42,6 +42,16 @@ function Profile() {
         cvUrl: '',
         yearsOfExperiencie: '',
         employmentSituation: '',
+        dreamJobDescription: '',
+        availability: '',
+        skills: [
+          {
+            name: '',
+            SkillWorkProfile: {
+              level: '',
+            },
+          },
+        ],
       },
       educationalProfile: {
         englishLevel: 'No registrado',
@@ -62,8 +72,6 @@ function Profile() {
       profile: data.body.profile,
     });
   };
-
-  console.log('currentUser: ', currentUser);
 
   useEffect(() => {
     getUser();
@@ -145,9 +153,9 @@ function Profile() {
       </section>
       <Educacion data={currentUser?.profile.educationalProfile} />
       <Experiencia data={currentUser?.profile.workProfile} />
-      <Disponibilidad />
+      <Disponibilidad data={currentUser?.profile.workProfile}/>
       <Salario />
-      <Habilidades />
+      <Habilidades data={currentUser?.profile.workProfile.skills}/>
     </main>
   );
 }
