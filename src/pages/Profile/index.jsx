@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState  } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Edit,
   Email,
@@ -9,7 +9,7 @@ import {
   Portfolio,
   Resume,
 } from '../../assets/SVG/profile/index';
-import profileimg from '../../assets/images/square-xxl.png';
+import profileimg from '../../assets/images/blank-profile-picture.png';
 import {
   Educacion,
   Habilidades,
@@ -32,8 +32,11 @@ function Profile() {
   const initialCurrentUser = {
     name: decodedToken.name,
     email: decodedToken.email,
-      profile: {
+    profile: {
       cityId: '',
+      city: {
+        name: '',
+      },
       phone: 'No registrado',
       workProfile: {
         linkedinUrl: '',
@@ -109,7 +112,7 @@ function Profile() {
             {currentUser.name}
           </li>
           <li className="align-middle text-xl">
-            {currentUser?.profile.cityId}
+            {currentUser?.profile.city.name}
           </li>
         </ul>
         <ul className="flex flex-row items-center gap-8 mt-8 text-black">
@@ -153,9 +156,9 @@ function Profile() {
       </section>
       <Educacion data={currentUser?.profile.educationalProfile} />
       <Experiencia data={currentUser?.profile.workProfile} />
-      <Disponibilidad data={currentUser?.profile.workProfile}/>
+      <Disponibilidad data={currentUser?.profile.workProfile} />
       <Salario />
-      <Habilidades data={currentUser?.profile.workProfile.skills}/>
+      <Habilidades data={currentUser?.profile.workProfile.skills} />
     </main>
   );
 }
