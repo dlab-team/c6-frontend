@@ -54,19 +54,19 @@ function Educacion({ data }) {
             />
           )}
         </div>
-        {data.studies.length > 0 &&
-          data.studies.map((studies) => (
-            <div className="flex flex-col ml-80 mt-5 shrink justify-end items-end">
-              <ul className="text-black text-right" key={studies.id}>
-                <li className="font-semibold flex flex-row">
-                  <img src={Bin} alt="Borrar" className="mr-5" />
-                  {studies.name}
-                </li>
-                <li className="font-semibold">{studies.institutionId}</li>
-                <li className="font-semibold">{studies.institutionId}</li>
-              </ul>
-            </div>
-          ))}
+        <div className='col-span-2 flex flex-row ml-80 mt-5 shrink justify-end items-end'>
+          {data.studies.length > 0 &&
+            data.studies.map((studies, index) => (
+                <ul className="text-black text-right ml-20 mb-8" key={index}>
+                  <li className="font-semibold flex flex-row">
+                    <img src={Bin} alt="Borrar" className="mr-5" />
+                    {studies.name}
+                  </li>
+                  <li className="font-semibold">{studies.institution.name}</li>
+                  {/* <li className="font-semibold">{studies.institutionId}</li> */}
+                </ul>
+            ))}
+        </div>
         <div className="text-right col-span-2 text-black justify-self-end">
           <span className="font-bold">Nivel de inglés:</span>{' '}
           {data.englishLevel}
