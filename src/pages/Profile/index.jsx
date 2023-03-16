@@ -112,7 +112,7 @@ function Profile() {
             {currentUser.name}
           </li>
           <li className="align-middle text-xl">
-            {currentUser?.profile.city.name}
+            {currentUser?.profile?.city?.name || '-'}
           </li>
         </ul>
         <ul className="flex flex-row items-center gap-8 mt-8 text-black">
