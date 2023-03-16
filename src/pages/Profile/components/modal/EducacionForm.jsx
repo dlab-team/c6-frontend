@@ -20,7 +20,7 @@ const EditStudiesForm = ({ setOpenModal, studies }) => {
 
   const initialSkill = {
     name: '',
-    institutionTypeId: '',
+    institutionId: '',
   };
 
   const institutionsSchema = Yup.object().shape({
@@ -37,7 +37,6 @@ const EditStudiesForm = ({ setOpenModal, studies }) => {
       value: institutions.id,
       label: institutions.name,
     }));
-    console.log('=>inst', institutions);
 
   const { data: institutionTypeData, isLoading: institutionTypeLoading } =
     useFetch(process.env.REACT_APP_BACKEND_URL + '/institutionstype');
@@ -48,22 +47,17 @@ const EditStudiesForm = ({ setOpenModal, studies }) => {
       value: institutionstype.id,
       label: institutionstype.name,
     }));
-    console.log('=>type', institutionsType);
+
   return (
     <div>
       <Formik
         initialValues={initialSkill}
         onSubmit={async (values) => {
-          console.log('=>values', values);
-
           const newStudy = {
             name: values.name,
-            institutionTypeId: values.institutionTypeId,
+            institutionId: Number(values.institutionId),
           };
-          console.log('=>estudies', newStudy);
-
           const dataStudies = { studies: [...studies, newStudy] };
-          console.log('=>', dataStudies);
           const url = process.env.REACT_APP_BACKEND_URL + '/profiles/studies';
           await axios
             .put(url, dataStudies, config)
@@ -127,8 +121,8 @@ const EditStudiesForm = ({ setOpenModal, studies }) => {
               <p className="-mb-3 mt-3">Nombre institución:</p>
               <div className="h-[4.5rem]">
                 <Field
-                  id="institutionTypeId"
-                  name="institutionTypeId"
+                  id="institutionId"
+                  name="institutionId"
                   as="select"
                   placeholder="Tipo de Institución"
                   className="w-80 mt-4 h-10 px-4 rounded-md border border-gray-300 mb-1"

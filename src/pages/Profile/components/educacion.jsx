@@ -54,17 +54,16 @@ function Educacion({ data }) {
             />
           )}
         </div>
-        <div className='col-span-2 flex flex-row ml-80 mt-5 shrink justify-end items-end'>
+        <div className="col-span-2 flex flex-row ml-80 mt-5 shrink justify-end items-end">
           {data.studies.length > 0 &&
             data.studies.map((studies, index) => (
-                <ul className="text-black text-right ml-20 mb-8" key={index}>
-                  <li className="font-semibold flex flex-row">
-                    <img src={Bin} alt="Borrar" className="mr-5" />
-                    {studies.name}
-                  </li>
-                  <li className="font-semibold">{studies.institution.name}</li>
-                  {/* <li className="font-semibold">{studies.institutionId}</li> */}
-                </ul>
+              <ul className="text-black text-right ml-20 mb-8" key={index}>
+                <li className="font-semibold flex flex-row">
+                  <img src={Bin} alt="Borrar" className="mr-5" />
+                  {studies.name}
+                </li>
+                <li className="font-semibold">{studies.institution.name}</li>
+              </ul>
             ))}
         </div>
         <div className="text-right col-span-2 text-black justify-self-end">
