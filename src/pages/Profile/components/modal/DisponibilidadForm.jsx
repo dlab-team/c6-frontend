@@ -20,7 +20,7 @@ const EditStudiesForm = ({ setOpenModal, studies }) => {
 
   const initialSkill = {
     name: '',
-    institutionId: '',
+    institutionTypeId: '',
   };
 
   const institutionsSchema = Yup.object().shape({
@@ -53,10 +53,13 @@ const EditStudiesForm = ({ setOpenModal, studies }) => {
       <Formik
         initialValues={initialSkill}
         onSubmit={async (values) => {
+          console.log('=>', studies);
+
           const newStudy = {
             name: values.name,
-            institutionId: Number(values.institutionId),
+            institutionTypeId: values.institutionTypeId,
           };
+
           const dataStudies = { studies: [...studies, newStudy] };
           const url = process.env.REACT_APP_BACKEND_URL + '/profiles/studies';
           await axios
@@ -121,8 +124,10 @@ const EditStudiesForm = ({ setOpenModal, studies }) => {
               <p className="-mb-3 mt-3">Nombre institución:</p>
               <div className="h-[4.5rem]">
                 <Field
-                  id="institutionId"
-                  name="institutionId"
+                  id="institutionTypeId"
+                  name="institutionTypeId"
+                  // component={SelectField}
+                  // options={institutions}
                   as="select"
                   placeholder="Tipo de Institución"
                   className="w-80 mt-4 h-10 px-4 rounded-md border border-gray-300 mb-1"

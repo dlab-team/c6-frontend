@@ -34,7 +34,7 @@ const EmailRequest = ({ setResponse, setOpenModal }) => {
             .post(url, { email: values.email })
             .then((res) => {
               setResponse({
-                message: res.data.message === 'Token enviado de forma exitosa' ? 'Hemos enviado un enlace a su dirección de correo electrónico, por favor rebice su bandeja de entrada' : res.data.message,
+                message: res.data.message === 'Token enviado de forma exitosa' ? 'Hemos enviado un enlace a su dirección de correo electrónico, por favor revice su bandeja de entrada' : res.data.message,
               });
               setOpenModal(true);
             })

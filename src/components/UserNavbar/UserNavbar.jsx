@@ -56,7 +56,7 @@ function UserNavbar() {
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div
-                    className={`flex flex-row grid grid-cols-2 gap-4 py-4 ml-12 pl-8 items-right w-56 `}
+                    className={`flex-row grid grid-cols-2 gap-4 py-4 ml-12 pl-8 items-right w-56 `}
                   >
                     <div>{item.name}</div>
                     <div className="ml-16">
