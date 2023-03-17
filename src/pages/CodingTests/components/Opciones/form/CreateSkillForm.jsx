@@ -41,18 +41,25 @@ const CreateSkillForm = ({ setOpenModal }) => {
     <div>
       <Formik
         initialValues={initialSkill}
-        //validationSchema={skillSchema}
         onSubmit={async (values) => {
-          const url = process.env.REACT_APP_BACKEND_URL + '/skills';
-          console.log(values)
-          await axios
-            .post(url, values, config)
-            .then((res) => {
-              window.location.reload(false);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          if (values.skillTypeId === '') {
+            values.skillTypeId = skilltypes[0].value;
+          }
+
+          if (values.name === '') {
+            alert('Debe ingresar un nombre');
+          } else {
+            const url = process.env.REACT_APP_BACKEND_URL + '/skills';
+            console.log(values);
+            await axios
+              .post(url, values, config)
+              .then((res) => {
+                window.location.reload(false);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
         }}
       >
         {({ touched, errors }) => (
@@ -82,10 +89,10 @@ const CreateSkillForm = ({ setOpenModal }) => {
                 placeholder="Tipo de Skill"
                 className="w-80 h-10 px-4 rounded-md border border-gray-300 mb-1"
               >
-                {
-                  skilltypes &&
-                  skilltypes.map(skillType => <option value={skillType.value}>{skillType.label}</option>)
-                }
+                {skilltypes &&
+                  skilltypes.map((skillType) => (
+                    <option value={skillType.value}>{skillType.label}</option>
+                  ))}
               </Field>
               {errors.skillTypeId && touched.skillTypeId && (
                 <span className="flex items-center gap-1 text-error italic text-sm">
